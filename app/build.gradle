@@ -1,0 +1,119 @@
+apply plugin: 'com.android.application'
+
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
+apply plugin: 'kotlin-kapt'
+
+// gradle 配置
+def gradleProp = getMyGradleProperties()
+// config.properties配置解析器
+def configProp = getMyConfigProperties(gradleProp)
+
+android {
+
+    compileSdkVersion getAppCompileSdkVersion(gradleProp)
+    // App名称
+    def appName = getAppName(configProp)
+    // App唯一Id
+    def appId = getMyApplicationId(configProp, appName)
+    // App版本名称
+    def appVersionName = getAppVersionName(gradleProp, configProp)
+    // App版本号
+    def appVersionCode = getAppVersionCode(configProp)
+
+    /* 签名配置 */
+    signingConfigs {
+        /* 开发签名 */
+        MyAppSign {
+            Map<String, String> signConfigs = loadApkSignConfigs(gradleProp)
+            keyAlias signConfigs.ALIAS
+            keyPassword signConfigs.KEY_PWD
+            storeFile file(signConfigs.STORE_FILE)
+            storePassword signConfigs.STORE_PWD
+        }
+    }
+
+    defaultConfig {
+        applicationId appId
+        minSdkVersion getAppMinSdkVersion(gradleProp)
+        targetSdkVersion getAppTargetSdkVersion(gradleProp)
+        versionCode appVersionCode
+        versionName appVersionName
+        // 签名配置
+        signingConfig signingConfigs.MyAppSign
+
+        // renderscript 支持
+        renderscriptTargetApi 18
+        renderscriptSupportModeEnabled true
+
+        String currentRunEnv = getRunEnvironment(gradleProp)
+        currentRunEnv = currentRunEnv.toUpperCase()
+        boolean isReleaseProduction = 'release'.equalsIgnoreCase(currentRunEnv)
+        for (String key : configProp.keySet()) {
+            if (isWriteToBuildConfig(configProp, key, currentRunEnv)) {
+                String[] configKeyArray = key.split('_')
+                String dataType = getJavaDataType(configKeyArray)
+                String constantName = getConstantName(configKeyArray)
+                String constantValue = getConstantValue(key, configKeyArray, configProp)
+                if (isReleaseProduction) {
+                    if (key.contains('HOST') && (constantValue.contains("http://1") || constantValue.contains("https://1"))) {
+                        throw new Exception('正式站通信地址有问题 ->' + constantName + "=" + constantValue)
+                    }
+                }
+                log('buildConfigField', '开始写入BuildConfig常量：' + dataType + ' ' + constantName + ' = ' + constantValue)
+                buildConfigField dataType, constantName, constantValue
+            }
+        }
+    }
+
+    buildTypes {
+        release {
+            //删除无用资源
+            shrinkResources true
+            //删除无用代码
+            minifyEnabled true
+            //优化apk
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+
+        }
+    }
+
+    /* 编译配置项 */
+    compileOptions {
+        /* Java8支持 */
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    androidExtensions {
+        experimental = true
+    }
+
+    bundle {
+        language {
+            enableSplit = false
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    kapt "com.google.dagger:dagger-compiler:$libsVersion.dagger"
+    kapt "com.google.dagger:dagger-android-processor:$libsVersion.dagger"
+    api project(path: ':shared')
+
+}

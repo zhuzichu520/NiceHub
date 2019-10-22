@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/main_tab_feeds"
+        android:enabled="true"
+        android:icon="@drawable/ic_main_feeds"
+        android:title="@string/feeds" />
+
+    <item
+        android:id="@+id/main_tab_profile"
+        android:enabled="true"
+        android:icon="@drawable/ic_main_profile"
+        android:title="@string/profile" />
+
+
+</menu>
