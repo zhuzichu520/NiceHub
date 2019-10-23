@@ -1,27 +1,15 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
-
 apply plugin: 'kotlin-kapt'
 
-// gradle 配置
 def gradleProp = getMyGradleProperties()
-// config.properties配置解析器
-def configProp = getMyConfigProperties(gradleProp)
+
+def pro = getProject()
 
 android {
 
-    compileSdkVersion getAppCompileSdkVersion(gradleProp)
-    // App名称
-    def appName = getAppName(configProp)
-    // App唯一Id
-    def appId = getMyApplicationId(configProp, appName)
-    // App版本名称
-    def appVersionName = getAppVersionName(gradleProp, configProp)
-    // App版本号
-    def appVersionCode = getAppVersionCode(configProp)
+    compileSdkVersion Config.compileSdkVersion()
 
     /* 签名配置 */
     signingConfigs {
@@ -36,11 +24,11 @@ android {
     }
 
     defaultConfig {
-        applicationId appId
-        minSdkVersion getAppMinSdkVersion(gradleProp)
-        targetSdkVersion getAppTargetSdkVersion(gradleProp)
-        versionCode appVersionCode
-        versionName appVersionName
+        applicationId Config.applicationId()
+        minSdkVersion Config.minSdkVersion()
+        targetSdkVersion Config.targetSdkVersion()
+        versionCode Config.versionCode()
+        versionName Config.versionName()
         // 签名配置
         signingConfig signingConfigs.MyAppSign
 
@@ -48,24 +36,8 @@ android {
         renderscriptTargetApi 18
         renderscriptSupportModeEnabled true
 
-        String currentRunEnv = getRunEnvironment(gradleProp)
-        currentRunEnv = currentRunEnv.toUpperCase()
-        boolean isReleaseProduction = 'release'.equalsIgnoreCase(currentRunEnv)
-        for (String key : configProp.keySet()) {
-            if (isWriteToBuildConfig(configProp, key, currentRunEnv)) {
-                String[] configKeyArray = key.split('_')
-                String dataType = getJavaDataType(configKeyArray)
-                String constantName = getConstantName(configKeyArray)
-                String constantValue = getConstantValue(key, configKeyArray, configProp)
-                if (isReleaseProduction) {
-                    if (key.contains('HOST') && (constantValue.contains("http://1") || constantValue.contains("https://1"))) {
-                        throw new Exception('正式站通信地址有问题 ->' + constantName + "=" + constantValue)
-                    }
-                }
-                log('buildConfigField', '开始写入BuildConfig常量：' + dataType + ' ' + constantName + ' = ' + constantValue)
-                buildConfigField dataType, constantName, constantValue
-            }
-        }
+        Config.initBuildConfig(pro)
+
     }
 
     buildTypes {
@@ -114,6 +86,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     kapt "com.google.dagger:dagger-compiler:$libsVersion.dagger"
     kapt "com.google.dagger:dagger-android-processor:$libsVersion.dagger"
+    kapt "com.android.databinding:compiler:$libsVersion.databinding"
     api project(path: ':shared')
 
 }
