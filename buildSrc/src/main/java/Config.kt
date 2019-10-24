@@ -42,7 +42,7 @@ object Config {
         SIGN_KEY_ALIAS("String", "SIGN_KEY_ALIAS"),
         SIGN_KEY_PASSWORD("String", "SIGN_KEY_PASSWORD"),
         SIGN_STORE_FILE("String", "SIGN_STORE_FILE"),
-        SIGN_STORE_PASSWORD("String", "APP_VERSION_CODE");
+        SIGN_STORE_PASSWORD("String", "SIGN_STORE_PASSWORD");
 
         companion object {
             fun of(key: String) = values().first {
