@@ -3,18 +3,16 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
-// gradle 配置
-def gradleProp = getMyGradleProperties()
 
 android {
 
-    compileSdkVersion getAppCompileSdkVersion(gradleProp)
+    compileSdkVersion Config.compileSdkVersion()
 
     defaultConfig {
-        minSdkVersion getAppMinSdkVersion(gradleProp)
-        targetSdkVersion getAppTargetSdkVersion(gradleProp)
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion Config.minSdkVersion()
+        targetSdkVersion Config.targetSdkVersion()
+        versionCode Config.versionCode()
+        versionName Config.versionName()
 
         consumerProguardFiles 'consumer-rules.pro'
     }
@@ -48,6 +46,7 @@ android {
         enabled = true
     }
 
+
     androidExtensions {
         experimental = true
     }
@@ -56,34 +55,41 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    kapt "com.google.dagger:dagger-compiler:$libsVersion.dagger"
-    kapt "com.google.dagger:dagger-android-processor:$libsVersion.dagger"
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$libsVersion.kotlin"
-    api "androidx.appcompat:appcompat:$libsVersion.androidxCore"
-    api "androidx.core:core-ktx:$libsVersion.androidxKtx"
-    api "androidx.annotation:annotation:$libsVersion.androidxAnnotation"
-    api "androidx.constraintlayout:constraintlayout:$libsVersion.androidxConstraintlayout"
-    api "com.github.zhuzichu520:widget:$libsVersion.widget"
-    api "com.github.zhuzichu520:libs:$libsVersion.libs"
-    api "com.github.zhuzichu520:mvvm:$libsVersion.mvvm"
-    api "com.google.dagger:dagger-android:$libsVersion.dagger"
-    api "com.google.dagger:dagger-android-support:$libsVersion.dagger"
-    api "com.google.android.material:material:$libsVersion.androidxMaterial"
-    api "androidx.navigation:navigation-fragment-ktx:$libsVersion.navigation"
-    api "androidx.navigation:navigation-ui-ktx:$libsVersion.navigation"
-    api "com.squareup.okhttp3:okhttp:$libsVersion.okhttp"
-    api "com.squareup.okhttp3:logging-interceptor:$libsVersion.okhttp"
-    api "com.squareup.retrofit2:retrofit:$libsVersion.retrofit"
-    api "com.squareup.retrofit2:converter-gson:$libsVersion.retrofit"
-    api "com.squareup.retrofit2:adapter-rxjava2:$libsVersion.retrofit"
-    api "com.squareup.retrofit2:converter-scalars:$libsVersion.retrofit"
-    api "io.reactivex.rxjava2:rxjava:$libsVersion.rxjava"
-    api "io.reactivex.rxjava2:rxandroid:$libsVersion.rxandroid"
-    api "com.jakewharton.rxbinding3:rxbinding-core:$libsVersion.rxbinding"
-    api "com.uber.autodispose:autodispose:$libsVersion.autodispose"
-    api "com.uber.autodispose:autodispose-android:$libsVersion.autodispose"
-    api "com.uber.autodispose:autodispose-android-archcomponents:$libsVersion.autodispose"
-    api "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:$libsVersion.bindingcollectionadapter"
-    api "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:$libsVersion.bindingcollectionadapter"
+
+    kapt(Dep.kaptDaggerCompiler)
+    kapt(Dep.kaptDaggerProcessor)
+
+    api(Dep.kotlinStadlibJdk8)
+    api(Dep.androidxCore)
+    api(Dep.androidxKtx)
+    api(Dep.androidxAnnotation)
+    api(Dep.androidxConstraintlayout)
+    api(Dep.widget)
+    api(Dep.libs)
+    api(Dep.mvvm)
+
+    api(Dep.daggerAndroid)
+    api(Dep.daggerAndroidSupport)
+    api(Dep.androidxNavigationFragment)
+    api(Dep.androidxNavigationUi)
+
+    api(Dep.material)
+    api(Dep.okhttp)
+    api(Dep.retrofit)
+    api(Dep.retrofitAdapter)
+    api(Dep.retrofitGsonConverter)
+    api(Dep.retrofitScalarsConverter)
+    api(Dep.loggingInterceptor)
+
+    api(Dep.rxandroid)
+    api(Dep.rxbinding)
+    api(Dep.rxjava2)
+
+    api(Dep.autodispose)
+    api(Dep.autodisposeArchcomponents)
+    api(Dep.autodisposeAndroid)
+
+    api(Dep.adapter)
+    api(Dep.adapterRecyclerview)
 
 }

@@ -184,5 +184,3 @@ C
 buildSrc/.gitignore,2\2\22163f12ca562d4b53ce3f8d6a0cbd595fd4d0a1
 I
 buildSrc/build.gradle.kts,d\9\d90b697280fada81e52ec92d24725920f1cb087b
-D
-app/build.gradle.kts,d\2\d2a4383452aad84a18429a5844d31330a012a9e6

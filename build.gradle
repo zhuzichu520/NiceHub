@@ -1,11 +1,4 @@
-// 引入依赖等配置
-apply from: "dependencies.gradle"
-// 引入公共函数
-apply from: "utils.gradle"
-
 buildscript {
-
-    apply from: "dependencies.gradle"
 
     repositories {
         google()
@@ -13,8 +6,8 @@ buildscript {
     }
 
     dependencies {
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$libsVersion.kotlin"
-        classpath('com.android.tools.build:gradle:' + LOCAL_GRADLE_PLUGIN_VERSION)
+        classpath(Dep.pluginBuildGradle)
+        classpath(Dep.pluginkotlinGradle)
     }
 }
 
@@ -28,18 +21,4 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
-}
-
-// ==========================================
-/**
- * 是否优先使用本地自定义配置
- * @return true:是；false:仅使用gradle.properties配置。
- */
-def isUseLocalPropertyFirst() {
-    boolean isDeveloperEnvironment = !(IS_JENKINS.toBoolean())
-    def localFile = new File('local.properties')
-    boolean isLocalFileCanRead = localFile.canRead()
-    boolean isUseLocalProp = (isDeveloperEnvironment && isLocalFileCanRead)
-    println('====根目录build.gradle -> isUseLocalPropertyFirst(), 优先使用本地自定义配置:' + isUseLocalProp)
-    return isUseLocalProp
 }

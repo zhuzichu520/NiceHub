@@ -1,6 +1,5 @@
 object Log {
-    @JvmStatic
-    fun i(message: String) {
-        println("=====flag->".plus("Nice").plus("||").plus(message))
+    fun i(flag: String, message: Any?) {
+        println("=====flag->".plus(flag).plus("||").plus(message.toString()))
     }
 }
