@@ -199,20 +199,16 @@ object Config {
 
     @JvmStatic
     fun initJenkinsProperties(project: Project) {
-//        Log.i(
-//            "DefaultExtraPropertiesExtension",
-//            project.extensions.getByType(ExtraPropertiesExtension::class.java).get("LOCAL_GRADLE_PLUGIN_VERSION")
-//        )
-//        Log.i("project.properties", project.properties["LOCAL_GRADLE_PLUGIN_VERSION"])
-        gradleProperties.mapKeys {
+        project.extensions.getByType(ExtraPropertiesExtension::class.java).properties.mapKeys {
             gradleProperties.put(it.key, project.properties[it.key])
         }
     }
 
     private fun getReleaseSignPath(): String {
-        return gradleProperties.getPropertyByKey(GradleKey.RELEASE_SIGN_CONFIGS_PATH.key).apply {
-            Log.i("getReleaseSignPath", this)
-        }
+        return gradleProperties.getPropertyByKey(GradleKey.RELEASE_SIGN_CONFIGS_PATH.key)
+            .apply {
+                Log.i("getReleaseSignPath", this)
+            }
     }
 
     @JvmStatic
