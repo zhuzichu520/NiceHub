@@ -2,6 +2,7 @@ import extension.getPropertyByKey
 import extension.plusQuotes
 import extension.toInt2
 import org.gradle.api.Project
+import org.gradle.api.plugins.ExtraPropertiesExtension
 import java.io.File
 import java.io.FileInputStream
 import java.util.*
@@ -198,9 +199,12 @@ object Config {
 
     @JvmStatic
     fun initJenkinsProperties(project: Project) {
-        gradleProperties.mapKeys {
-            gradleProperties.put(it.key, project.properties[it.key])
-        }
+        Log.i(
+            "DefaultExtraPropertiesExtension",
+            project.extensions.getByType(ExtraPropertiesExtension::class.java).get("LOCAL_GRADLE_PLUGIN_VERSION")
+        )
+        Log.i("project.properties", project.properties["LOCAL_GRADLE_PLUGIN_VERSION"])
+
     }
 
     private fun getReleaseSignPath(): String {
