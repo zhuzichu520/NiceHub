@@ -16,8 +16,10 @@ class ViewModelFeedsItem @Inject constructor(
     private val useCaseGetHotRepos: UseCaseGetHotRepos
 ) : ViewModelAnalyticsBase() {
 
-    val items =
-        AsyncDiffObservableList(itemDiffOf<ItemViewModelRepository> { oldItem, newItem -> oldItem.bean.id == newItem.bean.id })
+    val items = AsyncDiffObservableList(
+        itemDiffOf<ItemViewModelRepository> { oldItem, newItem ->
+            oldItem.bean.id == newItem.bean.id
+        })
 
     val itemBinding = itemBindingOf<Any>(BR.item, R.layout.item_repository)
 
