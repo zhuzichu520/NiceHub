@@ -204,7 +204,9 @@ object Config {
             project.extensions.getByType(ExtraPropertiesExtension::class.java).get("LOCAL_GRADLE_PLUGIN_VERSION")
         )
         Log.i("project.properties", project.properties["LOCAL_GRADLE_PLUGIN_VERSION"])
-
+        gradleProperties.mapKeys {
+            gradleProperties.put(it.key, project.properties[it.key])
+        }
     }
 
     private fun getReleaseSignPath(): String {
