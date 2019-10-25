@@ -12,7 +12,7 @@ class ViewModelFeedsItem @Inject constructor(
 ) : ViewModelAnalyticsBase() {
 
     fun loadData(q: String) {
-        useCaseGetHotRepos.execute(ParamterGetHotRepos(q,1))
+        useCaseGetHotRepos.execute(ParamterGetHotRepos(q, 1))
             .autoLoading(this)
             .autoDispose(lifecycleOwner)
             .subscribe({

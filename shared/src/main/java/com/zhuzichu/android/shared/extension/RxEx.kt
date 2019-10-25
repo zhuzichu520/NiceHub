@@ -25,11 +25,22 @@ private class HttpResponseFunc<T> : Function<Throwable, Flowable<T>> {
     }
 }
 
-fun <T> Flowable<T>.autoLoading(viewModel: BaseViewModel): Flowable<T> =
-    this.compose<T> {
-        it.doOnSubscribe { viewModel.showLoading() }
-            .doFinally { viewModel.hideLoading() }
-    }
+fun <T> Flowable<T>.autoLoading(
+    viewModel: BaseViewModel,
+    execute: (() -> Boolean)? = null
+): Flowable<T> {
+    val flag = execute?.invoke() ?: true
+    return if (flag)
+        this.compose<T> {
+            it.doOnSubscribe { viewModel.showLoading() }
+                .doFinally { viewModel.hideLoading() }
+        }
+    else
+        this.compose<T> {
+            it
+        }
+}
+
 
 fun <T> Flowable<T>.bindToException(): Flowable<T> =
     this.compose<T> {
