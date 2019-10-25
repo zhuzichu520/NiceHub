@@ -71,11 +71,15 @@ object Config {
     }
 
     private val localGradleProperties by lazy {
-        loadProperties(
-            rootPath
-                .plus(File.separator)
-                .plus("local.properties")
-        )
+        try {
+            loadProperties(
+                rootPath
+                    .plus(File.separator)
+                    .plus("local.properties")
+            )
+        } catch (e: Exception) {
+            Properties()
+        }
     }
 
     private val configProperties by lazy {
