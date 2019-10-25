@@ -1,54 +1,39 @@
 import extension.getPropertyByKey
 import extension.plusQuotes
 import extension.toInt2
+import org.gradle.api.Project
+import org.gradle.api.plugins.ExtraPropertiesExtension
 import java.io.File
 import java.io.FileInputStream
 import java.util.*
 
 object Config {
 
-    private enum class GradleKey(val dateType: String, val key: String) {
-        IS_JENKINS("boolean", "IS_JENKINS"),
-        ENVIRONMENT("String", "ENVIRONMENT"),
-        LOCAL_GRADLE_PLUGIN_VERSION("String", "LOCAL_GRADLE_PLUGIN_VERSION"),
-        COMPILE_SDK_VERSION("int", "COMPILE_SDK_VERSION"),
-        TARGET_SDK_VERSION("int", "TARGET_SDK_VERSION"),
-        MIN_SDK_VERSION("int", "MIN_SDK_VERSION"),
-        APP_SERVER_URL("String", "APP_SERVER_URL"),
-        BUILD_TYPE("String", "BUILD_TYPE"),
-        RELEASE_SIGN_CONFIGS_PATH("String", "RELEASE_SIGN_CONFIGS_PATH");
-
-        companion object {
-            fun of(key: String) = values().first {
-                it.key == key
-            }
-        }
+    private enum class GradleKey(val key: String) {
+        IS_JENKINS("IS_JENKINS"),
+        ENVIRONMENT("ENVIRONMENT"),
+        LOCAL_GRADLE_PLUGIN_VERSION("LOCAL_GRADLE_PLUGIN_VERSION"),
+        COMPILE_SDK_VERSION("COMPILE_SDK_VERSION"),
+        TARGET_SDK_VERSION("TARGET_SDK_VERSION"),
+        MIN_SDK_VERSION("MIN_SDK_VERSION"),
+        APP_SERVER_URL("APP_SERVER_URL"),
+        BUILD_TYPE("BUILD_TYPE"),
+        RELEASE_SIGN_CONFIGS_PATH("RELEASE_SIGN_CONFIGS_PATH");
     }
 
-    private enum class ConfigKey(val dateType: String, val key: String) {
-        APP_NAME("String", "APP_NAME"),
-        APPLICATION_ID("String", "APPLICATION_ID"),
-        APP_VERSION_NAME("String", "APP_VERSION_NAME"),
-        APP_VERSION_CODE("int", "APP_VERSION_CODE");
+    private enum class ConfigKey(val key: String) {
+        APP_NAME("APP_NAME"),
+        APPLICATION_ID("APPLICATION_ID"),
+        APP_VERSION_NAME("APP_VERSION_NAME"),
+        APP_VERSION_CODE("APP_VERSION_CODE");
 
-        companion object {
-            fun of(key: String) = values().first {
-                it.key == key
-            }
-        }
     }
 
-    private enum class SignKey(val dateType: String, val key: String) {
-        SIGN_KEY_ALIAS("String", "SIGN_KEY_ALIAS"),
-        SIGN_KEY_PASSWORD("String", "SIGN_KEY_PASSWORD"),
-        SIGN_STORE_FILE("String", "SIGN_STORE_FILE"),
-        SIGN_STORE_PASSWORD("String", "SIGN_STORE_PASSWORD");
-
-        companion object {
-            fun of(key: String) = values().first {
-                it.key == key
-            }
-        }
+    private enum class SignKey(val key: String) {
+        SIGN_KEY_ALIAS("SIGN_KEY_ALIAS"),
+        SIGN_KEY_PASSWORD("SIGN_KEY_PASSWORD"),
+        SIGN_STORE_FILE("SIGN_STORE_FILE"),
+        SIGN_STORE_PASSWORD("SIGN_STORE_PASSWORD");
     }
 
 
@@ -210,6 +195,16 @@ object Config {
         return gradleProperties.getPropertyByKey(GradleKey.ENVIRONMENT.key).apply {
             Log.i("getRunEnvironment", this)
         }
+    }
+
+    @JvmStatic
+    fun initJenkinsProperties(project: Project) {
+        Log.i(
+            "DefaultExtraPropertiesExtension",
+            project.extensions.getByType(ExtraPropertiesExtension::class.java).get("LOCAL_GRADLE_PLUGIN_VERSION")
+        )
+        Log.i("project.properties", project.properties["LOCAL_GRADLE_PLUGIN_VERSION"])
+
     }
 
     private fun getReleaseSignPath(): String {

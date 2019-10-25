@@ -5,4 +5,13 @@
     <attr name="alphaEmphasisMedium" format="float" />
     <attr name="alphaEmphasisDisabled" format="float" />
 
+    <declare-styleable name="RecyclerView">
+        <attr name="itemBinding" format="reference" />
+        <attr name="items" format="reference" />
+        <attr name="adapter" format="reference" />
+        <attr name="itemIds" format="reference" />
+        <attr name="viewHolder" format="reference" />
+        <attr name="diffConfig" format="reference" />
+    </declare-styleable>
+
 </resources>
