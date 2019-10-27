@@ -1,10 +1,10 @@
-package com.zhuzichu.android.nicehub.ui.feeds.domain
+package com.zhuzichu.android.nicehub.ui.feeds.main.domain
 
 import com.zhuzichu.android.mvvm.domain.UseCase
 import com.zhuzichu.android.nicehub.repository.RemoteRepository
 import com.zhuzichu.android.nicehub.repository.entity.BeanListRes
 import com.zhuzichu.android.nicehub.repository.entity.BeanRepository
-import com.zhuzichu.android.nicehub.ui.feeds.entity.ParamterGetHotRepos
+import com.zhuzichu.android.nicehub.ui.feeds.main.entity.ParamterGetHotRepos
 import com.zhuzichu.android.shared.extension.bindToException
 import com.zhuzichu.android.shared.extension.bindToSchedulers
 import io.reactivex.Flowable

@@ -1,4 +1,4 @@
-package com.zhuzichu.android.nicehub.ui.feeds.entity
+package com.zhuzichu.android.nicehub.ui.feeds.main.entity
 
 import androidx.annotation.DrawableRes
 import com.zhuzichu.android.nicehub.R
@@ -13,7 +13,10 @@ enum class Language(val title: String, @DrawableRes val icon: Int) {
 
     companion object {
 
-        val POPULAR_LANGUAGES = listOf(KOTLIN, JAVA)
+        val POPULAR_LANGUAGES = listOf(
+            KOTLIN,
+            JAVA
+        )
 
         fun of(name: String?) = when (name) {
             KOTLIN.title -> KOTLIN

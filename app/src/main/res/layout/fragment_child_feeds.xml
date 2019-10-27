@@ -7,23 +7,22 @@
 
         <variable
             name="viewModel"
-            type="com.zhuzichu.android.nicehub.ui.feeds.viewmodel.ViewModelFeedsItem" />
+            type="com.zhuzichu.android.nicehub.ui.feeds.main.viewmodel.ViewModelFeedsChild" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             app:itemBinding="@{viewModel.itemBinding}"
             app:items="@{viewModel.items}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            tools:listitem="@layout/item_repository" />
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </LinearLayout>
 </layout>

@@ -10,5 +10,14 @@
         android:id="@+id/fragmentMain"
         android:name="com.zhuzichu.android.nicehub.ui.main.fragment.FragmentMain"
         android:label="FragmentMain"
-        tools:layout="@layout/fragment_main" />
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_fragmentMain_to_fragmentRepository"
+            app:destination="@id/fragmentRepository" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentRepository"
+        android:name="com.zhuzichu.android.nicehub.ui.feeds.repository.fragment.FragmentRepository"
+        android:label="FragmentRepository"
+        tools:layout="@layout/fragment_repository" />
 </navigation>

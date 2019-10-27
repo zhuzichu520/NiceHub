@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.zhuzichu.android.nicehub.ui.feeds.viewmodel.ViewModelFeeds" />
+            type="com.zhuzichu.android.nicehub.ui.feeds.main.viewmodel.ViewModelFeeds" />
     </data>
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

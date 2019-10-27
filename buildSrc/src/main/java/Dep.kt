@@ -26,7 +26,11 @@ object Dep {
 
         const val widget = "1.0.6"
         const val libs = "1.0.5"
-        const val mvvm = "1.0.10"
+        const val mvvm = "1.0.12"
+
+        const val glide = "4.10.0"
+
+        const val timber = "4.7.1"
     }
 
     const val pluginBuildGradle = "com.android.tools.build:gradle:${Version.buildGradle}"
@@ -76,4 +80,11 @@ object Dep {
 
     const val kaptDaggerCompiler = "com.google.dagger:dagger-compiler:${Version.dagger}"
     const val kaptDaggerProcessor = "com.google.dagger:dagger-android-processor:${Version.dagger}"
+
+    const val glideOkhttpIntegration =
+        "com.github.bumptech.glide:okhttp3-integration:${Version.glide}"
+    const val glide = "com.github.bumptech.glide:glide:${Version.glide}"
+    const val kaptGlide = "com.github.bumptech.glide:compiler:${Version.glide}"
+
+    const val timber = "com.jakewharton.timber:timber:${Version.timber}"
 }

@@ -1,13 +1,14 @@
 package com.zhuzichu.android.nicehub.ui.main.fragment
 
-import android.os.Bundle
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import com.zhuzichu.android.mvvm.base.ArgumentDefault
 import com.zhuzichu.android.nicehub.BR
 import com.zhuzichu.android.nicehub.R
 import com.zhuzichu.android.nicehub.databinding.FragmentMainBinding
-import com.zhuzichu.android.nicehub.ui.feeds.fragment.FragmentFeeds
+import com.zhuzichu.android.nicehub.ui.feeds.main.entity.ArgumentFeedsChild
+import com.zhuzichu.android.nicehub.ui.feeds.main.fragment.FragmentChildFeeds
+import com.zhuzichu.android.nicehub.ui.feeds.main.fragment.FragmentFeeds
 import com.zhuzichu.android.nicehub.ui.main.viewmodel.ViewModelMain
 import com.zhuzichu.android.nicehub.ui.profile.fragment.FragmentProfile
 import com.zhuzichu.android.shared.base.DefaultIntFragmentPagerAdapter

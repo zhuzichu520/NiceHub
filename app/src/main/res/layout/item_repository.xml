@@ -7,16 +7,16 @@
 
         <variable
             name="item"
-            type="com.zhuzichu.android.nicehub.ui.feeds.viewmodel.ItemViewModelRepository" />
+            type="com.zhuzichu.android.nicehub.ui.feeds.main.viewmodel.ItemViewModelRepository" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:onClickCommand="@{item.onClickItem}"
-        android:background="@drawable/ripple_light_with_border">
+        android:background="@drawable/ripple_light_with_border"
+        app:onClickCommand="@{item.onClickItem}">
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -24,20 +24,20 @@
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:lines="1"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:text="MultiSnapRecyclerView"
+            android:text="@{item.name}"
+            android:textAppearance="?attr/textAppearanceHeadline6"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="MultiSnapRecyclerView" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/description"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:textSize="14sp"
+            android:text="@{item.description}"
+            android:textAppearance="?attr/textAppearanceBody2"
             app:layout_constraintEnd_toEndOf="@id/title"
             app:layout_constraintStart_toStartOf="@id/title"
             app:layout_constraintTop_toBottomOf="@id/title"
@@ -45,20 +45,23 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/language_icon"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@id/title"
             app:layout_constraintTop_toBottomOf="@id/description"
+            app:url="@{item.languageIcon}"
             tools:src="@drawable/ic_circle_kotlin" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/language_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:text="@{item.language}"
+            android:textAppearance="?attr/textAppearanceCaption"
             app:layout_constraintBottom_toBottomOf="@id/language_icon"
             app:layout_constraintStart_toEndOf="@id/language_icon"
             app:layout_constraintTop_toBottomOf="@id/description"
@@ -76,11 +79,13 @@
             app:layout_constraintTop_toBottomOf="@id/description"
             app:layout_constraintTop_toTopOf="@id/language_name" />
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/star_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:text="@{item.starsCount}"
+            android:textAppearance="?attr/textAppearanceCaption"
             app:layout_constraintBottom_toBottomOf="@id/star_icon"
             app:layout_constraintStart_toEndOf="@id/star_icon"
             app:layout_constraintTop_toBottomOf="@id/description"
@@ -98,11 +103,13 @@
             app:layout_constraintTop_toBottomOf="@id/description"
             app:layout_constraintTop_toTopOf="@id/star_count" />
 
-        <TextView
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/fork_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
+            android:text="@{item.forksCount}"
+            android:textAppearance="?attr/textAppearanceCaption"
             app:layout_constraintBottom_toBottomOf="@id/fork_icon"
             app:layout_constraintStart_toEndOf="@id/fork_icon"
             app:layout_constraintTop_toBottomOf="@id/description"

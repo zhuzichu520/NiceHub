@@ -5,4 +5,6 @@
 
     <string name="feeds">التغذية</string>
     <string name="profile">الملف الشخصي</string>
+    <string name="setting">الإعدادات</string>
+
 </resources>

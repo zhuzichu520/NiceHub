@@ -74,4 +74,5 @@ dependencies {
     api project(path: ':shared')
     kapt(Dep.kaptDaggerCompiler)
     kapt(Dep.kaptDaggerProcessor)
+    kapt(Dep.kaptGlide)
 }
