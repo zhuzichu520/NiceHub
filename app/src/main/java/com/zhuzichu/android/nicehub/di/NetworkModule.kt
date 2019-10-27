@@ -1,5 +1,6 @@
 package com.zhuzichu.android.nicehub.di
 
+import com.zhuzichu.android.nicehub.BuildConfig
 import com.zhuzichu.android.nicehub.repository.RemoteRepository
 import com.zhuzichu.android.nicehub.repository.RemoteRepositoryImpl
 import dagger.Module
@@ -37,7 +38,7 @@ class NetworkModule {
     fun provideGithubRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
-            .baseUrl("https://api.github.com/")
+            .baseUrl(BuildConfig.HOST_APP2)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .build()
