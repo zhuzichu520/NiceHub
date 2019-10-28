@@ -75,4 +75,5 @@ dependencies {
     kapt(Dep.kaptDaggerCompiler)
     kapt(Dep.kaptDaggerProcessor)
     kapt(Dep.kaptGlide)
+    kapt(Dep.androidxDatabinding)
 }

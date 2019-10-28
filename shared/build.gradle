@@ -59,6 +59,7 @@ dependencies {
     kapt(Dep.kaptDaggerCompiler)
     kapt(Dep.kaptDaggerProcessor)
     kapt(Dep.kaptGlide)
+    kapt(Dep.androidxDatabinding)
 
     api(Dep.kotlinStadlibJdk8)
     api(Dep.androidxCore)
@@ -92,7 +93,6 @@ dependencies {
 
     api(Dep.adapter)
     api(Dep.adapterRecyclerview)
-    api(Dep.adapterPaging)
 
     api(Dep.glideOkhttpIntegration)
     api(Dep.glide)

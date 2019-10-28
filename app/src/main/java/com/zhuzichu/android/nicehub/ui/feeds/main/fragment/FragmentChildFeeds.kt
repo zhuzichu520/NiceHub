@@ -14,8 +14,8 @@ class FragmentChildFeeds :
 
     override fun setLayoutId(): Int = R.layout.fragment_child_feeds
 
-    override fun initLazyData() {
-        viewModel.loadData(argument.title)
+    override fun initView() {
+        viewModel.title.value = argument.title
     }
 
 }

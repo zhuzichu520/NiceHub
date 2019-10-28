@@ -3,6 +3,7 @@ package com.zhuzichu.android.shared.extension
 import com.zhuzichu.android.mvvm.base.BaseViewModel
 import io.reactivex.Flowable
 import io.reactivex.FlowableTransformer
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.functions.Function
 import io.reactivex.schedulers.Schedulers
@@ -41,13 +42,42 @@ fun <T> Flowable<T>.autoLoading(
         }
 }
 
-
 fun <T> Flowable<T>.bindToException(): Flowable<T> =
     this.compose<T> {
         it.onErrorResumeNext(HttpResponseFunc())
     }
 
 fun <T> Flowable<T>.bindToSchedulers(): Flowable<T> =
+    this.compose<T> {
+        it.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
+    }
+
+
+//--------------------------------------------------------------------------------------------------
+
+
+fun <T> Single<T>.autoLoading(
+    viewModel: BaseViewModel,
+    execute: (() -> Boolean)? = null
+): Single<T> {
+    val flag = execute?.invoke() ?: true
+    return if (flag)
+        this.compose<T> {
+            it.doOnSubscribe { viewModel.showLoading() }
+                .doFinally { viewModel.hideLoading() }
+        }
+    else
+        this.compose<T> {
+            it
+        }
+}
+//
+//fun <T> Single<T>.bindToException(): Single<T> =
+//    this.compose<T> {
+//        it.onErrorResumeNext(HttpResponseFunc())
+//    }
+
+fun <T> Single<T>.bindToSchedulers(): Single<T> =
     this.compose<T> {
         it.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
     }

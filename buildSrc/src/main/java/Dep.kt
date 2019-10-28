@@ -24,9 +24,9 @@ object Dep {
         const val adapter = "3.1.1"
         const val databinding = "3.1.4"
 
-        const val widget = "1.0.6"
+        const val widget = "1.0.7"
         const val libs = "1.0.5"
-        const val mvvm = "1.0.14"
+        const val mvvm = "1.0.20"
 
         const val glide = "4.10.0"
 
@@ -35,11 +35,13 @@ object Dep {
         const val paging = "2.1.0"
     }
 
-    const val paging = "androidx.paging:paging-runtime:${Version.paging}"
+    const val paging = "androidx.paging:paging-runtime-ktx:${Version.paging}"
 
     const val pluginBuildGradle = "com.android.tools.build:gradle:${Version.buildGradle}"
     const val pluginkotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.kotlin}"
 
+    const val androidxDatabinding =
+        "androidx.databinding:databinding-compiler:${Version.buildGradle}"
     const val androidxCore = "androidx.appcompat:appcompat:${Version.androidxCore}"
     const val androidxKtx = "androidx.core:core-ktx:${Version.androidxKtx}"
     const val androidxAnnotation = "androidx.annotation:annotation:${Version.androidxAnnotation}"
@@ -81,8 +83,6 @@ object Dep {
         "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:${Version.adapter}"
     const val adapterRecyclerview =
         "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:${Version.adapter}"
-    const val adapterPaging =
-        "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-paging:${Version.adapter}"
 
     const val kaptDaggerCompiler = "com.google.dagger:dagger-compiler:${Version.dagger}"
     const val kaptDaggerProcessor = "com.google.dagger:dagger-android-processor:${Version.dagger}"

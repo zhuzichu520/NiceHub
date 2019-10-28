@@ -15,7 +15,7 @@ class UseCaseGetHotRepos @Inject constructor(
 ) : UseCase<ParamterGetHotRepos, Flowable<BeanListRes<BeanRepository>>>() {
 
     override fun execute(parameters: ParamterGetHotRepos): Flowable<BeanListRes<BeanRepository>> {
-        return remoteRepository.getHotRepos(parameters.q, parameters.page)
+        return remoteRepository.getHotRepos(parameters.q, parameters.page, parameters.pageSize)
             .bindToSchedulers()
             .bindToException()
     }

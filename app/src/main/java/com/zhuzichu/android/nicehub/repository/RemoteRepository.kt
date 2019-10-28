@@ -2,14 +2,15 @@ package com.zhuzichu.android.nicehub.repository
 
 import com.zhuzichu.android.nicehub.repository.entity.BeanListRes
 import com.zhuzichu.android.nicehub.repository.entity.BeanRepository
-import io.reactivex.Flowable
+import io.reactivex.Single
 import retrofit2.Retrofit
 
 interface RemoteRepository {
     fun getHotRepos(
         query: String,
-        page: Int
-    ): Flowable<BeanListRes<BeanRepository>>
+        page: Int,
+        pageSize: Int
+    ): Single<BeanListRes<BeanRepository>>
 }
 
 class RemoteRepositoryImpl(
@@ -18,7 +19,11 @@ class RemoteRepositoryImpl(
 
     private val githubApi by lazy { retrofit.create(GithubApi::class.java) }
 
-    override fun getHotRepos(query: String, page: Int): Flowable<BeanListRes<BeanRepository>> {
-        return githubApi.searchRepositories(query, "stars", "desc", page, 20)
+    override fun getHotRepos(
+        query: String,
+        page: Int,
+        pageSize: Int
+    ): Single<BeanListRes<BeanRepository>> {
+        return githubApi.searchRepositories(query, "stars", "desc", page, pageSize)
     }
 }
