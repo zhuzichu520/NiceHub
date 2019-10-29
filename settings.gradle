@@ -1,2 +1,2 @@
-include ':app', ':shared', ':mvvm', ':libs', ':widget'
+include ':app', ':shared'
 rootProject.name='NiceHub'

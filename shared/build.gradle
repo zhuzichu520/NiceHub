@@ -100,7 +100,7 @@ dependencies {
     api(Dep.paging)
     api(Dep.swiperefreshlayout)
 
-    api project(':libs')
-    api project(':mvvm')
-    api project(':widget')
+    api(Dep.libs)
+    api(Dep.widget)
+    api(Dep.mvvm)
 }

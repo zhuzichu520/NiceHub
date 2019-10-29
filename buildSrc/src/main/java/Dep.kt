@@ -24,9 +24,9 @@ object Dep {
         const val adapter = "3.1.1"
         const val databinding = "3.1.4"
 
-        const val widget = "1.0.9"
-        const val libs = "1.0.5"
-        const val mvvm = "1.0.20"
+        const val widget = "1.0.21"
+        const val libs = "1.0.21"
+        const val mvvm = "1.0.21"
 
         const val glide = "4.10.0"
 
