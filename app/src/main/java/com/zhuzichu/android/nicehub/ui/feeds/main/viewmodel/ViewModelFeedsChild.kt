@@ -9,7 +9,6 @@ import com.zhuzichu.android.nicehub.ui.feeds.main.domain.UseCaseGetHotRepos
 import com.zhuzichu.android.nicehub.ui.feeds.main.entity.ParamterGetHotRepos
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.itemDiffOf
-import com.zhuzichu.android.shared.extension.logi
 import com.zhuzichu.android.shared.extension.map
 import com.zhuzichu.android.shared.widget.page.PageHelper
 import me.tatarka.bindingcollectionadapter2.collections.AsyncDiffObservableList
@@ -19,16 +18,7 @@ class ViewModelFeedsChild @Inject constructor(
     private val useCaseGetHotRepos: UseCaseGetHotRepos
 ) : ViewModelAnalyticsBase() {
 
-    companion object {
-        fun <T> emptyLiveData(): LiveData<T> {
-            val emptyLiveData = MutableLiveData<T>()
-            emptyLiveData.value = null
-            return emptyLiveData
-        }
-    }
-
     val title = MutableLiveData<String>()
-
 
     private val pageSize = 20
 
