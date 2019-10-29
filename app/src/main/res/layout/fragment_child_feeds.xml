@@ -16,14 +16,13 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.zhuzichu.android.widget.recycler.PaginationRecyclerView
+        <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recycler"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:itemBinding="@{viewModel.itemBinding}"
-            app:items="@{viewModel.items}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:onPageChangeCommand="@{viewModel.onPageChange}" />
+            app:items="@{viewModel.pageList}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
     </LinearLayout>
 </layout>

@@ -93,6 +93,8 @@ dependencies {
 
     api(Dep.adapter)
     api(Dep.adapterRecyclerview)
+    api(Dep.adapterPaging)
+
 
     api(Dep.glideOkhttpIntegration)
     api(Dep.glide)

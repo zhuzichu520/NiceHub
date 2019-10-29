@@ -26,6 +26,7 @@ private class HttpResponseFunc<T> : Function<Throwable, Flowable<T>> {
     }
 }
 
+
 fun <T> Flowable<T>.autoLoading(
     viewModel: BaseViewModel,
     execute: (() -> Boolean)? = null
@@ -71,11 +72,17 @@ fun <T> Single<T>.autoLoading(
             it
         }
 }
-//
-//fun <T> Single<T>.bindToException(): Single<T> =
-//    this.compose<T> {
-//        it.onErrorResumeNext(HttpResponseFunc())
-//    }
+
+private class HttpResponseFuncSingle<T> : Function<Throwable, Single<T>> {
+    override fun apply(t: Throwable): Single<T> {
+        return Single.error(t.handleException())
+    }
+}
+
+fun <T> Single<T>.bindToException(): Single<T> =
+    this.compose<T> {
+        it.onErrorResumeNext(HttpResponseFuncSingle())
+    }
 
 fun <T> Single<T>.bindToSchedulers(): Single<T> =
     this.compose<T> {
