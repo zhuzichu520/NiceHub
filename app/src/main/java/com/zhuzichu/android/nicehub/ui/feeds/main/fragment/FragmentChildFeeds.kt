@@ -18,7 +18,4 @@ class FragmentChildFeeds :
         viewModel.title.value = argument.title
     }
 
-    override fun initLazyData() {
-        viewModel.loadData()
-    }
 }

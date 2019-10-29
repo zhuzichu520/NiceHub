@@ -16,6 +16,6 @@ class ItemViewModelNetwork(
         const val STATE_FINISH = 3
     }
 
-    val state = MutableLiveData<Int>(STATE_LOADING)
+    val state = MutableLiveData(STATE_LOADING)
 
 }

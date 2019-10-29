@@ -10,6 +10,7 @@ import com.zhuzichu.android.nicehub.ui.feeds.main.domain.UseCaseGetHotRepos
 import com.zhuzichu.android.nicehub.ui.feeds.main.entity.ParamterGetHotRepos
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.itemDiffOf
+import com.zhuzichu.android.shared.extension.logi
 import com.zhuzichu.android.shared.extension.map
 import me.tatarka.bindingcollectionadapter2.collections.AsyncDiffObservableList
 import javax.inject.Inject
@@ -28,29 +29,27 @@ class ViewModelFeedsChild @Inject constructor(
 
     val title = MutableLiveData<String>()
 
-    private var page = 1
 
     private val pageSize = 20
 
     private val pageHelper = PageHelper(
         AsyncDiffObservableList(itemDiffOf<ItemViewModelRepository> { oldItem, newItem -> oldItem.id == newItem.id }),
         this,
-        page,
         pageSize
     ) {
-        page++
-        loadData()
+        loadData(it)
     }
 
     val items = pageHelper.pageItems
 
-    val onPageChange = pageHelper.onPageChange
+    val onLoadMore = pageHelper.onLoadMore
 
     val itemBinding = pageHelper.itemBinding.apply {
         map<ItemViewModelRepository>(BR.item, R.layout.item_repository)
     }
 
-    fun loadData() {
+    private fun loadData(page: Int) {
+        page.logi()
         useCaseGetHotRepos.execute(ParamterGetHotRepos(title.value ?: "", page, pageSize))
             .autoDispose(this)
             .subscribe({

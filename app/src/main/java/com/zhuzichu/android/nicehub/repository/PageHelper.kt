@@ -10,14 +10,15 @@ import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindClass
 
 class PageHelper(
     private val items: AsyncDiffObservableList<Any>,
-    private val viewModel: ViewModelAnalyticsBase,
-    private var page: Int,
+   val viewModel: ViewModelAnalyticsBase,
     private val pageSize: Int,
-    private val pageChange: ((parameter: Int) -> Unit)? = null
+    private val loadMore: ((parameter: Int) -> Unit)? = null
 ) {
+    private var page = 1
+    private var isLoading = false
 
     private val onClickRetry = BindingCommand<Any>({
-        onPageChange.execute(page)
+        onLoadMore.execute()
     })
 
     private val networkViewModel = ItemViewModelNetwork(viewModel, onClickRetry)
@@ -32,10 +33,12 @@ class PageHelper(
         map<ItemViewModelNull>(BR.item, R.layout.item_null)
     }
 
-    val onPageChange = BindingCommand<Int>(consumer = {
-        page = it
-        showLoading()
-        pageChange?.invoke(page)
+    val onLoadMore = BindingCommand<Any>({
+        if (!isLoading) {
+            isLoading = true
+            showLoading()
+            loadMore?.invoke(page)
+        }
     })
 
 
@@ -49,6 +52,8 @@ class PageHelper(
             showEnd()
         } else {
             showFinish()
+            page = page.inc()
+            isLoading = false
         }
     }
 
@@ -59,6 +64,7 @@ class PageHelper(
 
     fun showError() {
         networkViewModel.state.value = ItemViewModelNetwork.STATE_ERROR
+        isLoading = false
     }
 
     private fun showFinish() {

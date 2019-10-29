@@ -23,8 +23,7 @@
             app:itemBinding="@{viewModel.itemBinding}"
             app:items="@{viewModel.items}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:onPageChangeCommand="@{viewModel.onPageChange}"
-         />
+            app:onLoadMoreCommand="@{viewModel.onLoadMore}" />
 
     </LinearLayout>
 </layout>

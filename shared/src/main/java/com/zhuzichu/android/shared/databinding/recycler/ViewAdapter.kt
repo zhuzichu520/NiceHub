@@ -2,17 +2,17 @@ package com.zhuzichu.android.shared.databinding.recycler
 
 import androidx.databinding.BindingAdapter
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
-import com.zhuzichu.android.widget.recycler.OnPageChangeListener
+import com.zhuzichu.android.widget.recycler.OnScrollBottomListener
 import com.zhuzichu.android.widget.recycler.PaginationRecyclerView
 
-@BindingAdapter(value = ["onPageChangeCommand"], requireAll = false)
+@BindingAdapter(value = ["onLoadMoreCommand"], requireAll = false)
 fun bindPageChangeCommand(
     recyclerView: PaginationRecyclerView,
-    onPageChangeCommand: BindingCommand<*>?
+    onLoadMoreCommand: BindingCommand<*>?
 ) {
-    recyclerView.setOnPageChangeListener(object : OnPageChangeListener {
-        override fun onPageChange(page: Int) {
-            onPageChangeCommand?.execute(page)
+    recyclerView.setOnPageChangeListener(object : OnScrollBottomListener {
+        override fun onScrollBottom() {
+            onLoadMoreCommand?.execute()
         }
     })
 }

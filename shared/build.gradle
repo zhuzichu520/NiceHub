@@ -66,9 +66,6 @@ dependencies {
     api(Dep.androidxKtx)
     api(Dep.androidxAnnotation)
     api(Dep.androidxConstraintlayout)
-    api(Dep.widget)
-    api(Dep.libs)
-    api(Dep.mvvm)
 
     api(Dep.daggerAndroid)
     api(Dep.daggerAndroidSupport)
@@ -102,4 +99,8 @@ dependencies {
 
     api(Dep.paging)
     api(Dep.swiperefreshlayout)
+
+    api project(':libs')
+    api project(':mvvm')
+    api project(':widget')
 }
