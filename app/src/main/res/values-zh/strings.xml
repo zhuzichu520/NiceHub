@@ -6,4 +6,7 @@
     <string name="feeds">动态</string>
     <string name="profile">资料</string>
     <string name="setting">设置</string>
+
+    <string name="retry">重试</string>
+    <string name="no_more_data">没有更多数据</string>
 </resources>

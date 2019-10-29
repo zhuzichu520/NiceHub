@@ -2,6 +2,7 @@ package com.zhuzichu.android.nicehub.repository
 
 import com.zhuzichu.android.nicehub.repository.entity.BeanListRes
 import com.zhuzichu.android.nicehub.repository.entity.BeanRepository
+import io.reactivex.Flowable
 import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -14,5 +15,5 @@ interface GithubApi {
         @Query("order") order: String,
         @Query("page") page: Int,
         @Query("per_page") perPage: Int
-    ): Single<BeanListRes<BeanRepository>>
+    ): Flowable<BeanListRes<BeanRepository>>
 }

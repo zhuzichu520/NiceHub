@@ -28,12 +28,9 @@ class FragmentFeeds :
                     )
                 )
         }
-        pager.offscreenPageLimit = fragments.size
         pager.adapter =
             DefaultStringFragmentPagerAdapter(childFragmentManager, fragments, titles.toList())
         tab.setupWithViewPager(pager)
     }
-
-
 
 }

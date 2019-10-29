@@ -7,4 +7,6 @@
     <string name="profile">الملف الشخصي</string>
     <string name="setting">الإعدادات</string>
 
+    <string name="retry">إعادة المحاولة</string>
+    <string name="no_more_data">لا مزيد من البيانات</string>
 </resources>

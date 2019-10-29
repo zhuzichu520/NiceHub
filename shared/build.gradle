@@ -101,4 +101,5 @@ dependencies {
     api(Dep.timber)
 
     api(Dep.paging)
+    api(Dep.swiperefreshlayout)
 }

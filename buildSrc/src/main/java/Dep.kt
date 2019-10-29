@@ -24,7 +24,7 @@ object Dep {
         const val adapter = "3.1.1"
         const val databinding = "3.1.4"
 
-        const val widget = "1.0.7"
+        const val widget = "1.0.9"
         const val libs = "1.0.5"
         const val mvvm = "1.0.20"
 
@@ -33,9 +33,12 @@ object Dep {
         const val timber = "4.7.1"
 
         const val paging = "2.1.0"
+        const val swiperefreshlayout = "1.0.0"
     }
 
     const val paging = "androidx.paging:paging-runtime-ktx:${Version.paging}"
+    const val swiperefreshlayout =
+        "androidx.swiperefreshlayout:swiperefreshlayout:${Version.swiperefreshlayout}"
 
     const val pluginBuildGradle = "com.android.tools.build:gradle:${Version.buildGradle}"
     const val pluginkotlinGradle = "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.kotlin}"
@@ -83,7 +86,7 @@ object Dep {
         "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:${Version.adapter}"
     const val adapterRecyclerview =
         "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:${Version.adapter}"
-    const val adapterPaging=
+    const val adapterPaging =
         "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-paging:${Version.adapter}"
 
     const val kaptDaggerCompiler = "com.google.dagger:dagger-compiler:${Version.dagger}"

@@ -5,4 +5,7 @@
     <string name="feeds">feeds</string>
     <string name="profile">profile</string>
     <string name="setting">Settings</string>
+
+    <string name="retry">Retry</string>
+    <string name="no_more_data">No more data</string>
 </resources>
