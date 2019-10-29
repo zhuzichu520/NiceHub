@@ -1,4 +1,4 @@
-package com.zhuzichu.android.nicehub
+package com.zhuzichu.android.shared.widget.page
 
 import androidx.lifecycle.MutableLiveData
 import com.zhuzichu.android.mvvm.base.BaseViewModel

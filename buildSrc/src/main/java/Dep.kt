@@ -32,11 +32,9 @@ object Dep {
 
         const val timber = "4.7.1"
 
-        const val paging = "2.1.0"
         const val swiperefreshlayout = "1.0.0"
     }
 
-    const val paging = "androidx.paging:paging-runtime-ktx:${Version.paging}"
     const val swiperefreshlayout =
         "androidx.swiperefreshlayout:swiperefreshlayout:${Version.swiperefreshlayout}"
 
@@ -86,8 +84,6 @@ object Dep {
         "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter:${Version.adapter}"
     const val adapterRecyclerview =
         "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-recyclerview:${Version.adapter}"
-    const val adapterPaging =
-        "me.tatarka.bindingcollectionadapter2:bindingcollectionadapter-paging:${Version.adapter}"
 
     const val kaptDaggerCompiler = "com.google.dagger:dagger-compiler:${Version.dagger}"
     const val kaptDaggerProcessor = "com.google.dagger:dagger-android-processor:${Version.dagger}"

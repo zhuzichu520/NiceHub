@@ -1,7 +1,9 @@
-package com.zhuzichu.android.nicehub.repository
+package com.zhuzichu.android.shared.widget.page
 
+import com.zhuzichu.android.libs.internal.MainHandler
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
-import com.zhuzichu.android.nicehub.*
+import com.zhuzichu.android.shared.BR
+import com.zhuzichu.android.shared.R
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.map
 import me.tatarka.bindingcollectionadapter2.collections.AsyncDiffObservableList
@@ -10,7 +12,7 @@ import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindClass
 
 class PageHelper(
     private val items: AsyncDiffObservableList<Any>,
-   val viewModel: ViewModelAnalyticsBase,
+    val viewModel: ViewModelAnalyticsBase,
     private val pageSize: Int,
     private val loadMore: ((parameter: Int) -> Unit)? = null
 ) {
@@ -48,13 +50,15 @@ class PageHelper(
             return
         }
         items.update(items.plus(list))
-        if (list.size < pageSize) {
-            showEnd()
-        } else {
-            showFinish()
-            page = page.inc()
-            isLoading = false
-        }
+        MainHandler.postDelayed(Runnable {
+            if (list.size < pageSize) {
+                showEnd()
+            } else {
+                showFinish()
+                page = page.inc()
+                isLoading = false
+            }
+        }, 25)
     }
 
 
