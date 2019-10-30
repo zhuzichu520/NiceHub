@@ -6,7 +6,6 @@ import com.zhuzichu.android.nicehub.R
 import com.zhuzichu.android.nicehub.databinding.FragmentRepositoryBinding
 import com.zhuzichu.android.nicehub.ui.feeds.repository.viewmodel.ViewModelRepository
 import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
-import com.zhuzichu.android.shared.extension.logi
 
 class FragmentRepository :
     FragmentAnalyticsBase<ArgumentDefault, FragmentRepositoryBinding, ViewModelRepository>() {

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">NiceHub</string>
+    <string name="press_again_to_exit">再按一次退出</string>
+
+    <string name="feeds">动态</string>
+    <string name="profile">资料</string>
+    <string name="setting">设置</string>
+
+    <string name="login_title">NiceHub</string>
+    <string name="username">用户名</string>
+    <string name="password">密码</string>
+    <string name="login">登录</string>
+
+</resources>

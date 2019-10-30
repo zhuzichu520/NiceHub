@@ -8,7 +8,7 @@ import java.net.ConnectException
 import java.text.ParseException
 
 
-private const val UNAUTHORIZED = 401
+const val UNAUTHORIZED = 401
 private const val FORBIDDEN = 403
 private const val NOT_FOUND = 404
 private const val REQUEST_TIMEOUT = 408

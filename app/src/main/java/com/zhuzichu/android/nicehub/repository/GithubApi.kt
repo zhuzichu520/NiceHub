@@ -1,11 +1,11 @@
 package com.zhuzichu.android.nicehub.repository
 
+import androidx.annotation.NonNull
 import com.zhuzichu.android.nicehub.repository.entity.BeanListRes
 import com.zhuzichu.android.nicehub.repository.entity.BeanRepository
+import com.zhuzichu.android.nicehub.ui.account.login.entity.ParamterAuthorizations
 import io.reactivex.Flowable
-import io.reactivex.Single
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface GithubApi {
     @GET("search/repositories")
@@ -16,4 +16,10 @@ interface GithubApi {
         @Query("page") page: Int,
         @Query("per_page") perPage: Int
     ): Flowable<BeanListRes<BeanRepository>>
+
+    @POST("authorizations")
+    @Headers("Accept: application/json")
+    fun authorizations(
+        @NonNull @Body paramterAuthorizations: ParamterAuthorizations
+    ): Flowable<String>
 }

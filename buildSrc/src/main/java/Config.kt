@@ -43,14 +43,6 @@ object Config {
         .plus("resources")
         .plus(File.separator)
 
-    private val gradleProperties by lazy {
-        val properties = defaultGradleProperties
-        localGradleProperties.mapKeys {
-            properties.put(it.key, it.value)
-        }
-        properties
-    }
-
     private val defaultGradleProperties by lazy {
         loadProperties(
             rootPath.plus("gradle.properties")
@@ -67,12 +59,18 @@ object Config {
         }
     }
 
-    private val configProperties by lazy {
-        val properties = defaultConfigProperties
-        flavorConfigProperties.mapKeys {
+    private val gradleProperties by lazy {
+        val properties = defaultGradleProperties
+        localGradleProperties.mapKeys {
             properties.put(it.key, it.value)
         }
         properties
+    }
+
+    private val defaultConfigProperties by lazy {
+        loadProperties(
+            resourcesPath.plus("default-config.properties")
+        )
     }
 
     private val flavorConfigProperties by lazy {
@@ -81,9 +79,17 @@ object Config {
         )
     }
 
-    private val defaultConfigProperties by lazy {
+    private val configProperties by lazy {
+        val properties = defaultConfigProperties
+        flavorConfigProperties.mapKeys {
+            properties.put(it.key, it.value)
+        }
+        properties
+    }
+
+    private val buildConfigProperties by lazy {
         loadProperties(
-            resourcesPath.plus("default-config.properties")
+            resourcesPath.plus("build-config.properties")
         )
     }
 
@@ -197,21 +203,33 @@ object Config {
 
     @JvmStatic
     fun getBuildConfigFields(): List<Array<String>> {
+
         val list = mutableListOf<Array<String>>()
+
         configProperties.mapKeys {
             val configKeyArray = it.key.toString().split("_")
-            if (configKeyArray.size <= 2)
+            if (configKeyArray.size < 5)
                 return@mapKeys
             if (configKeyArray[0].plus("_").plus(configKeyArray[1]) != "BUILD_CONFIG")
                 return@mapKeys
             val environment = getEnvironment(configKeyArray).toLowerCase(Locale.getDefault())
-            val dataType = getDataType(configKeyArray)
-            val constantName = getConstantName(configKeyArray)
+            val dataType = getDataType(configKeyArray, 3)
+            val constantName = getConstantName(configKeyArray, 4)
             val runEnvironment = getRunEnvironment().toLowerCase(Locale.getDefault())
             if (runEnvironment == environment) {
                 list.add(arrayOf(dataType, constantName, it.value.toString().plusQuotes()))
             }
         }
+
+        buildConfigProperties.mapKeys {
+            val configKeyArray = it.key.toString().split("_")
+            if (configKeyArray.size <= 2)
+                return@mapKeys
+            val dataType = getDataType(configKeyArray, 0)
+            val constantName = getConstantName(configKeyArray, 1)
+            list.add(arrayOf(dataType, constantName, it.value.toString().plusQuotes()))
+        }
+
         return list
     }
 
@@ -219,16 +237,16 @@ object Config {
         return configKeyArray[2]
     }
 
-    private fun getConstantName(configKeyArray: List<String>): String {
+    private fun getConstantName(configKeyArray: List<String>, index: Int): String {
         val sb = StringBuilder()
-        configKeyArray.drop(4).forEach {
+        configKeyArray.drop(index).forEach {
             sb.append(it).append("_")
         }
         return sb.toString().dropLast(1)
     }
 
-    private fun getDataType(configKeyArray: List<String>): String {
-        val dataType = configKeyArray[3]
+    private fun getDataType(configKeyArray: List<String>, index: Int): String {
+        val dataType = configKeyArray[index]
         return if (dataType.indexOf("STRING") >= 0) "String" else dataType.toLowerCase(Locale.getDefault())
     }
 
