@@ -12,7 +12,6 @@ object Config {
     private enum class GradleKey(val key: String) {
         IS_JENKINS("IS_JENKINS"),
         ENVIRONMENT("ENVIRONMENT"),
-        LOCAL_GRADLE_PLUGIN_VERSION("LOCAL_GRADLE_PLUGIN_VERSION"),
         COMPILE_SDK_VERSION("COMPILE_SDK_VERSION"),
         TARGET_SDK_VERSION("TARGET_SDK_VERSION"),
         MIN_SDK_VERSION("MIN_SDK_VERSION"),
@@ -36,8 +35,13 @@ object Config {
         SIGN_STORE_PASSWORD("SIGN_STORE_PASSWORD");
     }
 
+    private val rootPath = System.getProperty("user.dir").plus(File.separator)
 
-    private val rootPath: String by lazy { System.getProperty("user.dir") }
+    private val resourcesPath = rootPath
+        .plus("buildSrc")
+        .plus(File.separator)
+        .plus("resources")
+        .plus(File.separator)
 
     private val gradleProperties by lazy {
         val properties = defaultGradleProperties
@@ -49,18 +53,14 @@ object Config {
 
     private val defaultGradleProperties by lazy {
         loadProperties(
-            rootPath
-                .plus(File.separator)
-                .plus("gradle.properties")
+            rootPath.plus("gradle.properties")
         )
     }
 
     private val localGradleProperties by lazy {
         try {
             loadProperties(
-                rootPath
-                    .plus(File.separator)
-                    .plus("local.properties")
+                rootPath.plus("local.properties")
             )
         } catch (e: Exception) {
             Properties()
@@ -77,25 +77,13 @@ object Config {
 
     private val flavorConfigProperties by lazy {
         loadProperties(
-            rootPath
-                .plus(File.separator)
-                .plus("app")
-                .plus(File.separator)
-                .plus("src")
-                .plus(File.separator)
-                .plus("main")
-                .plus(File.separator)
-                .plus("flavor-config.properties")
+            resourcesPath.plus("flavor-config.properties")
         )
     }
 
     private val defaultConfigProperties by lazy {
         loadProperties(
-            rootPath
-                .plus(File.separator)
-                .plus("app")
-                .plus(File.separator)
-                .plus("default-config.properties")
+            resourcesPath.plus("default-config.properties")
         )
     }
 
@@ -104,11 +92,7 @@ object Config {
             loadProperties(getReleaseSignPath())
         } catch (e: Exception) {
             loadProperties(
-                rootPath
-                    .plus(File.separator)
-                    .plus("app")
-                    .plus(File.separator)
-                    .plus("signature.properties")
+                resourcesPath.plus("signature.properties")
             )
         }
     }
