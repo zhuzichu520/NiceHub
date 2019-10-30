@@ -10,20 +10,27 @@
             type="com.zhuzichu.android.nicehub.ui.feeds.main.viewmodel.ViewModelFeedsChild" />
     </data>
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        app:onRefresh="@{viewModel.onRefresh}">
 
-        <com.zhuzichu.android.widget.recycler.PaginationRecyclerView
-            android:id="@+id/recycler"
+        <FrameLayout
+            android:id="@+id/refresh"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:itemBinding="@{viewModel.itemBinding}"
-            app:items="@{viewModel.items}"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:onLoadMoreCommand="@{viewModel.onLoadMore}" />
+            android:layout_height="match_parent">
 
-    </LinearLayout>
+            <com.zhuzichu.android.widget.recycler.BottomRecyclerView
+                android:id="@+id/recycler"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:itemBinding="@{viewModel.itemBinding}"
+                app:items="@{viewModel.items}"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:onScrollBottom="@{viewModel.onScrollBottom}" />
+
+        </FrameLayout>
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 </layout>

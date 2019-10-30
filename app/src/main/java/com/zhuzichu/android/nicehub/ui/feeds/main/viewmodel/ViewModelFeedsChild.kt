@@ -1,8 +1,8 @@
 package com.zhuzichu.android.nicehub.ui.feeds.main.viewmodel
 
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.uber.autodispose.autoDispose
+import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.nicehub.BR
 import com.zhuzichu.android.nicehub.R
 import com.zhuzichu.android.nicehub.ui.feeds.main.domain.UseCaseGetHotRepos
@@ -25,14 +25,17 @@ class ViewModelFeedsChild @Inject constructor(
     private val pageHelper = PageHelper(
         AsyncDiffObservableList(itemDiffOf<ItemViewModelRepository> { oldItem, newItem -> oldItem.id == newItem.id }),
         this,
-        pageSize
-    ) {
-        loadData(it)
-    }
+        pageSize,
+        onLoadMore = {
+            loadData(it)
+        }
+    )
 
     val items = pageHelper.pageItems
 
-    val onLoadMore = pageHelper.onLoadMore
+    val onScrollBottom = pageHelper.onScrollBottom
+
+    val onRefresh = pageHelper.onRefresh
 
     val itemBinding = pageHelper.itemBinding.apply {
         map<ItemViewModelRepository>(BR.item, R.layout.item_repository)

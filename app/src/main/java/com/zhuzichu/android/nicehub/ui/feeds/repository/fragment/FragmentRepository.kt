@@ -13,14 +13,4 @@ class FragmentRepository :
     override fun bindVariableId(): Int = BR.viewModel
 
     override fun setLayoutId(): Int = R.layout.fragment_repository
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        "onDestroyView".logi()
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        "onDestroy".logi()
-    }
 }

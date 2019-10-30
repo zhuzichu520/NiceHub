@@ -1,5 +1,6 @@
 package com.zhuzichu.android.nicehub.ui.feeds.main.fragment
 
+import android.os.Bundle
 import com.zhuzichu.android.mvvm.base.ArgumentDefault
 import com.zhuzichu.android.nicehub.BR
 import com.zhuzichu.android.nicehub.R
@@ -8,6 +9,7 @@ import com.zhuzichu.android.nicehub.ui.feeds.main.entity.ArgumentFeedsChild
 import com.zhuzichu.android.nicehub.ui.feeds.main.viewmodel.ViewModelFeeds
 import com.zhuzichu.android.shared.base.DefaultStringFragmentPagerAdapter
 import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
+import com.zhuzichu.android.shared.extension.logi
 import com.zhuzichu.android.shared.extension.toArrayByResId
 import kotlinx.android.synthetic.main.fragment_feeds.*
 

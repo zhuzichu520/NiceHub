@@ -1,6 +1,6 @@
 object Log {
-    const val fixSize = 30
     fun i(flag: String, message: Any?) {
-        println("=====flag->".plus(flag).plus("||").plus(message.toString()))
+        val tag = String.format("%-25s", flag)
+        println("=====flag->".plus(tag).plus("||").plus(message.toString()))
     }
 }
