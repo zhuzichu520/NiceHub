@@ -19,9 +19,7 @@ class ItemViewModelSetting(
     val onClickItem = BindingCommand<Any>({
         when (id) {
             LANGUAGES -> startFragment(R.id.action_fragmentSetting_to_fragmentLanguages)
-            THEME -> {
-
-            }
+            THEME -> startFragment(R.id.action_fragmentSetting_to_fragmentTheme)
             else -> {
             }
         }

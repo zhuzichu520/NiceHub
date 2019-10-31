@@ -27,14 +27,22 @@
         android:id="@+id/fragmentSetting"
         android:name="com.zhuzichu.android.nicehub.ui.setting.main.fragment.FragmentSetting"
         android:label="FragmentSetting"
-        tools:layout="@layout/fragment_setting" >
+        tools:layout="@layout/fragment_setting">
         <action
             android:id="@+id/action_fragmentSetting_to_fragmentLanguages"
             app:destination="@id/fragmentLanguages" />
+        <action
+            android:id="@+id/action_fragmentSetting_to_fragmentTheme"
+            app:destination="@id/fragmentTheme" />
     </fragment>
     <fragment
         android:id="@+id/fragmentLanguages"
         android:name="com.zhuzichu.android.nicehub.ui.setting.languages.fragment.FragmentLanguages"
         android:label="FragmentLanguages"
         tools:layout="@layout/fragment_languages" />
+    <fragment
+        android:id="@+id/fragmentTheme"
+        android:name="com.zhuzichu.android.nicehub.ui.setting.theme.fragment.FragmentTheme"
+        android:label="FragmentTheme"
+        tools:layout="@layout/fragment_theme" />
 </navigation>

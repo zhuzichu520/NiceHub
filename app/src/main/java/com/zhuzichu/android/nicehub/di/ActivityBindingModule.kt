@@ -11,6 +11,7 @@ import com.zhuzichu.android.nicehub.ui.main.module.ModuleMain
 import com.zhuzichu.android.nicehub.ui.profile.module.ModuleProfile
 import com.zhuzichu.android.nicehub.ui.setting.languages.module.ModuleLanguages
 import com.zhuzichu.android.nicehub.ui.setting.main.module.ModuleSetting
+import com.zhuzichu.android.nicehub.ui.setting.theme.module.ModuleTheme
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -27,7 +28,8 @@ abstract class ActivityBindingModule {
             ModuleChildFeeds::class,
             ModuleRepository::class,
             ModuleSetting::class,
-            ModuleLanguages::class
+            ModuleLanguages::class,
+            ModuleTheme::class
         ]
     )
     internal abstract fun mainActivity(): ActivityMain

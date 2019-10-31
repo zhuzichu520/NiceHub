@@ -15,4 +15,10 @@
     <string name="languages">اللغات</string>
     <string name="theme">موضوع</string>
 
+    <string name="settings_theme_title">اختيار تصميم</string>
+    <string name="settings_theme_system">إعداد تلقائي للنظام</string>
+    <string name="settings_theme_light">فاتح</string>
+    <string name="settings_theme_dark">غامق</string>
+    <string name="settings_theme_battery">الضبط حسب ميزة "توفير شحن البطارية"</string>
+
 </resources>
