@@ -6,6 +6,7 @@ import com.zhuzichu.android.shared.global.AppGlobal
 import com.zhuzichu.android.shared.storage.GlobalStorage
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
+import io.reactivex.plugins.RxJavaPlugins
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -21,6 +22,10 @@ class ApplicationNiceHub : DaggerApplication() {
             Timber.plant(Timber.DebugTree())
         }
         AppCompatDelegate.setDefaultNightMode(globalStorage.uiMode)
+
+        RxJavaPlugins.setErrorHandler {
+
+        }
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
