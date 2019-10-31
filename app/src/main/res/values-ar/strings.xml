@@ -12,4 +12,7 @@
     <string name="password">كلمة المرور</string>
     <string name="login">تسجيل الدخول</string>
 
+    <string name="languages">اللغات</string>
+    <string name="theme">موضوع</string>
+
 </resources>

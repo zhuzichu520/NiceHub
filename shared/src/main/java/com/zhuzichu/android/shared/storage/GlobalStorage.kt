@@ -2,6 +2,7 @@ package com.zhuzichu.android.shared.storage
 
 import android.content.Context
 import android.content.SharedPreferences
+import androidx.appcompat.app.AppCompatDelegate
 import com.zhuzichu.android.shared.global.AppGlobal.context
 
 class GlobalStorage {
@@ -16,5 +17,7 @@ class GlobalStorage {
     }
 
     var token by StringPreference(prefs, null)
+    var locale by StringPreference(prefs, "zh")
+    var uiMode by IntPreference(prefs, defaultValue = AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
 
 }

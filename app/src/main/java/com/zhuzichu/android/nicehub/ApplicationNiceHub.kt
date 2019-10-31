@@ -1,12 +1,18 @@
 package com.zhuzichu.android.nicehub
 
+import androidx.appcompat.app.AppCompatDelegate
 import com.zhuzichu.android.nicehub.di.DaggerAppComponent
 import com.zhuzichu.android.shared.global.AppGlobal
+import com.zhuzichu.android.shared.storage.GlobalStorage
 import dagger.android.AndroidInjector
 import dagger.android.support.DaggerApplication
 import timber.log.Timber
+import javax.inject.Inject
 
 class ApplicationNiceHub : DaggerApplication() {
+
+    @Inject
+    lateinit var globalStorage: GlobalStorage
 
     override fun onCreate() {
         super.onCreate()
@@ -14,6 +20,7 @@ class ApplicationNiceHub : DaggerApplication() {
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
         }
+        AppCompatDelegate.setDefaultNightMode(globalStorage.uiMode)
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {

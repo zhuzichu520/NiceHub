@@ -2,14 +2,11 @@ package com.zhuzichu.android.nicehub.repository.entity
 
 import com.google.gson.annotations.SerializedName
 
-class BeanListRes<T : Any> {
-
+data class BeanListRes<T : Any>(
     @SerializedName("total_count")
-    var totalCount: Int? = null
-
+    var totalCount: Int? = null,
     @SerializedName("incomplete_results")
-    var incompleteResults: Boolean? = null
-
+    var incompleteResults: Boolean? = null,
     @SerializedName("items")
     var items: List<T>? = null
-}
+)

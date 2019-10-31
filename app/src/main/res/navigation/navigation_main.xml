@@ -14,10 +14,27 @@
         <action
             android:id="@+id/action_fragmentMain_to_fragmentRepository"
             app:destination="@id/fragmentRepository" />
+        <action
+            android:id="@+id/action_fragmentMain_to_fragmentSetting"
+            app:destination="@id/fragmentSetting" />
     </fragment>
     <fragment
         android:id="@+id/fragmentRepository"
         android:name="com.zhuzichu.android.nicehub.ui.feeds.repository.fragment.FragmentRepository"
         android:label="FragmentRepository"
         tools:layout="@layout/fragment_repository" />
+    <fragment
+        android:id="@+id/fragmentSetting"
+        android:name="com.zhuzichu.android.nicehub.ui.setting.main.fragment.FragmentSetting"
+        android:label="FragmentSetting"
+        tools:layout="@layout/fragment_setting" >
+        <action
+            android:id="@+id/action_fragmentSetting_to_fragmentLanguages"
+            app:destination="@id/fragmentLanguages" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentLanguages"
+        android:name="com.zhuzichu.android.nicehub.ui.setting.languages.fragment.FragmentLanguages"
+        android:label="FragmentLanguages"
+        tools:layout="@layout/fragment_languages" />
 </navigation>

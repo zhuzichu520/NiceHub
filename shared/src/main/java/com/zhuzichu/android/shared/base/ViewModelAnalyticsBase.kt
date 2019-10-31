@@ -4,6 +4,7 @@ import com.uber.autodispose.lifecycle.CorrespondingEventsFunction
 import com.uber.autodispose.lifecycle.LifecycleEndedException
 import com.uber.autodispose.lifecycle.LifecycleScopeProvider
 import com.zhuzichu.android.mvvm.base.BaseViewModel
+import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.extension.ResponseThrowable
 import io.reactivex.Observable
 import io.reactivex.subjects.BehaviorSubject
@@ -26,6 +27,10 @@ open class ViewModelAnalyticsBase : BaseViewModel(),
     }
 
     private val lifecycleEvents = BehaviorSubject.createDefault(CREATED)
+
+    val onBackCommand = BindingCommand<Any>({
+        back()
+    })
 
     override fun lifecycle(): Observable<ViewModelEvent> {
         return lifecycleEvents.hide()
@@ -56,6 +61,5 @@ open class ViewModelAnalyticsBase : BaseViewModel(),
         }
         throwable.printStackTrace()
     }
-
 
 }

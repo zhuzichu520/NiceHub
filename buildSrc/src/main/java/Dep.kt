@@ -20,9 +20,16 @@ object Dep {
         const val timber = "4.7.1"
         const val swiperefreshlayout = "1..0-alpha03"
         const val libs = "1.0.21"
-        const val mvvm = "1.0.22"
+        const val mvvm = "1.0.26"
         const val widget = "1.0.23"
+        const val room = "2.2.1"
     }
+
+    const val roomRuntime =
+        "androidx.room:room-runtime:${Version.room}"
+
+    const val roomRxJava =
+        "androidx.room:room-rxjava2:${Version.room}"
 
     const val swiperefreshlayout =
         "androidx.swiperefreshlayout:swiperefreshlayout:${Version.swiperefreshlayout}"

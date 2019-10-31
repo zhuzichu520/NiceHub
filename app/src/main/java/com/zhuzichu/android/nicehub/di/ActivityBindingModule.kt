@@ -9,6 +9,8 @@ import com.zhuzichu.android.nicehub.ui.feeds.main.module.ModuleChildFeeds
 import com.zhuzichu.android.nicehub.ui.feeds.repository.module.ModuleRepository
 import com.zhuzichu.android.nicehub.ui.main.module.ModuleMain
 import com.zhuzichu.android.nicehub.ui.profile.module.ModuleProfile
+import com.zhuzichu.android.nicehub.ui.setting.languages.module.ModuleLanguages
+import com.zhuzichu.android.nicehub.ui.setting.main.module.ModuleSetting
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -23,7 +25,9 @@ abstract class ActivityBindingModule {
             ModuleFeeds::class,
             ModuleProfile::class,
             ModuleChildFeeds::class,
-            ModuleRepository::class
+            ModuleRepository::class,
+            ModuleSetting::class,
+            ModuleLanguages::class
         ]
     )
     internal abstract fun mainActivity(): ActivityMain

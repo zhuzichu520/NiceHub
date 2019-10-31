@@ -100,4 +100,7 @@ dependencies {
     api(Dep.libs)
     api(Dep.widget)
     api(Dep.mvvm)
+
+    api(Dep.roomRuntime)
+    api(Dep.roomRxJava)
 }
