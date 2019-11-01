@@ -1,4 +1,4 @@
-package com.zhuzichu.android.nicehub.ui.account.login.domain
+package com.zhuzichu.android.nicehub.ui.profile.domain
 
 import com.zhuzichu.android.mvvm.domain.UseCase
 import com.zhuzichu.android.nicehub.repository.RemoteRepository

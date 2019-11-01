@@ -3,12 +3,11 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 
-Config.initJenkinsProperties(project)
+Config.init(project)
 
 android {
 
     compileSdkVersion Config.compileSdkVersion()
-
     signingConfigs {
         MyAppSign {
             keyAlias Config.keyAlias()

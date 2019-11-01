@@ -52,39 +52,3 @@ fun <T> Flowable<T>.bindToSchedulers(): Flowable<T> =
     this.compose<T> {
         it.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
     }
-
-
-//--------------------------------------------------------------------------------------------------
-
-
-fun <T> Single<T>.autoLoading(
-    viewModel: BaseViewModel,
-    execute: (() -> Boolean)? = null
-): Single<T> {
-    val flag = execute?.invoke() ?: true
-    return if (flag)
-        this.compose<T> {
-            it.doOnSubscribe { viewModel.showLoading() }
-                .doFinally { viewModel.hideLoading() }
-        }
-    else
-        this.compose<T> {
-            it
-        }
-}
-
-private class HttpResponseFuncSingle<T> : Function<Throwable, Single<T>> {
-    override fun apply(t: Throwable): Single<T> {
-        return Single.error(t.handleException())
-    }
-}
-
-fun <T> Single<T>.bindToException(): Single<T> =
-    this.compose<T> {
-        it.onErrorResumeNext(HttpResponseFuncSingle())
-    }
-
-fun <T> Single<T>.bindToSchedulers(): Single<T> =
-    this.compose<T> {
-        it.subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread())
-    }

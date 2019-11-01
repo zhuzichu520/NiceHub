@@ -12,6 +12,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 import javax.inject.Named
 import javax.inject.Singleton
@@ -23,8 +24,8 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(
-        @Named("GlobalParamterInterceptor") paramterInterceptor: Interceptor,
-        @Named("HttpLogInterceptor") httpLogInterceptor: Interceptor
+        @Named("GlobalParamter") paramterInterceptor: Interceptor,
+        @Named("HttpLog") httpLogInterceptor: Interceptor
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(httpLogInterceptor)
@@ -37,7 +38,8 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    fun provideGithubRetrofit(okHttpClient: OkHttpClient): Retrofit {
+    @Named("GithubApp")
+    fun provideGithubAppRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl(BuildConfig.HOST_APP2)
@@ -46,9 +48,21 @@ class NetworkModule {
             .build()
     }
 
+    @Singleton
+    @Provides
+    @Named("GithubHtml")
+    fun provideGithubHtmlRetrofit(okHttpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+            .client(okHttpClient)
+            .baseUrl(BuildConfig.HOST_HTML)
+            .addConverterFactory(ScalarsConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .build()
+    }
+
     @Provides
     @Singleton
-    @Named("GlobalParamterInterceptor")
+    @Named("GlobalParamter")
     fun providesGlobalParamterInterceptor(globalStorage: GlobalStorage): Interceptor {
         return Interceptor {
             var request = it.request()
@@ -63,7 +77,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    @Named("HttpLogInterceptor")
+    @Named("HttpLog")
     fun providesHttpLogInterceptor(): Interceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }

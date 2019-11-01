@@ -10,11 +10,17 @@ import java.util.*
 
 abstract class ActivityAnalyticsBase : BaseActivity() {
 
-    val globalStorage by lazy { GlobalStorage() }
+    private var globalStorage: GlobalStorage? = GlobalStorage()
 
     override fun attachBaseContext(newBase: Context?) {
         newBase?.let {
-            super.attachBaseContext(it.localeContextWrapper(Locale(globalStorage.locale!!)))
+            super.attachBaseContext(
+                it.localeContextWrapper(
+                    Locale(
+                        globalStorage?.locale ?: Locale.getDefault().country
+                    )
+                )
+            )
         }
     }
 
@@ -37,5 +43,10 @@ abstract class ActivityAnalyticsBase : BaseActivity() {
     override fun onPause() {
         super.onPause()
         MobclickAgent.onPause(this)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        globalStorage = null
     }
 }

@@ -8,6 +8,8 @@ import com.zhuzichu.android.nicehub.ui.account.login.entity.ParamterAuthorizatio
 import io.reactivex.Flowable
 import retrofit2.Retrofit
 import retrofit2.http.GET
+import retrofit2.http.Path
+import javax.inject.Named
 
 interface RemoteRepository {
     fun getHotRepos(
@@ -23,16 +25,29 @@ interface RemoteRepository {
 
 
     fun getPersonInfo(): Flowable<BeanUser>
+
+    fun getContributions(
+        login: String
+    ): Flowable<String>
 }
 
 class RemoteRepositoryImpl(
-    private val retrofit: Retrofit
+    @Named("GithubApp")
+    private val githubAppRetrofit: Retrofit,
+    @Named("GithubHtml")
+    private val githubHtmlRetrofit: Retrofit
 ) : RemoteRepository {
 
-    private val githubApi by lazy { retrofit.create(GithubApi::class.java) }
+    private val app by lazy { githubAppRetrofit.create(GithubApi::class.java) }
+
+    private val html by lazy { githubHtmlRetrofit.create(HtmlApi::class.java) }
+
+    override fun getContributions(login: String): Flowable<String> {
+        return html.getContributions(login)
+    }
 
     override fun getPersonInfo(): Flowable<BeanUser> {
-        return githubApi.getPersonInfo()
+        return app.getPersonInfo()
     }
 
     override fun getHotRepos(
@@ -40,14 +55,14 @@ class RemoteRepositoryImpl(
         page: Int,
         pageSize: Int
     ): Flowable<BeanListRes<BeanRepository>> {
-        return githubApi.searchRepositories(query, "stars", "desc", page, pageSize)
+        return app.searchRepositories(query, "stars", "desc", page, pageSize)
     }
 
     override fun authorizations(
         paramterAuthorizations: ParamterAuthorizations,
         basicToken: String
     ): Flowable<BeanAuthor> {
-        return githubApi.authorizations(paramterAuthorizations, basicToken)
+        return app.authorizations(paramterAuthorizations, basicToken)
     }
 
 }

@@ -13,6 +13,7 @@ import com.zhuzichu.android.shared.storage.GlobalStorage
 import dagger.Module
 import dagger.Provides
 import retrofit2.Retrofit
+import javax.inject.Named
 import javax.inject.Singleton
 
 @Module
@@ -32,8 +33,8 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun providesRemoteRepository(retrofit: Retrofit): RemoteRepository {
-        return RemoteRepositoryImpl(retrofit)
+    fun providesRemoteRepository(@Named("GithubApp") githubAppRetrofit: Retrofit,@Named("GithubHtml") githubHtmlRetrofit: Retrofit): RemoteRepository {
+        return RemoteRepositoryImpl(githubAppRetrofit,githubHtmlRetrofit)
     }
 
     @Provides

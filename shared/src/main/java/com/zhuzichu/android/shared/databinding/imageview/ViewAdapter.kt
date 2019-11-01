@@ -5,6 +5,7 @@ import androidx.annotation.DrawableRes
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.pixplicity.sharp.Sharp
 
 @BindingAdapter(value = ["url", "fadeDuration", "error"], requireAll = false)
 fun bindImageViewByUrl(
@@ -22,5 +23,14 @@ fun bindImageViewByUrl(
             .error(error)
             .into(imageView)
     }
+}
 
+@BindingAdapter(value = ["svgData"], requireAll = false)
+fun bindImageViewShap(
+    imageView: ImageView,
+    svgData: String?
+) {
+    svgData?.let {
+        Sharp.loadString(it).into(imageView)
+    }
 }

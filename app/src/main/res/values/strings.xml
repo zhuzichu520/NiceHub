@@ -14,4 +14,12 @@
     <string name="languages">Languages</string>
     <string name="theme">Theme</string>
 
+    <string name="settings_theme_title">Choose theme</string>
+    <string name="settings_theme_system">System default</string>
+    <string name="settings_theme_light">Light</string>
+    <string name="settings_theme_dark">Dark</string>
+    <string name="settings_theme_battery">Set by Battery Saver</string>
+
+    <string name="contributions">Contributions</string>
+
 </resources>

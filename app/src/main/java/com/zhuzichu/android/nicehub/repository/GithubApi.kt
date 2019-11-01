@@ -29,4 +29,5 @@ interface GithubApi {
 
     @GET("user")
     fun getPersonInfo(): Flowable<BeanUser>
+
 }

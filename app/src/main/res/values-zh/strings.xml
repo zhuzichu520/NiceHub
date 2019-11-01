@@ -15,4 +15,12 @@
     <string name="languages">语言</string>
     <string name="theme">主题</string>
 
+    <string name="settings_theme_title">选择主题</string>
+    <string name="settings_theme_system">系统默认</string>
+    <string name="settings_theme_light">浅色</string>
+    <string name="settings_theme_dark">深色</string>
+    <string name="settings_theme_battery">根据省电模式设置</string>
+
+    <string name="contributions">贡献</string>
+
 </resources>

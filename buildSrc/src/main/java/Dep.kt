@@ -20,10 +20,26 @@ object Dep {
         const val timber = "4.7.1"
         const val swiperefreshlayout = "1..0-alpha03"
         const val libs = "1.0.21"
-        const val mvvm = "1.0.26"
-        const val widget = "1.0.23"
+        const val mvvm = "1.0.28"
+        const val widget = "1.0.25"
         const val room = "2.2.1"
+        const val umengCommon = "2.0.0"
+        const val umengAnalytics = "8.0.0"
+        const val sharp = "1.1.3@aar"
+        const val jsoup = "1.12.1"
     }
+
+    const val umengCommon =
+        "com.umeng.umsdk:common:${Version.umengCommon}"
+
+    const val umengAnalytics =
+        "com.umeng.umsdk:analytics:${Version.umengAnalytics}"
+
+    const val sharp =
+        "com.pixplicity.sharp:library:${Version.sharp}"
+
+    const val jsoup =
+        "org.jsoup:jsoup:${Version.jsoup}"
 
     const val roomRuntime =
         "androidx.room:room-runtime:${Version.room}"
