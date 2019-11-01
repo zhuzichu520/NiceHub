@@ -2,6 +2,7 @@ package com.zhuzichu.android.shared.base
 
 import android.content.Context
 import android.content.res.Configuration
+import com.umeng.analytics.MobclickAgent
 import com.zhuzichu.android.mvvm.base.BaseActivity
 import com.zhuzichu.android.shared.extension.localeContextWrapper
 import com.zhuzichu.android.shared.storage.GlobalStorage
@@ -26,5 +27,15 @@ abstract class ActivityAnalyticsBase : BaseActivity() {
             overrideConfiguration.uiMode = uiMode
         }
         super.applyOverrideConfiguration(overrideConfiguration)
+    }
+
+    override fun onResume() {
+        super.onResume()
+        MobclickAgent.onResume(this)
+    }
+
+    override fun onPause() {
+        super.onPause()
+        MobclickAgent.onPause(this)
     }
 }

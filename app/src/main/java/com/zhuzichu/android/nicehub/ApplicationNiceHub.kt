@@ -1,6 +1,8 @@
 package com.zhuzichu.android.nicehub
 
 import androidx.appcompat.app.AppCompatDelegate
+import com.umeng.analytics.MobclickAgent
+import com.umeng.commonsdk.UMConfigure
 import com.zhuzichu.android.nicehub.di.DaggerAppComponent
 import com.zhuzichu.android.shared.global.AppGlobal
 import com.zhuzichu.android.shared.storage.GlobalStorage
@@ -21,6 +23,14 @@ class ApplicationNiceHub : DaggerApplication() {
             Timber.plant(Timber.DebugTree())
         }
         AppCompatDelegate.setDefaultNightMode(globalStorage.uiMode)
+
+        UMConfigure.init(
+            this,
+            BuildConfig.UMENG_APPKEY,
+            BuildConfig.UMENG_CHANNEL,
+            UMConfigure.DEVICE_TYPE_PHONE,
+            null
+        )
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {
