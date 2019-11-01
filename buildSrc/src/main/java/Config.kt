@@ -16,14 +16,20 @@ object Config {
     @JvmStatic
     fun init(project: Project) {
         this.project = project
+        Log.q("rootPath", rootPath)
         initJenkinsProperties()
     }
 
     private val resourcesPath = rootPath
         .plus("buildSrc")
         .plus(File.separator)
+        .plus("src")
+        .plus(File.separator)
+        .plus("main")
+        .plus(File.separator)
         .plus("resources")
         .plus(File.separator)
+
 
     private val defaultGradleProperties by lazy {
         loadProperties(
