@@ -22,5 +22,6 @@
     <string name="settings_theme_battery">根据省电模式设置</string>
 
     <string name="contributions">贡献</string>
+    <string name="repositories_search">仓库搜索</string>
 
 </resources>

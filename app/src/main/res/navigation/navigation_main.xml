@@ -17,6 +17,9 @@
         <action
             android:id="@+id/action_fragmentMain_to_fragmentSetting"
             app:destination="@id/fragmentSetting" />
+        <action
+            android:id="@+id/action_fragmentMain_to_fragmentRepositoriesSearch"
+            app:destination="@id/fragmentRepositoriesSearch" />
     </fragment>
     <fragment
         android:id="@+id/fragmentRepository"
@@ -45,4 +48,8 @@
         android:name="com.zhuzichu.android.nicehub.ui.setting.theme.fragment.FragmentTheme"
         android:label="FragmentTheme"
         tools:layout="@layout/fragment_theme" />
+    <fragment
+        android:id="@+id/fragmentRepositoriesSearch"
+        android:name="com.zhuzichu.android.nicehub.ui.repositories.search.fragment.FragmentRepositoriesSearch"
+        android:label="FragmentRepositoriesSearch" />
 </navigation>

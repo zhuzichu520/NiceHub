@@ -9,6 +9,7 @@ import com.zhuzichu.android.nicehub.ui.feeds.main.module.ModuleChildFeeds
 import com.zhuzichu.android.nicehub.ui.feeds.repository.module.ModuleRepository
 import com.zhuzichu.android.nicehub.ui.main.module.ModuleMain
 import com.zhuzichu.android.nicehub.ui.profile.module.ModuleProfile
+import com.zhuzichu.android.nicehub.ui.repositories.search.module.ModuleRepositoriesSearch
 import com.zhuzichu.android.nicehub.ui.setting.languages.module.ModuleLanguages
 import com.zhuzichu.android.nicehub.ui.setting.main.module.ModuleSetting
 import com.zhuzichu.android.nicehub.ui.setting.theme.module.ModuleTheme
@@ -29,7 +30,8 @@ abstract class ActivityBindingModule {
             ModuleRepository::class,
             ModuleSetting::class,
             ModuleLanguages::class,
-            ModuleTheme::class
+            ModuleTheme::class,
+            ModuleRepositoriesSearch::class
         ]
     )
     internal abstract fun mainActivity(): ActivityMain

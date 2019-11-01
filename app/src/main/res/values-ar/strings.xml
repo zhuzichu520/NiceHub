@@ -22,5 +22,6 @@
     <string name="settings_theme_battery">الضبط حسب ميزة "توفير شحن البطارية"</string>
 
     <string name="contributions">المساهمات</string>
+    <string name="repositories_search">مستودع البحث</string>
 
 </resources>

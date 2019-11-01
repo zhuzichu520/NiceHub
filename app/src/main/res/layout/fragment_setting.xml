@@ -21,9 +21,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintTop_toTopOf="parent"
-            app:toolbarNavigationIcon="@drawable/ic_back"
             app:toolbarTitle="@string/setting"
             app:onClickNavigation="@{viewModel.onBackCommand}"
+            app:toolbarNavigationIcon="@drawable/ic_back"
             app:toolbarTitleTextAppearance="?attr/textAppearanceHeadline6" />
 
         <androidx.recyclerview.widget.RecyclerView

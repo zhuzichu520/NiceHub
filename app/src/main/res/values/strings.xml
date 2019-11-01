@@ -21,5 +21,6 @@
     <string name="settings_theme_battery">Set by Battery Saver</string>
 
     <string name="contributions">Contributions</string>
+    <string name="repositories_search">Repositories Search</string>
 
 </resources>
