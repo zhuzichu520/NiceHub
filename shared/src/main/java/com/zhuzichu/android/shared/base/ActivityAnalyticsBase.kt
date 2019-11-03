@@ -29,7 +29,7 @@ abstract class ActivityAnalyticsBase : BaseActivity() {
         // https://stackoverflow.com/questions/55265834/change-locale-not-work-after-migrate-to-androidx
         if (overrideConfiguration != null) {
             val uiMode = overrideConfiguration.uiMode
-            overrideConfiguration.setTo(baseContext.resources.configuration)
+            overrideConfiguration.setTo(resources.configuration)
             overrideConfiguration.uiMode = uiMode
         }
         super.applyOverrideConfiguration(overrideConfiguration)
@@ -45,8 +45,4 @@ abstract class ActivityAnalyticsBase : BaseActivity() {
         MobclickAgent.onPause(this)
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        globalStorage = null
-    }
 }
