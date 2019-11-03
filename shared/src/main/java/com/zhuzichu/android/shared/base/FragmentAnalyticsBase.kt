@@ -8,6 +8,7 @@ import com.zhuzichu.android.mvvm.base.BaseViewModel
 
 abstract class FragmentAnalyticsBase<TArgument : BaseArgument, TBinding : ViewDataBinding, TViewModel : BaseViewModel> :
     BaseFragment<TArgument, TBinding, TViewModel>() {
+
     override fun onResume() {
         super.onResume()
         MobclickAgent.onPageStart(this::class.java.simpleName)

@@ -16,9 +16,10 @@ class PageHelper(
     private val items: AsyncDiffObservableList<Any>,
     val viewModel: ViewModelAnalyticsBase,
     private val pageSize: Int,
+    private var isFirstLoad: Boolean = true,
     private val onLoadMore: ((parameter: Int) -> Unit)? = null
 ) {
-    private var page = 1
+    var page = 1
     private var isLoading = false
     private var weakRefresh: WeakReference<SwipeRefreshLayout?>? = null
 
@@ -39,6 +40,11 @@ class PageHelper(
     }
 
     val onScrollBottom = BindingCommand<Any>({
+        if (!isFirstLoad) {
+            showFinish()
+            isFirstLoad = !isFirstLoad
+            return@BindingCommand
+        }
         if (!isLoading) {
             isLoading = true
             showLoading()

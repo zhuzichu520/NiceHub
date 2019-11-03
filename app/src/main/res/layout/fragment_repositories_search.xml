@@ -3,6 +3,8 @@
 
     <data>
 
+        <import type="androidx.recyclerview.widget.LinearLayoutManager" />
+
         <variable
             name="viewModel"
             type="com.zhuzichu.android.nicehub.ui.repositories.search.viewmodel.ViewModelRepositoriesSearch" />
@@ -13,15 +15,50 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <androidx.appcompat.widget.SearchView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:iconifiedByDefault="false"
-            app:layout_constraintEnd_toEndOf="parent"
+        <FrameLayout
+            android:id="@+id/back"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:onSearchSubmit="@{viewModel.onSearchSubmit}"
-            app:queryHint="@string/repositories_search" />
+            app:onClickCommand="@{viewModel.onBackCommand}">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/ic_back" />
+
+        </FrameLayout>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/search"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="15dp"
+            android:imeOptions="actionSearch"
+            android:maxLength="16"
+            android:singleLine="true"
+            android:text="@={viewModel.query}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/back"
+            app:layout_constraintTop_toTopOf="parent"
+            app:onSearchCommand="@{viewModel.onSearchCommand}" />
+
+
+        <com.zhuzichu.android.widget.recycler.BottomRecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:itemBinding="@{viewModel.itemBinding}"
+            app:items="@{viewModel.items}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search"
+            app:onScrollBottom="@{viewModel.onScrollBottom}" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

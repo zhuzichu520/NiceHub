@@ -29,6 +29,14 @@ interface RemoteRepository {
     fun getContributions(
         login: String
     ): Flowable<String>
+
+    fun searchRepositories(
+        query: String,
+        sort: String,
+        order: String,
+        page: Int,
+        perPage: Int
+    ): Flowable<BeanListRes<BeanRepository>>
 }
 
 class RemoteRepositoryImpl(
@@ -44,6 +52,16 @@ class RemoteRepositoryImpl(
 
     override fun getContributions(login: String): Flowable<String> {
         return html.getContributions(login)
+    }
+
+    override fun searchRepositories(
+        query: String,
+        sort: String,
+        order: String,
+        page: Int,
+        perPage: Int
+    ): Flowable<BeanListRes<BeanRepository>> {
+        return app.searchRepositories(query, sort, order, page, perPage)
     }
 
     override fun getPersonInfo(): Flowable<BeanUser> {

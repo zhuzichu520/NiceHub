@@ -6,6 +6,8 @@ import com.zhuzichu.android.nicehub.R
 import com.zhuzichu.android.nicehub.databinding.FragmentRepositoriesSearchBinding
 import com.zhuzichu.android.nicehub.ui.repositories.search.viewmodel.ViewModelRepositoriesSearch
 import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
+import com.zhuzichu.android.shared.extension.showSoftKeyboard
+import kotlinx.android.synthetic.main.fragment_repositories_search.*
 
 class FragmentRepositoriesSearch :
     FragmentAnalyticsBase<ArgumentDefault, FragmentRepositoriesSearchBinding, ViewModelRepositoriesSearch>() {
@@ -14,6 +16,8 @@ class FragmentRepositoriesSearch :
 
     override fun setLayoutId(): Int = R.layout.fragment_repositories_search
 
-    override fun initLazyData() {
+    override fun initView() {
+        super.initView()
+        search.showSoftKeyboard()
     }
 }

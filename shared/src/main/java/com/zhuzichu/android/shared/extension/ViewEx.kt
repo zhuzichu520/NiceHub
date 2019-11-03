@@ -5,9 +5,11 @@ import android.content.Context
 import android.content.ContextWrapper
 import android.os.Build
 import android.os.LocaleList
+import android.view.View
 import androidx.core.view.forEachIndexed
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.zhuzichu.android.libs.tool.showKeyboard
 import java.util.*
 
 fun BottomNavigationView.setupWithViewPager(viewPager: ViewPager) {
@@ -61,4 +63,8 @@ fun Context.localeContextWrapper(newLocale: Locale): ContextWrapper {
         }
     }
     return ContextWrapper(context)
+}
+
+fun View.showSoftKeyboard() {
+    showKeyboard(this.context, this)
 }

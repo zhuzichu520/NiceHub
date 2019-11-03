@@ -1,11 +1,76 @@
 package com.zhuzichu.android.nicehub.ui.repositories.search.viewmodel
 
+import androidx.lifecycle.MutableLiveData
+import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
+import com.zhuzichu.android.nicehub.BR
+import com.zhuzichu.android.nicehub.R
+import com.zhuzichu.android.nicehub.ui.repositories.search.domain.UseCaseSearchRepositories
+import com.zhuzichu.android.nicehub.ui.repositories.search.entity.ParamterSearchRepositories
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
+import com.zhuzichu.android.shared.extension.autoLoading
+import com.zhuzichu.android.shared.extension.itemDiffOf
+import com.zhuzichu.android.shared.extension.map
+import com.zhuzichu.android.shared.widget.page.PageHelper
+import me.tatarka.bindingcollectionadapter2.collections.AsyncDiffObservableList
 import javax.inject.Inject
 
-class ViewModelRepositoriesSearch @Inject constructor() : ViewModelAnalyticsBase() {
-    val onSearchSubmit = BindingCommand<String>(consumer = {
-        toast(it)
+class ViewModelRepositoriesSearch @Inject constructor(
+    private val useCaseSearchRepositories: UseCaseSearchRepositories
+) : ViewModelAnalyticsBase() {
+
+    val query = MutableLiveData<String>()
+
+    val onSearchCommand = BindingCommand<Any>({
+        search(pageHelper.run {
+            page = 1
+            page
+        })
     })
+
+    private val pageSize = 20
+
+    private val pageHelper = PageHelper(
+        AsyncDiffObservableList(itemDiffOf<ItemViewModelSearchRepositories> { oldItem, newItem -> oldItem.id == newItem.id }),
+        this,
+        pageSize,
+        false,
+        onLoadMore = {
+            search(it)
+        }
+    )
+
+    val items = pageHelper.pageItems
+
+    val onScrollBottom = pageHelper.onScrollBottom
+
+    val onRefresh = pageHelper.onRefresh
+
+    val itemBinding = pageHelper.itemBinding.apply {
+        map<ItemViewModelSearchRepositories>(BR.item, R.layout.item_search_repositories)
+    }
+
+
+    fun search(page: Int) {
+        useCaseSearchRepositories.execute(
+            ParamterSearchRepositories(
+                q = query.value.toString(),
+                sort = "stars",
+                order = "desc",
+                page = page,
+                pageSize = 20
+            )
+        ).autoLoading(this) {
+            page == 1
+        }.autoDispose(this)
+            .subscribe({
+                pageHelper.addAll(
+                    it.items?.map { item ->
+                        ItemViewModelSearchRepositories(this, item)
+                    }
+                )
+            }, {
+
+            })
+    }
 }

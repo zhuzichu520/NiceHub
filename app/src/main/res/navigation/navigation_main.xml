@@ -51,5 +51,9 @@
     <fragment
         android:id="@+id/fragmentRepositoriesSearch"
         android:name="com.zhuzichu.android.nicehub.ui.repositories.search.fragment.FragmentRepositoriesSearch"
-        android:label="FragmentRepositoriesSearch" />
+        android:label="FragmentRepositoriesSearch" >
+        <action
+            android:id="@+id/action_fragmentRepositoriesSearch_to_fragmentRepository"
+            app:destination="@id/fragmentRepository" />
+    </fragment>
 </navigation>

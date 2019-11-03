@@ -1,4 +1,4 @@
-package com.zhuzichu.android.nicehub.ui.feeds.main.viewmodel
+package com.zhuzichu.android.nicehub.ui.repositories.search.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.zhuzichu.android.mvvm.base.BaseViewModel
@@ -8,16 +8,16 @@ import com.zhuzichu.android.nicehub.extension.toLanguageCircleDrawable
 import com.zhuzichu.android.nicehub.repository.entity.BeanRepository
 import com.zhuzichu.android.shared.base.ItemViewModelAnalyticsBase
 
-class ItemViewModelRepository(
+class ItemViewModelSearchRepositories(
     viewModel: BaseViewModel,
     bean: BeanRepository
 ) : ItemViewModelAnalyticsBase(viewModel) {
 
     val id = bean.id
 
-    val name = MutableLiveData(bean.name)
+    val name = MutableLiveData(bean.fullName)
 
-    val description = MutableLiveData(bean.description)
+    val avatarUrl = MutableLiveData(bean.owner?.avatarUrl)
 
     val starsCount = MutableLiveData(bean.stargazersCount.toString())
 
@@ -30,7 +30,6 @@ class ItemViewModelRepository(
     )
 
     val onClickItem = BindingCommand<Any>({
-        startFragment(R.id.action_fragmentMain_to_fragmentRepository)
+        startFragment(R.id.action_fragmentRepositoriesSearch_to_fragmentRepository)
     })
-
 }
