@@ -15,11 +15,13 @@ allprojects {
     repositories {
         google()
         jcenter()
-        maven { url 'https://jitpack.io' }
-        maven { url 'https://dl.bintray.com/umsdk/release' }
+        maven { url = uri("https://jitpack.io") }
+        maven { url = uri("https://dl.bintray.com/umsdk/release") }
     }
 }
 
-task clean(type: Delete) {
-    delete rootProject.buildDir
+tasks {
+    register<Delete>("clean") {
+        delete(buildDir)
+    }
 }

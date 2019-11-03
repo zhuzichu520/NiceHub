@@ -1,60 +1,61 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-kapt'
-
+plugins {
+    id("com.android.library")
+    kotlin("android")
+    kotlin("android.extensions")
+    kotlin("kapt")
+}
 
 android {
-
-    compileSdkVersion Config.compileSdkVersion()
+    compileSdkVersion(Config.compileSdkVersion())
 
     defaultConfig {
-        minSdkVersion Config.minSdkVersion()
-        targetSdkVersion Config.targetSdkVersion()
-        versionCode Config.versionCode()
-        versionName Config.versionName()
+        minSdkVersion(Config.minSdkVersion())
+        targetSdkVersion(Config.targetSdkVersion())
+        versionCode = Config.versionCode()
+        versionName = Config.versionName()
 
-        consumerProguardFiles 'consumer-rules.pro'
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     sourceSets {
-        main {
-            res.srcDirs = ['src/main/res']
-            jniLibs.srcDirs = ['libs']
+        getByName("main") {
+            res.srcDir("src/main/res")
+            jniLibs.srcDir("libs")
         }
     }
 
     buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        getByName("release") {
+            isMinifyEnabled = false
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
 
-    /* 编译配置项 */
     compileOptions {
-        /* Java8支持 */
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
 
+
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
     dataBinding {
-        enabled = true
+        isEnabled = true
     }
 
-
     androidExtensions {
-        experimental = true
+        isExperimental = true
     }
 
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation(fileTree("dir" to "libs", "include" to "*.jar"))
 
     kapt(Dep.kaptDaggerCompiler)
     kapt(Dep.kaptDaggerProcessor)
