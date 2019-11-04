@@ -1,7 +1,10 @@
 package com.zhuzichu.android.nicehub.repository.entity
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class BeanRepository(
     @SerializedName("id")
     var id: Int? = null,
@@ -147,4 +150,4 @@ data class BeanRepository(
     var defaultBranch: String? = null,
     @SerializedName("score")
     var score: Double? = null
-)
+) : Parcelable

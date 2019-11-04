@@ -19,7 +19,6 @@ fun onClickCommand(view: View, clickCommand: BindingCommand<*>?, isThrottleFirst
     }
 }
 
-
 private fun <T> Observable<T>.isThrottleFirst(
     isThrottleFirst: Boolean
 ): Observable<T> {

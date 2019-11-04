@@ -5,3 +5,8 @@ plugins {
 repositories {
     jcenter()
 }
+
+dependencies{
+    gradleApi()
+    localGroovy()
+}

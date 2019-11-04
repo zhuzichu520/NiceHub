@@ -1,7 +1,10 @@
 package com.zhuzichu.android.nicehub.repository.entity
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class BeanLicense(
     @SerializedName("key")
     var key: String? = null,
@@ -13,4 +16,4 @@ data class BeanLicense(
     var url: String? = null,
     @SerializedName("node_id")
     var nodeId: String? = null
-)
+) : Parcelable

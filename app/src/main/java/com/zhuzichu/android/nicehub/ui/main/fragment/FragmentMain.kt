@@ -2,12 +2,11 @@ package com.zhuzichu.android.nicehub.ui.main.fragment
 
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
+import androidx.renderscript.RenderScript
 import com.zhuzichu.android.mvvm.base.ArgumentDefault
 import com.zhuzichu.android.nicehub.BR
 import com.zhuzichu.android.nicehub.R
 import com.zhuzichu.android.nicehub.databinding.FragmentMainBinding
-import com.zhuzichu.android.nicehub.ui.feeds.main.entity.ArgumentFeedsChild
-import com.zhuzichu.android.nicehub.ui.feeds.main.fragment.FragmentChildFeeds
 import com.zhuzichu.android.nicehub.ui.feeds.main.fragment.FragmentFeeds
 import com.zhuzichu.android.nicehub.ui.main.viewmodel.ViewModelMain
 import com.zhuzichu.android.nicehub.ui.profile.fragment.FragmentProfile
@@ -42,7 +41,6 @@ class FragmentMain : FragmentAnalyticsBase<ArgumentDefault, FragmentMainBinding,
         bottom.setupWithViewPager(content)
         initBackListener()
     }
-
 
     private fun initBackListener() {
         requireActivity().onBackPressedDispatcher.addCallback(this) {

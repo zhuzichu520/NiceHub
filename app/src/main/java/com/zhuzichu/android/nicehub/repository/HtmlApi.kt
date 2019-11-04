@@ -10,4 +10,10 @@ interface HtmlApi {
     fun getContributions(
         @Path("login") login: String
     ): Flowable<String>
+
+    @GET("{login}/{name}")
+    fun getRepository(
+        @Path("login") login: String,
+        @Path("name") name: String
+    ): Flowable<String>
 }

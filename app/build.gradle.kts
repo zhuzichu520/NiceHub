@@ -1,3 +1,5 @@
+import extension.student
+
 plugins {
     id("com.android.application")
     kotlin("android")
@@ -8,8 +10,7 @@ plugins {
 
 Config.init(project)
 
-android {
-
+project.android {
     compileSdkVersion(Config.compileSdkVersion())
 
     signingConfigs {
@@ -19,7 +20,6 @@ android {
             storeFile = file(Config.storeFile())
             storePassword = Config.storePassword()
         }
-
     }
 
     defaultConfig {
@@ -37,7 +37,6 @@ android {
             defaultConfig.buildConfigField(it[0], it[1], it[2])
         }
     }
-
 
     buildTypes {
         getByName("release") {
@@ -82,3 +81,9 @@ dependencies {
     kapt(Dep.androidxDatabinding)
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.0-beta-3")
 }
+
+student {
+    nickname = "小猪"
+    age = 160
+}
+

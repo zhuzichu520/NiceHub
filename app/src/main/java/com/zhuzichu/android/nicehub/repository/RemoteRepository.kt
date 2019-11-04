@@ -30,6 +30,11 @@ interface RemoteRepository {
         login: String
     ): Flowable<String>
 
+    fun getRepositoryReadme(
+        login: String,
+        name: String
+    ): Flowable<String>
+
     fun searchRepositories(
         query: String,
         sort: String,
@@ -49,6 +54,11 @@ class RemoteRepositoryImpl(
     private val app by lazy { githubAppRetrofit.create(GithubApi::class.java) }
 
     private val html by lazy { githubHtmlRetrofit.create(HtmlApi::class.java) }
+
+
+    override fun getRepositoryReadme(login: String, name: String): Flowable<String> {
+        return html.getRepository(login, name)
+    }
 
     override fun getContributions(login: String): Flowable<String> {
         return html.getContributions(login)

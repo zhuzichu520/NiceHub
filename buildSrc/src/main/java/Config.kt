@@ -11,13 +11,15 @@ object Config {
 
     lateinit var project: Project
 
-    private val rootPath = System.getProperty("user.dir").plus(File.separator)
+    private val rootPath =
+        System.getProperty("user.dir").plus(File.separator).replace("app${File.separator}", "")
 
     @JvmStatic
     fun init(project: Project) {
         this.project = project
         Log.q("rootPath", rootPath)
         initJenkinsProperties()
+        Log.q("Project.this", project.javaClass.name)
     }
 
     private val resourcesPath = rootPath
