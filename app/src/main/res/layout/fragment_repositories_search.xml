@@ -49,6 +49,7 @@
 
 
         <com.zhuzichu.android.widget.recycler.BottomRecyclerView
+            android:id="@+id/recycler"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             app:itemBinding="@{viewModel.itemBinding}"
