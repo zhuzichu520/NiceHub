@@ -6,12 +6,12 @@ plugins {
     id("TestPlugin")
 }
 
-
 Config.init(project)
 
 android {
 
     compileSdkVersion(Config.compileSdkVersion())
+
     signingConfigs {
         create("MyAppSign") {
             keyAlias = Config.keyAlias()
@@ -70,7 +70,6 @@ android {
     androidExtensions {
         isExperimental = true
     }
-
 }
 
 dependencies {
