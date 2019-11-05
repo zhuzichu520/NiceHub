@@ -2,7 +2,6 @@ package com.zhuzichu.android.nicehub.ui.setting.theme.fragment
 
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.Observer
-import com.zhuzichu.android.mvvm.base.ArgumentDefault
 import com.zhuzichu.android.nicehub.BR
 import com.zhuzichu.android.nicehub.R
 import com.zhuzichu.android.nicehub.databinding.FragmentThemeBinding
@@ -12,7 +11,7 @@ import com.zhuzichu.android.shared.storage.GlobalStorage
 
 import javax.inject.Inject
 
-class FragmentTheme : FragmentAnalyticsBase<ArgumentDefault, FragmentThemeBinding, ViewModelTheme>() {
+class FragmentTheme : FragmentAnalyticsBase<FragmentThemeBinding, ViewModelTheme>() {
 
     @Inject
     lateinit var globalStorage: GlobalStorage

@@ -7,20 +7,18 @@ import androidx.lifecycle.Observer
 import com.zhuzichu.android.nicehub.BR
 import com.zhuzichu.android.nicehub.R
 import com.zhuzichu.android.nicehub.databinding.FragmentRepositoryBinding
-import com.zhuzichu.android.nicehub.ui.feeds.repository.entiy.ArgumentRepository
 import com.zhuzichu.android.nicehub.ui.feeds.repository.viewmodel.ViewModelRepository
 import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
 import kotlinx.android.synthetic.main.fragment_repository.*
 
 class FragmentRepository :
-    FragmentAnalyticsBase<ArgumentRepository, FragmentRepositoryBinding, ViewModelRepository>() {
+    FragmentAnalyticsBase<FragmentRepositoryBinding, ViewModelRepository>() {
     override fun bindVariableId(): Int = BR.viewModel
 
     override fun setLayoutId(): Int = R.layout.fragment_repository
 
     override fun initView() {
         super.initView()
-        viewModel.bean.value = argument.bean
         webview.webViewClient = object : WebViewClient() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 super.onPageFinished(view, url)

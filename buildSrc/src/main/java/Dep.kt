@@ -20,7 +20,7 @@ object Dep {
         const val timber = "4.7.1"
         const val swiperefreshlayout = "1..0-alpha03"
         const val libs = "1.0.24"
-        const val mvvm = "1.0.38"
+        const val mvvm = "1.0.40"
         const val widget = "1.0.29"
         const val room = "2.2.1"
         const val umengCommon = "2.0.0"
@@ -55,6 +55,9 @@ object Dep {
 
     const val pluginkotlinGradle =
         "org.jetbrains.kotlin:kotlin-gradle-plugin:${Version.kotlin}"
+
+    const val pluginNavigationSafe =
+        "androidx.navigation:navigation-safe-args-gradle-plugin:${Version.androidxNavigation}"
 
     const val androidxDatabinding =
         "androidx.databinding:databinding-compiler:${Version.buildGradle}"

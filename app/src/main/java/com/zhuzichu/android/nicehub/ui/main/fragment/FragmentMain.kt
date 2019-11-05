@@ -2,8 +2,6 @@ package com.zhuzichu.android.nicehub.ui.main.fragment
 
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
-import androidx.renderscript.RenderScript
-import com.zhuzichu.android.mvvm.base.ArgumentDefault
 import com.zhuzichu.android.nicehub.BR
 import com.zhuzichu.android.nicehub.R
 import com.zhuzichu.android.nicehub.databinding.FragmentMainBinding
@@ -15,7 +13,7 @@ import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
 import com.zhuzichu.android.shared.extension.setupWithViewPager
 import kotlinx.android.synthetic.main.fragment_main.*
 
-class FragmentMain : FragmentAnalyticsBase<ArgumentDefault, FragmentMainBinding, ViewModelMain>() {
+class FragmentMain : FragmentAnalyticsBase<FragmentMainBinding, ViewModelMain>() {
 
     private val waitTime = 2000L
     private var touchTime: Long = 0

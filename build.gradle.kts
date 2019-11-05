@@ -8,6 +8,7 @@ buildscript {
     dependencies {
         classpath(Dep.pluginBuildGradle)
         classpath(Dep.pluginkotlinGradle)
+        classpath(Dep.pluginNavigationSafe)
     }
 }
 

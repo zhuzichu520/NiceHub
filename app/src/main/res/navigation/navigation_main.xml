@@ -25,7 +25,17 @@
         android:id="@+id/fragmentRepository"
         android:name="com.zhuzichu.android.nicehub.ui.feeds.repository.fragment.FragmentRepository"
         android:label="FragmentRepository"
-        tools:layout="@layout/fragment_repository" />
+        tools:layout="@layout/fragment_repository">
+        <deepLink
+            android:autoVerify="true"
+            app:uri="https://github.com/{login}/{name}" />
+        <argument
+            android:name="login"
+            app:argType="string" />
+        <argument
+            android:name="name"
+            app:argType="string" />
+    </fragment>
     <fragment
         android:id="@+id/fragmentSetting"
         android:name="com.zhuzichu.android.nicehub.ui.setting.main.fragment.FragmentSetting"
@@ -51,7 +61,7 @@
     <fragment
         android:id="@+id/fragmentRepositoriesSearch"
         android:name="com.zhuzichu.android.nicehub.ui.repositories.search.fragment.FragmentRepositoriesSearch"
-        android:label="FragmentRepositoriesSearch" >
+        android:label="FragmentRepositoriesSearch">
         <action
             android:id="@+id/action_fragmentRepositoriesSearch_to_fragmentRepository"
             app:destination="@id/fragmentRepository" />

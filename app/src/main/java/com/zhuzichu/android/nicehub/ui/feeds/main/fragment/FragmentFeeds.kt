@@ -1,11 +1,8 @@
 package com.zhuzichu.android.nicehub.ui.feeds.main.fragment
 
-import com.zhuzichu.android.mvvm.base.ArgumentDefault
-import com.zhuzichu.android.mvvm.extension.putArgument
 import com.zhuzichu.android.nicehub.BR
 import com.zhuzichu.android.nicehub.R
 import com.zhuzichu.android.nicehub.databinding.FragmentProfileBinding
-import com.zhuzichu.android.nicehub.ui.feeds.main.entity.ArgumentFeedsChild
 import com.zhuzichu.android.nicehub.ui.feeds.main.viewmodel.ViewModelFeeds
 import com.zhuzichu.android.shared.base.DefaultStringFragmentPagerAdapter
 import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
@@ -13,7 +10,7 @@ import com.zhuzichu.android.shared.extension.toArrayByResId
 import kotlinx.android.synthetic.main.fragment_feeds.*
 
 class FragmentFeeds :
-    FragmentAnalyticsBase<ArgumentDefault, FragmentProfileBinding, ViewModelFeeds>() {
+    FragmentAnalyticsBase< FragmentProfileBinding, ViewModelFeeds>() {
 
     override fun bindVariableId(): Int = BR.viewModel
 

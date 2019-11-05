@@ -3,7 +3,6 @@ package com.zhuzichu.android.nicehub.ui.setting.languages.fragment
 import androidx.core.app.ActivityCompat
 import androidx.lifecycle.Observer
 import com.zhuzichu.android.mvvm.base.BaseFragment
-import com.zhuzichu.android.mvvm.base.ArgumentDefault
 import com.zhuzichu.android.nicehub.BR
 import com.zhuzichu.android.nicehub.R
 import com.zhuzichu.android.nicehub.databinding.FragmentLanguagesBinding
@@ -13,7 +12,7 @@ import javax.inject.Inject
 
 
 class FragmentLanguages :
-    BaseFragment<ArgumentDefault, FragmentLanguagesBinding, ViewModelLanguages>() {
+    BaseFragment<FragmentLanguagesBinding, ViewModelLanguages>() {
 
     @Inject
     lateinit var globalStorage: GlobalStorage
