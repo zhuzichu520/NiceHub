@@ -10,7 +10,7 @@ import java.text.ParseException
 
 const val UNAUTHORIZED = 401
 private const val FORBIDDEN = 403
-private const val NOT_FOUND = 404
+const val NOT_FOUND = 404
 private const val REQUEST_TIMEOUT = 408
 private const val INTERNAL_SERVER_ERROR = 500
 private const val SERVICE_UNAVAILABLE = 503
@@ -41,7 +41,6 @@ private const val SSL_ERROR = 1005
  * 连接超时
  */
 private const val TIMEOUT_ERROR = 1006
-
 
 class ResponseThrowable(throwable: Throwable, var code: Int) : Exception(throwable) {
     override var message: String? = null
@@ -83,6 +82,9 @@ fun Throwable.handleException(): ResponseThrowable {
     } else if (this is java.net.UnknownHostException) {
         ex = ResponseThrowable(this, TIMEOUT_ERROR)
         ex.message = "主机地址未知"
+        return ex
+    } else if (this is ResponseThrowable) {
+        ex = this
         return ex
     } else {
         ex = ResponseThrowable(this, UNKNOWN)

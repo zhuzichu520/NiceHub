@@ -3,7 +3,8 @@ body {
     font-size: 16px;
     padding: 10px;
     line-height: 1.5;
-    word-wrap: break-word
+    word-wrap: break-word;
+    background-color:#000000;
 }
 
 body::before {
@@ -47,7 +48,8 @@ body .anchor:focus {
 
 body p, body blockquote, body ul, body ol, body dl, body table, body pre {
     margin-top: 0;
-    margin-bottom: 10px
+    margin-bottom: 10px;
+    color: white;
 }
 
 body hr {
@@ -94,7 +96,8 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
     margin-top: 24px;
     margin-bottom: 16px;
     font-weight: 600;
-    line-height: 1.25
+    line-height: 1.25;
+    color: white;
 }
 
 body h1 .octicon-link, body h2 .octicon-link, body h3 .octicon-link, body h4 .octicon-link, body h5 .octicon-link, body h6 .octicon-link {
@@ -345,7 +348,8 @@ body del code {
 }
 
 body pre {
-    word-wrap: normal
+    word-wrap: normal;
+    color:black;
 }
 
 body pre>code {

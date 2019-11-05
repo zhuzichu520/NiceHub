@@ -3,6 +3,7 @@ package com.zhuzichu.android.shared.extension
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.ContextWrapper
+import android.content.res.Configuration
 import android.os.Build
 import android.os.LocaleList
 import android.view.View
@@ -67,4 +68,9 @@ fun Context.localeContextWrapper(newLocale: Locale): ContextWrapper {
 
 fun View.showSoftKeyboard() {
     showKeyboard(this.context, this)
+}
+
+fun Context.isDark(): Boolean {
+    val mode = this.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+    return mode == Configuration.UI_MODE_NIGHT_YES
 }

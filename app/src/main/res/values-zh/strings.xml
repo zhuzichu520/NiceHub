@@ -24,4 +24,5 @@
     <string name="contributions">贡献</string>
     <string name="repositories_search">仓库搜索</string>
 
+    <string name="no_data">没有数据</string>
 </resources>

@@ -4,11 +4,6 @@ body {
     padding: 10px;
     line-height: 1.5;
     word-wrap: break-word;
-    background-color: #ccc;
-}
-
-a {
-    color: #00E5FF !important;
 }
 
 body::before {
@@ -36,7 +31,7 @@ body a:not([href]) {
 }
 
 body .absent {
-    color: #c0392b
+    color: #c00
 }
 
 body .anchor {
@@ -59,13 +54,13 @@ body hr {
     height: .25em;
     padding: 0;
     margin: 24px 0;
-    background-color: #c0c0c0;
+    background-color: #e7e7e7;
     border: 0
 }
 
 body blockquote {
     padding: 0 1em;
-    color: #78909C;
+    color: #777;
     border-left: .25em solid #ddd
 }
 
@@ -82,12 +77,13 @@ body kbd {
     padding: 3px 5px;
     font-size: 11px;
     line-height: 10px;
-    color: #fff;
+    color: #555;
     vertical-align: middle;
-    border: solid 1px #656d78;
+    background-color: #fcfcfc;
+    border: solid 1px #ccc;
     border-bottom-color: #bbb;
     border-radius: 3px;
-    box-shadow: inset 0 -1px 0 #656d78
+    box-shadow: inset 0 -1px 0 #bbb
 }
 
 body .loweralpha {
@@ -98,12 +94,11 @@ body h1, body h2, body h3, body h4, body h5, body h6 {
     margin-top: 24px;
     margin-bottom: 16px;
     font-weight: 600;
-    line-height: 1.25;
-    color: #fff;
+    line-height: 1.25
 }
 
 body h1 .octicon-link, body h2 .octicon-link, body h3 .octicon-link, body h4 .octicon-link, body h5 .octicon-link, body h6 .octicon-link {
-    color: #fff;
+    color: #000;
     vertical-align: middle;
     visibility: hidden
 }
@@ -123,19 +118,19 @@ body h1 tt, body h1 code, body h2 tt, body h2 code, body h3 tt, body h3 code, bo
 body h1 {
     padding-bottom: .3em;
     font-size: 2em;
-    border-bottom: 1px solid #656d78
+    border-bottom: 1px solid #eee
 }
 
 .gh-header-meta {
     padding-bottom: .3em;
     margin-bottom: 6px;
-    border-bottom: 1px solid #656d78
+    border-bottom: 1px solid #eee
 }
 
 body h2 {
     padding-bottom: .3em;
     font-size: 1.5em;
-    border-bottom: 1px solid #656d78
+    border-bottom: 1px solid #eee
 }
 
 body h3 {
@@ -152,7 +147,7 @@ body h5 {
 
 body h6 {
     font-size: .85em;
-    color: #c0c0c0
+    color: #777
 }
 
 body ul, body ol {
@@ -206,22 +201,22 @@ body table th {
 
 body table th, body table td {
     padding: 6px 13px;
-    border: 1px solid #656d78
+    border: 1px solid #ddd
 }
 
 body table tr {
-    background-color: transparent;
-    border-top: 1px solid #656d78
+    background-color: #fff;
+    border-top: 1px solid #ccc
 }
 
 body table tr:nth-child(2n) {
-    background-color: #656d78
+    background-color: #f8f8f8
 }
 
 body img {
     max-width: 100%;
     box-sizing: content-box;
-    background-color: transparent;
+    background-color: #fff
 }
 
 body img[align=right] {
@@ -250,7 +245,7 @@ body span.frame>span {
     padding: 7px;
     margin: 13px 0 0;
     overflow: hidden;
-    border: 1px solid #656d78
+    border: 1px solid #ddd
 }
 
 body span.frame span img {
@@ -262,7 +257,7 @@ body span.frame span span {
     display: block;
     padding: 5px 0 0;
     clear: both;
-    color: #ccc
+    color: #333
 }
 
 body span.align-center {
@@ -273,7 +268,7 @@ body span.align-center {
 
 body span.align-center>span {
     display: block;
-    margin: 13px auto 0;
+    margin: 8px auto 0;
     overflow: hidden;
     text-align: center
 }
@@ -291,7 +286,7 @@ body span.align-right {
 
 body span.align-right>span {
     display: block;
-    margin: 13px 0 0;
+    margin: 8px 0 0;
     overflow: hidden;
     text-align: right
 }
@@ -329,15 +324,15 @@ body span.float-right>span {
 body code, body tt {
     padding: 0;
     padding-top: .1em;
-    padding-bottom: .2em;
+    padding-bottom: .1em;
     margin: 0;
     font-size: 85%;
-    background-color: rgba(84, 84, 84, 0.04);
+    background-color: rgba(0, 0, 0, 0.04);
     border-radius: 3px
 }
 
 body code::before, body code::after, body tt::before, body tt::after {
-    letter-spacing: -.2em;
+    letter-spacing: -.1em;
     content: "\00a0"
 }
 
@@ -373,10 +368,11 @@ body .highlight pre {
 }
 
 body .highlight pre, body pre {
-    padding: 16px;
+    padding: 10px;
     overflow: auto;
     font-size: 85%;
     line-height: 1.45;
+    background-color: #f6f8fa;
     border-radius: 3px
 }
 
@@ -408,7 +404,7 @@ body .csv-data td, body .csv-data th {
 body .csv-data .blob-num {
     padding: 10px 8px 9px;
     text-align: right;
-    background: #656d78;
+    background: #fff;
     border: 0
 }
 
@@ -418,7 +414,7 @@ body .csv-data tr {
 
 body .csv-data th {
     font-weight: 700;
-    background: #656d78;
+    background: #f8f8f8;
     border-top: 0
 }
 
@@ -455,8 +451,8 @@ body .email-hidden-reply.expanded {
 body .email-quoted-reply, body .email-signature-reply {
     padding: 0 10px;
     margin-bottom: 10px;
-    color: #c0c0c0;
-    border-left: 4px solid #656d78
+    color: #767676;
+    border-left: 4px solid #ddd
 }
 
 .pl-c {
@@ -472,11 +468,11 @@ body .email-quoted-reply, body .email-signature-reply {
 }
 
 .pl-smi, .pl-s .pl-s1 {
-    color: #78909C
+    color: #333
 }
 
 .pl-ent {
-    color: #388E3C
+    color: #63a35c
 }
 
 .pl-k {
@@ -484,7 +480,7 @@ body .email-quoted-reply, body .email-signature-reply {
 }
 
 .pl-s, .pl-pds, .pl-s .pl-pse .pl-s1, .pl-sr, .pl-sr .pl-cce, .pl-sr .pl-sre, .pl-sr .pl-sra {
-    color: #1976D2
+    color: #183691
 }
 
 .pl-v {
@@ -502,30 +498,30 @@ body .email-quoted-reply, body .email-signature-reply {
 
 .pl-sr .pl-cce {
     font-weight: 700;
-    color: #388E3C
+    color: #63a35c
 }
 
 .pl-ml {
-    color: #7f8c8d;
+    color: #693a17
 }
 
 .pl-mh, .pl-mh .pl-en, .pl-ms {
     font-weight: 700;
-    color: #1976D2
+    color: #1d3e81
 }
 
 .pl-mq {
-    color: #0097A7
+    color: teal
 }
 
 .pl-mi {
     font-style: italic;
-    color: #78909C
+    color: #333
 }
 
 .pl-mb {
     font-weight: 700;
-    color: #78909C
+    color: #333
 }
 
 .pl-md {
@@ -544,7 +540,7 @@ body .email-quoted-reply, body .email-signature-reply {
 }
 
 .pl-mo {
-    color: #1976D2
+    color: #1d3e81
 }
 
 kbd {
@@ -554,18 +550,17 @@ kbd {
     line-height: 10px;
     color: #555;
     vertical-align: middle;
-    background-color: #656d78;
-    border: solid 1px #586b78;
-    border-bottom-color: #556578;
+    background-color: #fcfcfc;
+    border: solid 1px #ccc;
+    border-bottom-color: #bbb;
     border-radius: 3px;
-    box-shadow: inset 0 -1px 0 #656d78
+    box-shadow: inset 0 -1px 0 #bbb
 }
 
 .badmono {
     font-family: sans-serif;
     font-weight: 700
 }
-
 .task-list-item {
     list-style-type: none
 }

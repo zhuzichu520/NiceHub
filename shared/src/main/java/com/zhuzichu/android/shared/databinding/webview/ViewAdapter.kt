@@ -1,15 +1,14 @@
 package com.zhuzichu.android.shared.databinding.webview
 
-import android.content.Context
-import android.content.res.Configuration
 import android.webkit.WebView
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.BindingAdapter
+import com.zhuzichu.android.shared.extension.isDark
 
 @BindingAdapter(value = ["webReadme"], requireAll = false)
 fun bindWebView(webView: WebView, webData: String?) {
     AppCompatDelegate.getDefaultNightMode()
-    val css = if (isDark(webView.context)) "github_dark.css" else "github.css"
+    val css = if (webView.context.isDark()) "readme_dark.css" else "readme.css"
     val html = """
             <!DOCTYPE html>
             <html>
@@ -29,15 +28,7 @@ fun bindWebView(webView: WebView, webData: String?) {
     }
 }
 
-
-private fun isDark(context: Context): Boolean {
-    val mode = context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-    return mode == Configuration.UI_MODE_NIGHT_YES
-}
-
 private fun loadData(webView: WebView, content: String?) {
-
-
     webView.loadDataWithBaseURL(
         "file:///android_asset/md/",
         content,

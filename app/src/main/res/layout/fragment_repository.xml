@@ -10,13 +10,34 @@
 
     <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:animateLayoutChanges="true">
 
         <WebView
             android:id="@+id/webview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:visibility="invisible"
+            app:visibility="@{viewModel.webviewVisibility}"
             app:webReadme="@{viewModel.readme}" />
+
+        <View
+            android:id="@+id/mask"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_background"
+            android:visibility="visible"
+            app:visibility="@{viewModel.maskVisibility}" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/no_data"
+            android:textAppearance="?attr/textAppearanceHeadline5"
+            android:visibility="gone"
+            app:visibility="@{viewModel.emptyVisibility}" />
 
     </FrameLayout>
 </layout>

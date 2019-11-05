@@ -54,10 +54,15 @@ open class ViewModelAnalyticsBase : BaseViewModel(),
         super.onCleared()
     }
 
-
-    fun handleThrowable(throwable: Throwable) {
+    fun handleThrowable(
+        throwable: Throwable,
+        closure: (ResponseThrowable.() -> Unit)? = null
+    ) {
         when (throwable) {
-            is ResponseThrowable -> toast(throwable.message)
+            is ResponseThrowable -> {
+                toast(throwable.message)
+                closure?.invoke(throwable)
+            }
         }
         throwable.printStackTrace()
     }

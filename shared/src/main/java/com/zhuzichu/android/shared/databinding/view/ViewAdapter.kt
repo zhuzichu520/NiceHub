@@ -42,5 +42,9 @@ fun bindViewGroup(viewGroup: ViewGroup, position: Int?) {
     }
 }
 
+@BindingAdapter(value = ["visibility"], requireAll = false)
+fun bindViewVisibility(view: View, visibility: Int) {
+    view.visibility = visibility
+}
 
 
