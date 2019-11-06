@@ -11,6 +11,7 @@ class ItemViewModelSetting(
     val id: Int,
     @StringRes val textId: Int
 ) : ItemViewModelAnalyticsBase(viewModel) {
+
     companion object {
         const val LANGUAGES = 0x00
         const val THEME = 0x01

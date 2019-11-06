@@ -11,6 +11,7 @@
     <string name="username">用户名</string>
     <string name="password">密码</string>
     <string name="login">登录</string>
+    <string name="logout">注销</string>
 
     <string name="languages">语言</string>
     <string name="theme">主题</string>
@@ -25,4 +26,7 @@
     <string name="repositories_search">仓库搜索</string>
 
     <string name="no_data">没有数据</string>
+
+    <string name="followers">关注者</string>
+    <string name="following">关注中</string>
 </resources>

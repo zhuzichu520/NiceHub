@@ -29,9 +29,9 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
+            android:layout_marginEnd="15dp"
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="15dp"
             app:layout_constraintTop_toTopOf="parent"
             app:onClickCommand="@{viewModel.onClickSetting}"
             app:srcCompat="@drawable/ic_setting" />
@@ -73,18 +73,32 @@
         <LinearLayout
             android:id="@+id/follow"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="50dp"
             android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            android:gravity="center"
             app:layout_constraintTop_toBottomOf="@+id/avatar">
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
-                android:text="关注中" />
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/following"
+                    android:textAppearance="?attr/textAppearanceSubtitle2" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.user.following.toString()}"
+                    android:textAppearance="?attr/textAppearanceCaption" />
+
+            </LinearLayout>
 
             <View
                 android:layout_width="1dp"
@@ -92,14 +106,26 @@
                 android:layout_gravity="center"
                 android:background="@color/color_divider" />
 
-            <androidx.appcompat.widget.AppCompatTextView
+            <LinearLayout
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
-                android:text="关注者" />
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/followers"
+                    android:textAppearance="?attr/textAppearanceSubtitle2" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{viewModel.user.followers.toString()}"
+                    android:textAppearance="?attr/textAppearanceCaption" />
+
+            </LinearLayout>
 
         </LinearLayout>
 

@@ -23,6 +23,6 @@ object Log {
     }
 
     fun d(flag: String, message: Any?) {
-        logger.quiet(String.format(logFormat, flag, message.toString()))
+        logger.debug(String.format(logFormat, flag, message.toString()))
     }
 }

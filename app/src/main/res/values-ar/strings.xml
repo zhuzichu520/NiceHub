@@ -11,6 +11,7 @@
     <string name="username">اسم المستخدم</string>
     <string name="password">كلمة المرور</string>
     <string name="login">تسجيل الدخول</string>
+    <string name="logout">تسجيل خروج</string>
 
     <string name="languages">اللغات</string>
     <string name="theme">موضوع</string>
@@ -25,4 +26,8 @@
     <string name="repositories_search">مستودع البحث</string>
 
     <string name="no_data">لا توجد بيانات</string>
+
+    <string name="followers">المتابِعين</string>
+    <string name="following">المتابَعين</string>
+
 </resources>
