@@ -9,6 +9,8 @@
 |登录页|首页|
 |:---:|:---:|
 |![](https://github.com/zhuzichu520/doc/blob/master/nicehub/assets/img/login.png)|![](https://github.com/zhuzichu520/doc/blob/master/nicehub/assets/img/main.jpg)|
+|个人资料|夜间模式|
+|:---:|:---:|
+|![]()|![]()|
 
 ### Demo下载体验:
-
