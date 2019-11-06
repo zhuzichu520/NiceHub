@@ -1,10 +1,10 @@
-package com.zhuzichu.android.nicehub.ui.feeds.repository.module
+package com.zhuzichu.android.nicehub.ui.repositories.detail.module
 
 import androidx.lifecycle.ViewModel
 import com.zhuzichu.android.mvvm.di.FragmentScoped
 import com.zhuzichu.android.mvvm.di.ViewModelKey
-import com.zhuzichu.android.nicehub.ui.feeds.repository.fragment.FragmentRepository
-import com.zhuzichu.android.nicehub.ui.feeds.repository.viewmodel.ViewModelRepository
+import com.zhuzichu.android.nicehub.ui.repositories.detail.fragment.FragmentRepository
+import com.zhuzichu.android.nicehub.ui.repositories.detail.viewmodel.ViewModelRepository
 import dagger.Binds
 import dagger.Module
 import dagger.android.ContributesAndroidInjector

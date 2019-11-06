@@ -1,9 +1,6 @@
 package com.zhuzichu.android.nicehub.repository
 
-import com.zhuzichu.android.nicehub.repository.entity.BeanAuthor
-import com.zhuzichu.android.nicehub.repository.entity.BeanListRes
-import com.zhuzichu.android.nicehub.repository.entity.BeanRepository
-import com.zhuzichu.android.nicehub.repository.entity.BeanUser
+import com.zhuzichu.android.nicehub.repository.entity.*
 import com.zhuzichu.android.nicehub.ui.account.login.entity.ParamterAuthorizations
 import io.reactivex.Flowable
 import retrofit2.Retrofit
@@ -42,6 +39,13 @@ interface RemoteRepository {
         page: Int,
         perPage: Int
     ): Flowable<BeanListRes<BeanRepository>>
+
+    fun getFollowers(
+        follower: String,
+        page: Int,
+        perPage: Int
+    ): Flowable<List<BeanFollower>>
+
 }
 
 class RemoteRepositoryImpl(
@@ -51,10 +55,13 @@ class RemoteRepositoryImpl(
     private val githubHtmlRetrofit: Retrofit
 ) : RemoteRepository {
 
-    private val app by lazy { githubAppRetrofit.create(GithubApi::class.java) }
-
-    private val html by lazy { githubHtmlRetrofit.create(HtmlApi::class.java) }
-
+    override fun getFollowers(
+        follower: String,
+        page: Int,
+        perPage: Int
+    ): Flowable<List<BeanFollower>> {
+        return app.getFollowers(follower, page, perPage)
+    }
 
     override fun getRepositoryReadme(login: String, name: String): Flowable<String> {
         return html.getRepository(login, name)
@@ -92,5 +99,9 @@ class RemoteRepositoryImpl(
     ): Flowable<BeanAuthor> {
         return app.authorizations(paramterAuthorizations, basicToken)
     }
+
+    private val app by lazy { githubAppRetrofit.create(GithubApi::class.java) }
+
+    private val html by lazy { githubHtmlRetrofit.create(HtmlApi::class.java) }
 
 }

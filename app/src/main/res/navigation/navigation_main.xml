@@ -5,7 +5,6 @@
     android:id="@+id/navigation_main"
     app:startDestination="@id/fragmentMain"
     tools:ignore="UnusedNavigation">
-
     <fragment
         android:id="@+id/fragmentMain"
         android:name="com.zhuzichu.android.nicehub.ui.main.fragment.FragmentMain"
@@ -20,10 +19,13 @@
         <action
             android:id="@+id/action_fragmentMain_to_fragmentRepositoriesSearch"
             app:destination="@id/fragmentRepositoriesSearch" />
+        <action
+            android:id="@+id/action_fragmentMain_to_fragmentFollower"
+            app:destination="@id/fragmentFollower" />
     </fragment>
     <fragment
         android:id="@+id/fragmentRepository"
-        android:name="com.zhuzichu.android.nicehub.ui.feeds.repository.fragment.FragmentRepository"
+        android:name="com.zhuzichu.android.nicehub.ui.repositories.detail.fragment.FragmentRepository"
         android:label="FragmentRepository"
         tools:layout="@layout/fragment_repository">
         <!-- adb shell am start -a android.intent.action.VIEW -d "https://github.com/zhuzichu520/NiceHub" -->
@@ -62,9 +64,19 @@
     <fragment
         android:id="@+id/fragmentRepositoriesSearch"
         android:name="com.zhuzichu.android.nicehub.ui.repositories.search.fragment.FragmentRepositoriesSearch"
-        android:label="FragmentRepositoriesSearch">
+        android:label="FragmentRepositoriesSearch"
+        tools:layout="@layout/fragment_repositories_search">
         <action
             android:id="@+id/action_fragmentRepositoriesSearch_to_fragmentRepository"
             app:destination="@id/fragmentRepository" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentFollower"
+        android:name="com.zhuzichu.android.nicehub.ui.follower.fragment.FragmentFollower"
+        android:label="FragmentFollower"
+        tools:layout="@layout/fragment_follower">
+        <argument
+            android:name="follower"
+            app:argType="string" />
     </fragment>
 </navigation>

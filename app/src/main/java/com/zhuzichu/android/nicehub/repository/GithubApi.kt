@@ -1,10 +1,7 @@
 package com.zhuzichu.android.nicehub.repository
 
 import androidx.annotation.NonNull
-import com.zhuzichu.android.nicehub.repository.entity.BeanAuthor
-import com.zhuzichu.android.nicehub.repository.entity.BeanListRes
-import com.zhuzichu.android.nicehub.repository.entity.BeanRepository
-import com.zhuzichu.android.nicehub.repository.entity.BeanUser
+import com.zhuzichu.android.nicehub.repository.entity.*
 import com.zhuzichu.android.nicehub.ui.account.login.entity.ParamterAuthorizations
 import io.reactivex.Flowable
 import retrofit2.Response
@@ -30,4 +27,10 @@ interface GithubApi {
     @GET("user")
     fun getPersonInfo(): Flowable<BeanUser>
 
+    @GET("{follower}")
+    fun getFollowers(
+        @Path("follower") follower: String,
+        @Query("page") page: Int,
+        @Query("per_page") perPage: Int
+    ): Flowable<List<BeanFollower>>
 }

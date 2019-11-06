@@ -1,16 +1,13 @@
-package com.zhuzichu.android.nicehub.ui.feeds.repository.fragment
+package com.zhuzichu.android.nicehub.ui.repositories.detail.fragment
 
 import android.view.View
-import android.webkit.WebView
-import android.webkit.WebViewClient
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs
 import com.zhuzichu.android.nicehub.BR
 import com.zhuzichu.android.nicehub.R
 import com.zhuzichu.android.nicehub.databinding.FragmentRepositoryBinding
-import com.zhuzichu.android.nicehub.ui.feeds.repository.viewmodel.ViewModelRepository
+import com.zhuzichu.android.nicehub.ui.repositories.detail.viewmodel.ViewModelRepository
 import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
-import kotlinx.android.synthetic.main.fragment_repository.*
 
 class FragmentRepository :
     FragmentAnalyticsBase<FragmentRepositoryBinding, ViewModelRepository>() {

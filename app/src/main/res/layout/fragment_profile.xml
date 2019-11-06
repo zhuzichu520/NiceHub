@@ -74,9 +74,9 @@
             android:id="@+id/follow"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:orientation="horizontal"
             android:layout_marginTop="15dp"
             android:gravity="center"
+            android:orientation="horizontal"
             app:layout_constraintTop_toBottomOf="@+id/avatar">
 
             <LinearLayout
@@ -84,7 +84,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                app:onClickCommand="@{viewModel.onClickFollowing}">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"
@@ -111,7 +112,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                app:onClickCommand="@{viewModel.onClickFollowers}">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:layout_width="wrap_content"

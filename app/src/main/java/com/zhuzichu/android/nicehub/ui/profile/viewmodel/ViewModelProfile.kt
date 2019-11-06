@@ -5,6 +5,8 @@ import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.nicehub.R
 import com.zhuzichu.android.nicehub.manager.UserManager
+import com.zhuzichu.android.nicehub.ui.follower.fragment.FragmentFollower
+import com.zhuzichu.android.nicehub.ui.main.fragment.FragmentMainDirections
 import com.zhuzichu.android.nicehub.ui.profile.domain.UseCaseGetContributions
 import com.zhuzichu.android.nicehub.ui.profile.domain.UseCaseGetUser
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
@@ -24,6 +26,18 @@ class ViewModelProfile @Inject constructor(
 
     val onClickSetting = BindingCommand<Any>({
         startFragment(R.id.action_fragmentMain_to_fragmentSetting)
+    })
+
+    val onClickFollowing = BindingCommand<Any>({
+        val directions =
+            FragmentMainDirections.actionFragmentMainToFragmentFollower(FragmentFollower.FOLLOWER_FOLLOWING)
+        startFragment(directions)
+    })
+
+    val onClickFollowers = BindingCommand<Any>({
+        val directions =
+            FragmentMainDirections.actionFragmentMainToFragmentFollower(FragmentFollower.FOLLOWER_FOLLOWERS)
+        startFragment(directions)
     })
 
     fun updateUser() {
