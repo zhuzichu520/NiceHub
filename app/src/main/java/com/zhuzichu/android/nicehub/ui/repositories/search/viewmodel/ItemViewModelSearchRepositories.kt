@@ -6,7 +6,7 @@ import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.nicehub.R
 import com.zhuzichu.android.nicehub.extension.toLanguageCircleDrawable
 import com.zhuzichu.android.nicehub.repository.entity.BeanRepository
-import com.zhuzichu.android.nicehub.ui.feeds.repository.entiy.ArgumentRepository
+import com.zhuzichu.android.nicehub.ui.repositories.search.fragment.FragmentRepositoriesSearchDirections
 import com.zhuzichu.android.shared.base.ItemViewModelAnalyticsBase
 
 class ItemViewModelSearchRepositories(
@@ -31,9 +31,13 @@ class ItemViewModelSearchRepositories(
     )
 
     val onClickItem = BindingCommand<Any>({
+        val directions =
+            FragmentRepositoriesSearchDirections.actionFragmentRepositoriesSearchToFragmentRepository(
+                bean.owner?.login ?: "",
+                bean.name ?: ""
+            )
         startFragment(
-            R.id.action_fragmentRepositoriesSearch_to_fragmentRepository,
-            ArgumentRepository(bean)
+            directions
         )
     })
 }

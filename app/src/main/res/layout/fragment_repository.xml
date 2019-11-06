@@ -17,17 +17,7 @@
             android:id="@+id/webview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="invisible"
-            app:visibility="@{viewModel.webviewVisibility}"
             app:webReadme="@{viewModel.readme}" />
-
-        <View
-            android:id="@+id/mask"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/color_background"
-            android:visibility="visible"
-            app:visibility="@{viewModel.maskVisibility}" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/empty"

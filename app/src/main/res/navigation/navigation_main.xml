@@ -26,6 +26,7 @@
         android:name="com.zhuzichu.android.nicehub.ui.feeds.repository.fragment.FragmentRepository"
         android:label="FragmentRepository"
         tools:layout="@layout/fragment_repository">
+        <!-- adb shell am start -a android.intent.action.VIEW -d "https://github.com/zhuzichu520/NiceHub" -->
         <deepLink
             android:autoVerify="true"
             app:uri="https://github.com/{login}/{name}" />

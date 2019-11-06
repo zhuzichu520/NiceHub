@@ -20,21 +20,13 @@ class ViewModelRepository @Inject constructor(
 
     val readme = MutableLiveData<String>()
 
-    val webviewVisibility = MutableLiveData<Int>(View.INVISIBLE)
-
-    val maskVisibility = MutableLiveData<Int>(View.VISIBLE)
-
-    val emptyVisibility = MutableLiveData<Int>(View.GONE)
+    val emptyVisibility = MutableLiveData(View.GONE)
 
     val showEmptyEvent = SingleLiveEvent<Unit>()
 
-    fun loadReadme() {
-        useCaseGetReadme.execute(
-            ParamterGetReadme(
-                bean.value?.owner?.login ?: "",
-                bean.value?.name ?: ""
-            )
-        ).autoLoading(this)
+    fun loadReadme(login: String, name: String) {
+        useCaseGetReadme.execute(ParamterGetReadme(login, name))
+            .autoLoading(this)
             .autoDispose(this)
             .subscribe({
                 readme.value = it

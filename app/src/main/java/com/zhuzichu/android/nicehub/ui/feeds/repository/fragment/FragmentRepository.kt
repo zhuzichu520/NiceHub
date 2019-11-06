@@ -4,6 +4,7 @@ import android.view.View
 import android.webkit.WebView
 import android.webkit.WebViewClient
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import com.zhuzichu.android.nicehub.BR
 import com.zhuzichu.android.nicehub.R
 import com.zhuzichu.android.nicehub.databinding.FragmentRepositoryBinding
@@ -13,20 +14,12 @@ import kotlinx.android.synthetic.main.fragment_repository.*
 
 class FragmentRepository :
     FragmentAnalyticsBase<FragmentRepositoryBinding, ViewModelRepository>() {
+
+    val args: FragmentRepositoryArgs by navArgs()
+
     override fun bindVariableId(): Int = BR.viewModel
 
     override fun setLayoutId(): Int = R.layout.fragment_repository
-
-    override fun initView() {
-        super.initView()
-        webview.webViewClient = object : WebViewClient() {
-            override fun onPageFinished(view: WebView?, url: String?) {
-                super.onPageFinished(view, url)
-                viewModel.maskVisibility.value = View.GONE
-                viewModel.webviewVisibility.value = View.VISIBLE
-            }
-        }
-    }
 
     override fun initViewObservable() {
         super.initViewObservable()
@@ -36,6 +29,6 @@ class FragmentRepository :
     }
 
     override fun initFirstData() {
-        viewModel.loadReadme()
+        viewModel.loadReadme(args.login, args.name)
     }
 }

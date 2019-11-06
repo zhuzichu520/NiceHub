@@ -20,7 +20,7 @@ object Dep {
         const val timber = "4.7.1"
         const val swiperefreshlayout = "1..0-alpha03"
         const val libs = "1.0.24"
-        const val mvvm = "1.0.40"
+        const val mvvm = "1.0.43"
         const val widget = "1.0.29"
         const val room = "2.2.1"
         const val umengCommon = "2.0.0"

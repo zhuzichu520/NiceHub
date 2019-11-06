@@ -43,7 +43,9 @@
             android:name="org.apache.http.legacy"
             android:required="false" />
 
-        <activity android:name=".ActivityMain">
+        <activity
+            android:name=".ActivityMain"
+            android:configChanges="orientation|keyboardHidden|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
             </intent-filter>
