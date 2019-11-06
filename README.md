@@ -15,6 +15,6 @@
 |![](https://github.com/zhuzichu520/doc/blob/master/nicehub/assets/img/profile.png)|![](https://github.com/zhuzichu520/doc/blob/master/nicehub/assets/img/dark.png)|
 
 ### Demo下载体验:
-[下载 APK-Demo](http://oss.pgyer.com/6fffae085638464610853fa926cbadd9.apk?auth_key=1573023169-c66f45a25a76c6202b1c0a9541e2815c-0-858509479256e8a0def6e9a101e50071&response-content-disposition=attachment%3B+filename%3Dapp-release.apk)
+[下载 APK-Demo](https://www.pgyer.com/59It)
 
 ![](https://github.com/zhuzichu520/doc/blob/master/nicehub/assets/img/QRcode.png)
