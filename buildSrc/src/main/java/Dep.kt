@@ -41,8 +41,14 @@ object Dep {
     const val jsoup =
         "org.jsoup:jsoup:${Version.jsoup}"
 
+    const val kaptRoomCompiler =
+        "androidx.room:room-compiler:${Version.room}"
+
     const val roomRuntime =
         "androidx.room:room-runtime:${Version.room}"
+
+    const val roomKtx =
+        "androidx.room:room-ktx:${Version.room}"
 
     const val roomRxJava =
         "androidx.room:room-rxjava2:${Version.room}"

@@ -4,7 +4,6 @@ import androidx.annotation.NonNull
 import com.zhuzichu.android.nicehub.repository.entity.*
 import com.zhuzichu.android.nicehub.ui.account.login.entity.ParamterAuthorizations
 import io.reactivex.Flowable
-import retrofit2.Response
 import retrofit2.http.*
 
 interface GithubApi {
@@ -25,10 +24,13 @@ interface GithubApi {
     ): Flowable<BeanAuthor>
 
     @GET("user")
-    fun getPersonInfo(): Flowable<BeanUser>
+    fun getUserInfo(
+        @Header("Authorization") token: String?
+    ): Flowable<BeanUser>
 
-    @GET("{follower}")
+    @GET("users/{login}/{follower}")
     fun getFollowers(
+        @Path("login") login: String,
         @Path("follower") follower: String,
         @Query("page") page: Int,
         @Query("per_page") perPage: Int

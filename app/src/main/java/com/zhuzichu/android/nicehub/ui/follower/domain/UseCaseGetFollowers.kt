@@ -15,6 +15,7 @@ class UseCaseGetFollowers @Inject constructor(
 
     override fun execute(parameters: ParamterGetFollowers): Flowable<List<BeanFollower>> {
         return remoteRepository.getFollowers(
+            parameters.login,
             parameters.follower,
             parameters.page,
             parameters.pageSize

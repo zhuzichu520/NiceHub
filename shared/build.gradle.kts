@@ -56,6 +56,7 @@ android {
 dependencies {
     implementation(fileTree("dir" to "libs", "include" to "*.jar"))
 
+    kapt(Dep.kaptRoomCompiler)
     kapt(Dep.kaptDaggerCompiler)
     kapt(Dep.kaptDaggerProcessor)
     kapt(Dep.kaptGlide)
@@ -93,6 +94,7 @@ dependencies {
     api(Dep.mvvm)
     api(Dep.roomRuntime)
     api(Dep.roomRxJava)
+    api(Dep.roomKtx)
     api(Dep.umengCommon)
     api(Dep.umengAnalytics)
     api(Dep.sharp)

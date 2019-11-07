@@ -1,15 +1,13 @@
 package com.zhuzichu.android.nicehub.db
 
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.zhuzichu.android.nicehub.db.entity.DOUser
 import io.reactivex.Flowable
 
+@Dao
 interface DaoUser {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(user: DaoUser)
+    suspend fun insert(user: DOUser)
 
     @Delete
     suspend fun deleteUser(list: List<DOUser>)

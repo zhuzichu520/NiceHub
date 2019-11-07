@@ -39,7 +39,7 @@ data class BeanUser(
     @SerializedName("html_url")
     var htmlUrl: String? = null,
     @SerializedName("id")
-    var id: Int? = null,
+    var id: Long? = null,
     @SerializedName("location")
     var location: Any? = null,
     @SerializedName("login")

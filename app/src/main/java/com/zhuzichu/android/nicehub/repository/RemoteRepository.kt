@@ -21,7 +21,9 @@ interface RemoteRepository {
     ): Flowable<BeanAuthor>
 
 
-    fun getPersonInfo(): Flowable<BeanUser>
+    fun getUserInfo(
+        token: String?
+    ): Flowable<BeanUser>
 
     fun getContributions(
         login: String
@@ -41,6 +43,7 @@ interface RemoteRepository {
     ): Flowable<BeanListRes<BeanRepository>>
 
     fun getFollowers(
+        login: String,
         follower: String,
         page: Int,
         perPage: Int
@@ -56,11 +59,12 @@ class RemoteRepositoryImpl(
 ) : RemoteRepository {
 
     override fun getFollowers(
+        login: String,
         follower: String,
         page: Int,
         perPage: Int
     ): Flowable<List<BeanFollower>> {
-        return app.getFollowers(follower, page, perPage)
+        return app.getFollowers(follower, login, page, perPage)
     }
 
     override fun getRepositoryReadme(login: String, name: String): Flowable<String> {
@@ -81,8 +85,8 @@ class RemoteRepositoryImpl(
         return app.searchRepositories(query, sort, order, page, perPage)
     }
 
-    override fun getPersonInfo(): Flowable<BeanUser> {
-        return app.getPersonInfo()
+    override fun getUserInfo(token: String?): Flowable<BeanUser> {
+        return app.getUserInfo(token)
     }
 
     override fun getHotRepos(

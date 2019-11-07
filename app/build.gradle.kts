@@ -76,6 +76,7 @@ dependencies {
     implementation(fileTree("dir" to "libs", "include" to "*.jar"))
 
     api(project(path = ":shared"))
+    kapt(Dep.kaptRoomCompiler)
     kapt(Dep.kaptDaggerCompiler)
     kapt(Dep.kaptDaggerProcessor)
     kapt(Dep.kaptGlide)

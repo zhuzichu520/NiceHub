@@ -81,7 +81,6 @@ class PageHelper(
             } else {
                 showFinish()
                 page = page.inc()
-                isLoading = false
             }
         }, 25)
     }
@@ -95,16 +94,18 @@ class PageHelper(
     }
 
     fun showError() {
-        networkViewModel.state.value = ItemViewModelNetwork.STATE_ERROR
         isLoading = false
+        networkViewModel.state.value = ItemViewModelNetwork.STATE_ERROR
         hideRefresh()
     }
 
     private fun showFinish() {
+        isLoading = false
         networkViewModel.state.value = ItemViewModelNetwork.STATE_FINISH
     }
 
     private fun showEnd() {
+        isLoading = false
         networkViewModel.state.value = ItemViewModelNetwork.STATE_END
     }
 }
