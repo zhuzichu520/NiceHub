@@ -1,3 +1,5 @@
+Config.init(project)
+
 buildscript {
 
     repositories {

@@ -9,7 +9,7 @@ plugins {
     id("TestPlugin")
 }
 
-Config.init(project)
+Config.initJenkinsProperties(project)
 
 project.android {
     compileSdkVersion(Config.compileSdkVersion())

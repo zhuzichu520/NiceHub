@@ -9,29 +9,53 @@ import java.util.*
 
 object Config {
 
-    lateinit var project: Project
+    private enum class GradleKey(val key: String) {
+        IS_JENKINS("IS_JENKINS"),
+        ENVIRONMENT("ENVIRONMENT"),
+        COMPILE_SDK_VERSION("COMPILE_SDK_VERSION"),
+        TARGET_SDK_VERSION("TARGET_SDK_VERSION"),
+        MIN_SDK_VERSION("MIN_SDK_VERSION"),
+        APP_SERVER_URL("APP_SERVER_URL"),
+        BUILD_TYPE("BUILD_TYPE"),
+        RELEASE_SIGN_CONFIGS_PATH("RELEASE_SIGN_CONFIGS_PATH");
+    }
 
-    private val rootPath =
-        System.getProperty("user.dir").plus(File.separator).replace("app${File.separator}", "")
+    private enum class ConfigKey(val key: String) {
+        APP_NAME("APP_NAME"),
+        APPLICATION_ID("APPLICATION_ID"),
+        APP_VERSION_NAME("APP_VERSION_NAME"),
+        APP_VERSION_CODE("APP_VERSION_CODE");
+    }
+
+    private enum class SignKey(val key: String) {
+        SIGN_KEY_ALIAS("SIGN_KEY_ALIAS"),
+        SIGN_KEY_PASSWORD("SIGN_KEY_PASSWORD"),
+        SIGN_STORE_FILE("SIGN_STORE_FILE"),
+        SIGN_STORE_PASSWORD("SIGN_STORE_PASSWORD");
+    }
+
+    lateinit var parentProject: Project
+
+    lateinit var rootPath: String
 
     @JvmStatic
     fun init(project: Project) {
-        this.project = project
-        Log.q("rootPath", rootPath)
-        initJenkinsProperties()
-        Log.q("Project.this", project.javaClass.name)
+        this.parentProject = project
+        this.rootPath = parentProject.projectDir.toString().plus(File.separator)
+        Log.init(parentProject)
+        Log.l("rootPath", rootPath)
     }
 
-    private val resourcesPath = rootPath
-        .plus("buildSrc")
-        .plus(File.separator)
-        .plus("src")
-        .plus(File.separator)
-        .plus("main")
-        .plus(File.separator)
-        .plus("resources")
-        .plus(File.separator)
-
+    private val resourcesPath by lazy {
+        rootPath.plus("buildSrc")
+            .plus(File.separator)
+            .plus("src")
+            .plus(File.separator)
+            .plus("main")
+            .plus(File.separator)
+            .plus("resources")
+            .plus(File.separator)
+    }
 
     private val defaultGradleProperties by lazy {
         loadProperties(
@@ -96,88 +120,89 @@ object Config {
     @JvmStatic
     fun keyAlias(): String {
         return signatureProperties.getPropertyByKey(SignKey.SIGN_KEY_ALIAS.key).apply {
-            Log.q("keyAlias", this)
+            Log.l("keyAlias", this)
         }
     }
 
     @JvmStatic
     fun keyPassword(): String {
         return signatureProperties.getPropertyByKey(SignKey.SIGN_KEY_PASSWORD.key).apply {
-            Log.q("keyPassword", this)
+            Log.l("keyPassword", this)
         }
     }
 
     @JvmStatic
     fun storeFile(): String {
         return signatureProperties.getPropertyByKey(SignKey.SIGN_STORE_FILE.key).apply {
-            Log.q("storeFile", this)
+            Log.l("storeFile", this)
         }
     }
 
     @JvmStatic
     fun storePassword(): String {
         return signatureProperties.getPropertyByKey(SignKey.SIGN_STORE_PASSWORD.key).apply {
-            Log.q("storePassword", this)
+            Log.l("storePassword", this)
         }
     }
 
     @JvmStatic
     fun appName(): String {
         return configProperties.getPropertyByKey(ConfigKey.APP_NAME.key).apply {
-            Log.q("appName", this)
+            Log.l("appName", this)
         }
     }
 
     @JvmStatic
     fun compileSdkVersion(): Int {
         return gradleProperties.getPropertyByKey(GradleKey.COMPILE_SDK_VERSION.key).toInt2().apply {
-            Log.q("compileSdkVersion", this)
+            Log.l("compileSdkVersion", this)
         }
     }
 
     @JvmStatic
     fun applicationId(): String {
         return configProperties.getPropertyByKey(ConfigKey.APPLICATION_ID.key).apply {
-            Log.q("applicationId", this)
+            Log.l("applicationId", this)
         }
     }
 
     @JvmStatic
     fun minSdkVersion(): String {
         return gradleProperties.getPropertyByKey(GradleKey.MIN_SDK_VERSION.key).apply {
-            Log.q("minSdkVersion", this)
+            Log.l("minSdkVersion", this)
         }
     }
 
     @JvmStatic
     fun targetSdkVersion(): String {
         return gradleProperties.getPropertyByKey(GradleKey.TARGET_SDK_VERSION.key).apply {
-            Log.q("targetSdkVersion", this)
+            Log.l("targetSdkVersion", this)
         }
     }
 
     @JvmStatic
     fun versionCode(): Int {
         return configProperties.getPropertyByKey(ConfigKey.APP_VERSION_CODE.key).toInt2().apply {
-            Log.q("versionCode", this)
+            Log.l("versionCode", this)
         }
     }
 
     @JvmStatic
     fun versionName(): String {
         return configProperties.getPropertyByKey(ConfigKey.APP_VERSION_NAME.key).apply {
-            Log.q("versionName", this)
+            Log.l("versionName", this)
         }
     }
 
     @JvmStatic
     fun getRunEnvironment(): String {
         return gradleProperties.getPropertyByKey(GradleKey.ENVIRONMENT.key).apply {
-            Log.q("getRunEnvironment", this)
+            Log.l("getRunEnvironment", this)
         }
     }
 
-    private fun initJenkinsProperties() {
+    @JvmStatic
+    fun initJenkinsProperties(project: Project) {
         project.extensions.getByType(ExtraPropertiesExtension::class.java)
             .properties.mapKeys {
             gradleProperties.put(it.key, project.properties[it.key])
@@ -187,7 +212,7 @@ object Config {
     private fun getReleaseSignPath(): String {
         return gradleProperties.getPropertyByKey(GradleKey.RELEASE_SIGN_CONFIGS_PATH.key)
             .apply {
-                Log.q("getReleaseSignPath", this)
+                Log.l("getReleaseSignPath", this)
             }
     }
 
@@ -241,31 +266,5 @@ object Config {
         return Properties().apply {
             load(FileInputStream(path))
         }
-    }
-
-    private enum class GradleKey(val key: String) {
-        IS_JENKINS("IS_JENKINS"),
-        ENVIRONMENT("ENVIRONMENT"),
-        COMPILE_SDK_VERSION("COMPILE_SDK_VERSION"),
-        TARGET_SDK_VERSION("TARGET_SDK_VERSION"),
-        MIN_SDK_VERSION("MIN_SDK_VERSION"),
-        APP_SERVER_URL("APP_SERVER_URL"),
-        BUILD_TYPE("BUILD_TYPE"),
-        RELEASE_SIGN_CONFIGS_PATH("RELEASE_SIGN_CONFIGS_PATH");
-    }
-
-    private enum class ConfigKey(val key: String) {
-        APP_NAME("APP_NAME"),
-        APPLICATION_ID("APPLICATION_ID"),
-        APP_VERSION_NAME("APP_VERSION_NAME"),
-        APP_VERSION_CODE("APP_VERSION_CODE");
-
-    }
-
-    private enum class SignKey(val key: String) {
-        SIGN_KEY_ALIAS("SIGN_KEY_ALIAS"),
-        SIGN_KEY_PASSWORD("SIGN_KEY_PASSWORD"),
-        SIGN_STORE_FILE("SIGN_STORE_FILE"),
-        SIGN_STORE_PASSWORD("SIGN_STORE_PASSWORD");
     }
 }
