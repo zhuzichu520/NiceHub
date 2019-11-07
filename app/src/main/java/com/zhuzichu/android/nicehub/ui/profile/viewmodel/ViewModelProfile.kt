@@ -11,7 +11,6 @@ import com.zhuzichu.android.nicehub.ui.profile.domain.UseCaseGetContributions
 import com.zhuzichu.android.nicehub.ui.profile.domain.UseCaseGetUser
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.autoLoading
-import com.zhuzichu.android.shared.extension.logi
 import javax.inject.Inject
 
 class ViewModelProfile @Inject constructor(
@@ -29,15 +28,19 @@ class ViewModelProfile @Inject constructor(
     })
 
     val onClickFollowing = BindingCommand<Any>({
-        val directions =
-            FragmentMainDirections.actionFragmentMainToFragmentFollower(FragmentFollower.FOLLOWER_FOLLOWING)
-        startFragment(directions)
+        userManager.doLogin {
+            val directions =
+                FragmentMainDirections.actionFragmentMainToFragmentFollower(FragmentFollower.FOLLOWER_FOLLOWING)
+            startFragment(directions)
+        }
     })
 
     val onClickFollowers = BindingCommand<Any>({
-        val directions =
-            FragmentMainDirections.actionFragmentMainToFragmentFollower(FragmentFollower.FOLLOWER_FOLLOWERS)
-        startFragment(directions)
+        userManager.doLogin {
+            val directions =
+                FragmentMainDirections.actionFragmentMainToFragmentFollower(FragmentFollower.FOLLOWER_FOLLOWERS)
+            startFragment(directions)
+        }
     })
 
     fun updateUser() {
@@ -57,7 +60,6 @@ class ViewModelProfile @Inject constructor(
             .autoLoading(this)
             .autoDispose(this)
             .subscribe({
-                it.logi("updateContributions")
                 contributions.value = it
             }, {
                 handleThrowable(it)

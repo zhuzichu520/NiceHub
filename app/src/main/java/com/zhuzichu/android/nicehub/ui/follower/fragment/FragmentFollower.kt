@@ -6,6 +6,8 @@ import com.zhuzichu.android.nicehub.R
 import com.zhuzichu.android.nicehub.databinding.FragmentFollowerBinding
 import com.zhuzichu.android.nicehub.ui.follower.viewmodel.ViewModelFollower
 import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
+import com.zhuzichu.android.shared.extension.toStringByResId
+import kotlinx.android.synthetic.main.fragment_follower.*
 
 class FragmentFollower : FragmentAnalyticsBase<FragmentFollowerBinding, ViewModelFollower>() {
 
@@ -22,6 +24,10 @@ class FragmentFollower : FragmentAnalyticsBase<FragmentFollowerBinding, ViewMode
 
     override fun initView() {
         super.initView()
+        toolbar.titleText = if (args.follower == FOLLOWER_FOLLOWERS)
+            R.string.followers.toStringByResId()
+        else
+            R.string.following.toStringByResId()
         viewModel.follower = args.follower
     }
 
