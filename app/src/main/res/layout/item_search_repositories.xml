@@ -7,7 +7,7 @@
 
         <variable
             name="item"
-            type="com.zhuzichu.android.nicehub.ui.repositories.search.viewmodel.ItemViewModelSearchRepositories" />
+            type="com.zhuzichu.android.nicehub.ui.repo.search.viewmodel.ItemViewModelRepoSearch" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

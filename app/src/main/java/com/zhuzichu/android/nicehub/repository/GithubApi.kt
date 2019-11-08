@@ -7,6 +7,7 @@ import io.reactivex.Flowable
 import retrofit2.http.*
 
 interface GithubApi {
+
     @GET("search/repositories")
     fun searchRepositories(
         @Query("q") query: String,
@@ -35,4 +36,13 @@ interface GithubApi {
         @Query("page") page: Int,
         @Query("per_page") perPage: Int
     ): Flowable<List<BeanFollower>>
+
+    @GET("repos/{login}/{name}/contents/{path}")
+    fun getFiles(
+        @Path("login") login: String,
+        @Path("name") name: String,
+        @Path(value = "path", encoded = true) path: String,
+        @Query("ref") ref: String
+    ): Flowable<List<BeanFile>>
+
 }

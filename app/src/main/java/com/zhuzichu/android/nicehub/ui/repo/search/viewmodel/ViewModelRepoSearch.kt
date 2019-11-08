@@ -1,12 +1,12 @@
-package com.zhuzichu.android.nicehub.ui.repositories.search.viewmodel
+package com.zhuzichu.android.nicehub.ui.repo.search.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.nicehub.BR
 import com.zhuzichu.android.nicehub.R
-import com.zhuzichu.android.nicehub.ui.repositories.search.domain.UseCaseSearchRepositories
-import com.zhuzichu.android.nicehub.ui.repositories.search.entity.ParamterSearchRepositories
+import com.zhuzichu.android.nicehub.ui.repo.search.domain.UseCaseSearchRepo
+import com.zhuzichu.android.nicehub.ui.repo.search.entity.ParamterSearchRepo
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.itemDiffOf
 import com.zhuzichu.android.shared.extension.map
@@ -14,8 +14,8 @@ import com.zhuzichu.android.shared.widget.page.PageHelper
 import me.tatarka.bindingcollectionadapter2.collections.AsyncDiffObservableList
 import javax.inject.Inject
 
-class ViewModelRepositoriesSearch @Inject constructor(
-    private val useCaseSearchRepositories: UseCaseSearchRepositories
+class ViewModelRepoSearch @Inject constructor(
+    private val useCaseSearchRepo: UseCaseSearchRepo
 ) : ViewModelAnalyticsBase() {
 
     val query = MutableLiveData<String>()
@@ -31,7 +31,7 @@ class ViewModelRepositoriesSearch @Inject constructor(
     private val pageSize = 20
 
     private val pageHelper = PageHelper(
-        AsyncDiffObservableList(itemDiffOf<ItemViewModelSearchRepositories> { oldItem, newItem -> oldItem.id == newItem.id }),
+        AsyncDiffObservableList(itemDiffOf<ItemViewModelRepoSearch> { oldItem, newItem -> oldItem.id == newItem.id }),
         this,
         pageSize,
         false,
@@ -47,13 +47,13 @@ class ViewModelRepositoriesSearch @Inject constructor(
     val onRefresh = pageHelper.onRefresh
 
     val itemBinding = pageHelper.itemBinding.apply {
-        map<ItemViewModelSearchRepositories>(BR.item, R.layout.item_search_repositories)
+        map<ItemViewModelRepoSearch>(BR.item, R.layout.item_search_repositories)
     }
 
 
     fun search(page: Int) {
-        useCaseSearchRepositories.execute(
-            ParamterSearchRepositories(
+        useCaseSearchRepo.execute(
+            ParamterSearchRepo(
                 q = query.value.toString(),
                 sort = "stars",
                 order = "desc",
@@ -66,7 +66,7 @@ class ViewModelRepositoriesSearch @Inject constructor(
             .subscribe({
                 pageHelper.addAll(
                     it.items?.map { item ->
-                        ItemViewModelSearchRepositories(this, item)
+                        ItemViewModelRepoSearch(this, item)
                     }
                 )
             }, {

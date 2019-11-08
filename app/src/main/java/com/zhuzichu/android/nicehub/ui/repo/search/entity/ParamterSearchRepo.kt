@@ -1,6 +1,6 @@
-package com.zhuzichu.android.nicehub.ui.repositories.search.entity
+package com.zhuzichu.android.nicehub.ui.repo.search.entity
 
-data class ParamterSearchRepositories(
+data class ParamterSearchRepo(
     val q: String,
     val sort: String,
     val order: String,

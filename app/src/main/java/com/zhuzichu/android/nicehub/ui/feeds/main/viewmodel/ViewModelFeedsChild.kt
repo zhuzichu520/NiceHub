@@ -2,7 +2,6 @@ package com.zhuzichu.android.nicehub.ui.feeds.main.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import com.uber.autodispose.autoDispose
-import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.nicehub.BR
 import com.zhuzichu.android.nicehub.R
 import com.zhuzichu.android.nicehub.ui.feeds.main.domain.UseCaseGetHotRepos
@@ -38,7 +37,7 @@ class ViewModelFeedsChild @Inject constructor(
     val onRefresh = pageHelper.onRefresh
 
     val itemBinding = pageHelper.itemBinding.apply {
-        map<ItemViewModelRepository>(BR.item, R.layout.item_repository)
+        map<ItemViewModelRepository>(BR.item, R.layout.item_repo)
     }
 
     private fun loadData(page: Int) {

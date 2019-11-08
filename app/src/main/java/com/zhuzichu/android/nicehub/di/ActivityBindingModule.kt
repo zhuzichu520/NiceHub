@@ -7,10 +7,11 @@ import com.zhuzichu.android.nicehub.ui.account.login.module.ModuleLogin
 import com.zhuzichu.android.nicehub.ui.feeds.main.module.ModuleFeeds
 import com.zhuzichu.android.nicehub.ui.feeds.main.module.ModuleChildFeeds
 import com.zhuzichu.android.nicehub.ui.follower.module.ModuleFollower
-import com.zhuzichu.android.nicehub.ui.repositories.detail.module.ModuleRepository
+import com.zhuzichu.android.nicehub.ui.repo.detail.module.ModuleRepoDetail
 import com.zhuzichu.android.nicehub.ui.main.module.ModuleMain
 import com.zhuzichu.android.nicehub.ui.profile.module.ModuleProfile
-import com.zhuzichu.android.nicehub.ui.repositories.search.module.ModuleRepositoriesSearch
+import com.zhuzichu.android.nicehub.ui.repo.file.module.ModuleRepoFile
+import com.zhuzichu.android.nicehub.ui.repo.search.module.ModuleRepoSearch
 import com.zhuzichu.android.nicehub.ui.setting.languages.module.ModuleLanguages
 import com.zhuzichu.android.nicehub.ui.setting.main.module.ModuleSetting
 import com.zhuzichu.android.nicehub.ui.setting.theme.module.ModuleTheme
@@ -28,12 +29,13 @@ abstract class ActivityBindingModule {
             ModuleFeeds::class,
             ModuleProfile::class,
             ModuleChildFeeds::class,
-            ModuleRepository::class,
+            ModuleRepoDetail::class,
             ModuleSetting::class,
             ModuleLanguages::class,
             ModuleTheme::class,
-            ModuleRepositoriesSearch::class,
-            ModuleFollower::class
+            ModuleRepoSearch::class,
+            ModuleFollower::class,
+            ModuleRepoFile::class
         ]
     )
     internal abstract fun mainActivity(): ActivityMain

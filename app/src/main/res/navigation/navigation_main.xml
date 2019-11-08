@@ -11,23 +11,23 @@
         android:label="FragmentMain"
         tools:layout="@layout/fragment_main">
         <action
-            android:id="@+id/action_fragmentMain_to_fragmentRepository"
-            app:destination="@id/fragmentRepository" />
+            android:id="@+id/action_fragmentMain_to_FragmentRepoDetail"
+            app:destination="@id/FragmentRepoDetail" />
         <action
             android:id="@+id/action_fragmentMain_to_fragmentSetting"
             app:destination="@id/fragmentSetting" />
         <action
-            android:id="@+id/action_fragmentMain_to_fragmentRepositoriesSearch"
-            app:destination="@id/fragmentRepositoriesSearch" />
+            android:id="@+id/action_fragmentMain_to_fragmentRepoSearch"
+            app:destination="@id/fragmentReposSearch" />
         <action
             android:id="@+id/action_fragmentMain_to_fragmentFollower"
             app:destination="@id/fragmentFollower" />
     </fragment>
     <fragment
-        android:id="@+id/fragmentRepository"
-        android:name="com.zhuzichu.android.nicehub.ui.repositories.detail.fragment.FragmentRepository"
-        android:label="FragmentRepository"
-        tools:layout="@layout/fragment_repository">
+        android:id="@+id/FragmentRepoDetail"
+        android:name="com.zhuzichu.android.nicehub.ui.repo.detail.fragment.FragmentRepoDetail"
+        android:label="FragmentRepoDetail"
+        tools:layout="@layout/fragment_repo_detail">
         <!-- adb shell am start -a android.intent.action.VIEW -d "https://github.com/zhuzichu520/NiceHub" -->
         <deepLink
             android:autoVerify="true"
@@ -62,13 +62,13 @@
         android:label="FragmentTheme"
         tools:layout="@layout/fragment_theme" />
     <fragment
-        android:id="@+id/fragmentRepositoriesSearch"
-        android:name="com.zhuzichu.android.nicehub.ui.repositories.search.fragment.FragmentRepositoriesSearch"
-        android:label="FragmentRepositoriesSearch"
-        tools:layout="@layout/fragment_repositories_search">
+        android:id="@+id/fragmentReposSearch"
+        android:name="com.zhuzichu.android.nicehub.ui.repo.search.fragment.FragmentRepoSearch"
+        android:label="FragmentReposSearch"
+        tools:layout="@layout/fragment_repo_search">
         <action
-            android:id="@+id/action_fragmentRepositoriesSearch_to_fragmentRepository"
-            app:destination="@id/fragmentRepository" />
+            android:id="@+id/action_fragmentReposSearch_to_FragmentRepoDetail"
+            app:destination="@id/FragmentRepoDetail" />
     </fragment>
     <fragment
         android:id="@+id/fragmentFollower"

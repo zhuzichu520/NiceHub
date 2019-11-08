@@ -7,6 +7,6 @@ import javax.inject.Inject
 
 class ViewModelFeeds @Inject constructor() : ViewModelAnalyticsBase() {
     val onClickSearch = BindingCommand<Any>({
-        startFragment(R.id.action_fragmentMain_to_fragmentRepositoriesSearch)
+        startFragment(R.id.action_fragmentMain_to_fragmentRepoSearch)
     })
 }

@@ -49,6 +49,13 @@ interface RemoteRepository {
         perPage: Int
     ): Flowable<List<BeanFollower>>
 
+    fun getFiles(
+        login: String,
+        name: String,
+        path: String,
+        ref: String
+    ): Flowable<List<BeanFile>>
+
 }
 
 class RemoteRepositoryImpl(
@@ -57,6 +64,15 @@ class RemoteRepositoryImpl(
     @Named("GithubHtml")
     private val githubHtmlRetrofit: Retrofit
 ) : RemoteRepository {
+
+    override fun getFiles(
+        login: String,
+        name: String,
+        path: String,
+        ref: String
+    ): Flowable<List<BeanFile>> {
+        return app.getFiles(login, name, path, ref)
+    }
 
     override fun getFollowers(
         login: String,
