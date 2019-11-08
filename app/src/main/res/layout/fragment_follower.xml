@@ -10,27 +10,47 @@
             type="com.zhuzichu.android.nicehub.ui.follower.viewmodel.ViewModelFollower" />
     </data>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:onRefresh="@{viewModel.onRefresh}">
+        android:layout_height="match_parent">
 
-        <FrameLayout
-            android:id="@+id/refresh"
+        <com.zhuzichu.android.widget.toolbar.NiceToolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:toolbarTitle="@string/followers"
+            app:onClickNavigation="@{viewModel.onBackCommand}"
+            app:toolbarNavigationIcon="@drawable/ic_back"
+            app:toolbarTitleTextAppearance="?attr/textAppearanceHeadline6" />
 
-            <com.zhuzichu.android.widget.recycler.BottomRecyclerView
-                android:id="@+id/recycler"
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:onRefresh="@{viewModel.onRefresh}">
+
+            <FrameLayout
+                android:id="@+id/refresh"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:itemBinding="@{viewModel.itemBinding}"
-                app:items="@{viewModel.items}"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                app:onScrollBottom="@{viewModel.onScrollBottom}" />
+                android:layout_height="match_parent">
 
-        </FrameLayout>
+                <com.zhuzichu.android.widget.recycler.BottomRecyclerView
+                    android:id="@+id/recycler"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:itemBinding="@{viewModel.itemBinding}"
+                    tools:listitem="@layout/item_follower"
+                    app:items="@{viewModel.items}"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:onScrollBottom="@{viewModel.onScrollBottom}" />
 
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            </FrameLayout>
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

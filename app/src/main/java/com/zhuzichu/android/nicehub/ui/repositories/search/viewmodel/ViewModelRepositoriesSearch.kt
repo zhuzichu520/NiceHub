@@ -8,7 +8,6 @@ import com.zhuzichu.android.nicehub.R
 import com.zhuzichu.android.nicehub.ui.repositories.search.domain.UseCaseSearchRepositories
 import com.zhuzichu.android.nicehub.ui.repositories.search.entity.ParamterSearchRepositories
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
-import com.zhuzichu.android.shared.extension.autoLoading
 import com.zhuzichu.android.shared.extension.itemDiffOf
 import com.zhuzichu.android.shared.extension.map
 import com.zhuzichu.android.shared.widget.page.PageHelper
@@ -22,6 +21,7 @@ class ViewModelRepositoriesSearch @Inject constructor(
     val query = MutableLiveData<String>()
 
     val onSearchCommand = BindingCommand<Any>({
+        showLoading()
         search(pageHelper.run {
             page = 1
             page
@@ -60,8 +60,8 @@ class ViewModelRepositoriesSearch @Inject constructor(
                 page = page,
                 pageSize = 20
             )
-        ).autoLoading(this) {
-            page == 1
+        ).doFinally {
+            hideLoading()
         }.autoDispose(this)
             .subscribe({
                 pageHelper.addAll(
@@ -70,7 +70,8 @@ class ViewModelRepositoriesSearch @Inject constructor(
                     }
                 )
             }, {
-
+                handleThrowable(it)
             })
     }
+
 }

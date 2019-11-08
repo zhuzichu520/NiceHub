@@ -6,7 +6,7 @@ import com.zhuzichu.android.nicehub.databinding.FragmentProfileBinding
 import com.zhuzichu.android.nicehub.ui.profile.viewmodel.ViewModelProfile
 import com.zhuzichu.android.shared.base.FragmentAnalyticsBase
 
-class FragmentProfile :
+class  FragmentProfile :
     FragmentAnalyticsBase<FragmentProfileBinding, ViewModelProfile>() {
 
     override fun bindVariableId(): Int = BR.viewModel

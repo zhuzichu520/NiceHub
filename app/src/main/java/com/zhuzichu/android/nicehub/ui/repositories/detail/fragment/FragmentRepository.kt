@@ -28,4 +28,5 @@ class FragmentRepository :
     override fun initFirstData() {
         viewModel.loadReadme(args.login, args.name)
     }
+
 }

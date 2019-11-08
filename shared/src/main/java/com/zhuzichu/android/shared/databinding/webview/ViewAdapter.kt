@@ -1,13 +1,11 @@
 package com.zhuzichu.android.shared.databinding.webview
 
 import android.webkit.WebView
-import androidx.appcompat.app.AppCompatDelegate
 import androidx.databinding.BindingAdapter
 import com.zhuzichu.android.shared.extension.isDark
 
 @BindingAdapter(value = ["webReadme"], requireAll = false)
 fun bindWebView(webView: WebView, webData: String?) {
-    AppCompatDelegate.getDefaultNightMode()
     val css = if (webView.context.isDark()) "readme_dark.css" else "readme.css"
     val html = """
             <!DOCTYPE html>
