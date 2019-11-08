@@ -7,7 +7,7 @@ import plugin.extension.StudentExtension
 class TestPlugin : Plugin<Project> {
 
   override fun apply( project: Project) {
-      println("调用了apply方法")
+      Log.l("TestPlugin","调用了apply()")
         val extension = project.extensions.create("student", StudentExtension::class.java)
         project.tasks.register("printStudent", StudentTask::class.java) {
             doLast {

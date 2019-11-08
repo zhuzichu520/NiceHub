@@ -88,4 +88,3 @@ student {
     nickname = "小猪"
     age = 160
 }
-
