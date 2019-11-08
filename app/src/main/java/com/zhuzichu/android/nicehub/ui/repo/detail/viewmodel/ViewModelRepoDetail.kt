@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.mvvm.event.SingleLiveEvent
 import com.zhuzichu.android.nicehub.ui.repo.detail.domain.UseCaseGetReadme
-import com.zhuzichu.android.nicehub.ui.repo.detail.entiy.ParamterGetReadme
+import com.zhuzichu.android.nicehub.ui.repo.detail.entity.ParamterGetReadme
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
 import com.zhuzichu.android.shared.extension.NOT_FOUND
 import com.zhuzichu.android.shared.extension.autoLoading

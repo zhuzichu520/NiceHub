@@ -11,4 +11,5 @@ class FragmentRepoFile : FragmentAnalyticsBase<FragmentRepoFileBinding, ViewMode
     override fun setLayoutId(): Int = R.layout.fragment_repo_file
 
     override fun bindVariableId(): Int = BR.viewModel
+
 }

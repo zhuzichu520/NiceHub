@@ -2,7 +2,7 @@ package com.zhuzichu.android.nicehub.ui.repo.detail.domain
 
 import com.zhuzichu.android.mvvm.domain.UseCase
 import com.zhuzichu.android.nicehub.repository.RemoteRepository
-import com.zhuzichu.android.nicehub.ui.repo.detail.entiy.ParamterGetReadme
+import com.zhuzichu.android.nicehub.ui.repo.detail.entity.ParamterGetReadme
 import com.zhuzichu.android.shared.extension.NOT_FOUND
 import com.zhuzichu.android.shared.extension.ResponseThrowable
 import com.zhuzichu.android.shared.extension.bindToException
