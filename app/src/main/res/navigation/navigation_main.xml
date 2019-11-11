@@ -78,5 +78,17 @@
         <argument
             android:name="follower"
             app:argType="string" />
+        <action
+            android:id="@+id/action_fragmentFollower_to_fragmentUser"
+            app:destination="@id/fragmentUser" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentUser"
+        android:name="com.zhuzichu.android.nicehub.ui.user.fragment.FragmentUser"
+        android:label="FragmentUser"
+        tools:layout="@layout/fragment_user">
+        <argument
+            android:name="login"
+            app:argType="string" />
     </fragment>
 </navigation>

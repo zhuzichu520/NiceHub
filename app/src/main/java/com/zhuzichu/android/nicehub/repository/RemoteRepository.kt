@@ -1,10 +1,13 @@
 package com.zhuzichu.android.nicehub.repository
 
+import androidx.annotation.NonNull
 import com.zhuzichu.android.nicehub.repository.entity.*
 import com.zhuzichu.android.nicehub.ui.account.login.entity.ParamterAuthorizations
 import io.reactivex.Flowable
 import retrofit2.Retrofit
+import retrofit2.http.DELETE
 import retrofit2.http.GET
+import retrofit2.http.PUT
 import retrofit2.http.Path
 import javax.inject.Named
 
@@ -56,6 +59,21 @@ interface RemoteRepository {
         ref: String
     ): Flowable<List<BeanFile>>
 
+    fun getFollowStatus(
+        login: String
+    ): Flowable<Boolean>
+
+    fun followUser(
+        login: String
+    ): Flowable<Boolean>
+
+    fun unfollowUser(
+        login: String
+    ): Flowable<Boolean>
+
+    fun getUser(
+        login: String
+    ): Flowable<BeanUser>
 }
 
 class RemoteRepositoryImpl(
@@ -64,6 +82,22 @@ class RemoteRepositoryImpl(
     @Named("GithubHtml")
     private val githubHtmlRetrofit: Retrofit
 ) : RemoteRepository {
+
+    override fun getUser(login: String): Flowable<BeanUser> {
+        return app.getUser(login)
+    }
+
+    override fun getFollowStatus(login: String): Flowable<Boolean> {
+        return app.getFollowStatus(login)
+    }
+
+    override fun followUser(login: String): Flowable<Boolean> {
+        return app.followUser(login)
+    }
+
+    override fun unfollowUser(login: String): Flowable<Boolean> {
+        return app.unfollowUser(login)
+    }
 
     override fun getFiles(
         login: String,

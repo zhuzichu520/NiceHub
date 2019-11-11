@@ -24,11 +24,3 @@ data class BeanFile(
     var url: String? = null
 )
 
-data class Links(
-    @SerializedName("git")
-    var git: String? = null,
-    @SerializedName("html")
-    var html: String? = null,
-    @SerializedName("self")
-    var self: String? = null
-)

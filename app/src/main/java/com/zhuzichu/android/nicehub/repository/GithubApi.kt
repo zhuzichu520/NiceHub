@@ -4,6 +4,8 @@ import androidx.annotation.NonNull
 import com.zhuzichu.android.nicehub.repository.entity.*
 import com.zhuzichu.android.nicehub.ui.account.login.entity.ParamterAuthorizations
 import io.reactivex.Flowable
+import io.reactivex.Observable
+import retrofit2.Response
 import retrofit2.http.*
 
 interface GithubApi {
@@ -44,5 +46,25 @@ interface GithubApi {
         @Path(value = "path", encoded = true) path: String,
         @Query("ref") ref: String
     ): Flowable<List<BeanFile>>
+
+    @GET("user/following/{login}")
+    fun getFollowStatus(
+        @Path("login") login: String
+    ): Flowable<Boolean>
+
+    @PUT("user/following/{login}")
+    fun followUser(
+        @Path("login") login: String
+    ): Flowable<Boolean>
+
+    @DELETE("user/following/{login}")
+    fun unfollowUser(
+        @Path("login") login: String
+    ): Flowable<Boolean>
+
+    @GET("users/{login}")
+    fun getUser(
+        @Path("login") username: String
+    ): Flowable<BeanUser>
 
 }
