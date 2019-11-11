@@ -1,7 +1,5 @@
 Config.init(project)
 
-project.ext.set("kotlin_version", "1.3.50")
-
 buildscript {
     repositories {
         google()
@@ -12,7 +10,6 @@ buildscript {
         classpath(Dep.pluginBuildGradle)
         classpath(Dep.pluginkotlinGradle)
         classpath(Dep.pluginNavigationSafe)
-        classpath("com.github.dcendents:android-maven-gradle-plugin:2.1")
     }
 }
 

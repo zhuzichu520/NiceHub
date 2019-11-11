@@ -13,6 +13,11 @@ fun bindToolbar(toolbar: NiceToolbar, clickCommand: BindingCommand<*>?) {
     }
 }
 
+@BindingAdapter("toolbarTitle")
+fun setToolbarTitle(toolbar: NiceToolbar, text: CharSequence?) {
+    toolbar.titleText = text.toString()
+}
+
 @BindingAdapter(value = ["onSearchChange", "onSearchSubmit"], requireAll = false)
 fun bindSearchView(
     searchView: SearchView,

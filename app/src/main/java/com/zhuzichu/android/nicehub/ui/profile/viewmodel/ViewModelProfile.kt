@@ -30,7 +30,10 @@ class ViewModelProfile @Inject constructor(
     val onClickFollowing = BindingCommand<Any>({
         userManager.doLogin {
             val directions =
-                FragmentMainDirections.actionFragmentMainToFragmentFollower(FragmentFollower.FOLLOWER_FOLLOWING)
+                FragmentMainDirections.actionFragmentMainToFragmentFollower(
+                    FragmentFollower.FOLLOWER_FOLLOWING,
+                    user.value?.login ?: ""
+                )
             startFragment(directions)
         }
     })
@@ -38,7 +41,10 @@ class ViewModelProfile @Inject constructor(
     val onClickFollowers = BindingCommand<Any>({
         userManager.doLogin {
             val directions =
-                FragmentMainDirections.actionFragmentMainToFragmentFollower(FragmentFollower.FOLLOWER_FOLLOWERS)
+                FragmentMainDirections.actionFragmentMainToFragmentFollower(
+                    FragmentFollower.FOLLOWER_FOLLOWERS,
+                    user.value?.login ?: ""
+                )
             startFragment(directions)
         }
     })

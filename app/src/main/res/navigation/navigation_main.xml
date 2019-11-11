@@ -78,6 +78,9 @@
         <argument
             android:name="follower"
             app:argType="string" />
+        <argument
+            android:name="login"
+            app:argType="string" />
         <action
             android:id="@+id/action_fragmentFollower_to_fragmentUser"
             app:destination="@id/fragmentUser" />
@@ -90,5 +93,8 @@
         <argument
             android:name="login"
             app:argType="string" />
+        <action
+            android:id="@+id/action_fragmentUser_to_fragmentFollower"
+            app:destination="@id/fragmentFollower" />
     </fragment>
 </navigation>

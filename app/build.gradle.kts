@@ -15,7 +15,7 @@ project.android {
     compileSdkVersion(Config.compileSdkVersion())
 
     signingConfigs {
-        create("MyAppSign") {
+        create("appSign") {
             keyAlias = Config.keyAlias()
             keyPassword = Config.keyPassword()
             storeFile = file(Config.storeFile())
@@ -29,7 +29,7 @@ project.android {
         targetSdkVersion(Config.targetSdkVersion())
         versionCode = Config.versionCode()
         versionName = Config.versionName()
-        signingConfig = signingConfigs.getByName("MyAppSign")
+        signingConfig = signingConfigs.getByName("appSign")
         renderscriptTargetApi = 18
         renderscriptSupportModeEnabled = true
         resValue("string", "app_name_new", Config.appName())

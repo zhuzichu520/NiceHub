@@ -16,7 +16,7 @@ class FragmentFollower : FragmentAnalyticsBase<FragmentFollowerBinding, ViewMode
         const val FOLLOWER_FOLLOWING = "following"
     }
 
-    val args: FragmentFollowerArgs by navArgs()
+    private val args: FragmentFollowerArgs by navArgs()
 
     override fun bindVariableId(): Int = BR.viewModel
 
@@ -29,6 +29,7 @@ class FragmentFollower : FragmentAnalyticsBase<FragmentFollowerBinding, ViewMode
         else
             R.string.following.toStringByResId()
         viewModel.follower = args.follower
+        viewModel.login = args.login
     }
 
 }

@@ -21,6 +21,7 @@ class ViewModelFollower @Inject constructor(
 ) : ViewModelAnalyticsBase() {
 
     lateinit var follower: String
+    lateinit var login:String
     private val pageSize = 20
 
     private val pageHelper = PageHelper(
@@ -44,7 +45,7 @@ class ViewModelFollower @Inject constructor(
 
     private fun loadFollowers(page: Int) {
         useCaseGetFollowers.execute(
-            ParamterGetFollowers(userManager.user.value?.login ?: "", follower, page, pageSize)
+            ParamterGetFollowers(login, follower, page, pageSize)
         ).autoDispose(this)
             .subscribe({
                 pageHelper.addAll(
