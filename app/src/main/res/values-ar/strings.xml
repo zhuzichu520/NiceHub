@@ -30,4 +30,7 @@
     <string name="followers">المتابِعين</string>
     <string name="following">المتابَعين</string>
 
+    <string name="follow">تابع</string>
+    <string name="unfollow">ألغِ المتابعة</string>
+
 </resources>

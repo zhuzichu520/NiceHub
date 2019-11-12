@@ -22,5 +22,6 @@ class FragmentUser : FragmentAnalyticsBase<FragmentUserBinding, ViewModelUser>()
     override fun initFirstData() {
         super.initFirstData()
         viewModel.updateUser()
+        viewModel.updateFollowStatus()
     }
 }
