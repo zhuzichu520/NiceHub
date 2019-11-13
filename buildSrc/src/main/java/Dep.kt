@@ -1,7 +1,7 @@
 object Dep {
     object Version {
         const val kotlin = "1.3.50"
-        const val buildGradle = "3.5.1"
+        const val buildGradle = "3.5.2"
         const val androidxCore = "1.1.0"
         const val androidxKtx = "1.1.0"
         const val androidxAnnotation = "1.1.0"
@@ -21,11 +21,10 @@ object Dep {
         const val swiperefreshlayout = "1..0-alpha03"
         const val libs = "1.0.25"
         const val mvvm = "1.0.45"
-        const val widget = "1.0.30"
+        const val widget = "1.0.31"
         const val room = "2.2.1"
         const val umengCommon = "2.0.0"
         const val umengAnalytics = "8.0.0"
-        const val sharp = "1.1.3@aar"
         const val jsoup = "1.12.1"
     }
 
@@ -34,9 +33,6 @@ object Dep {
 
     const val umengAnalytics =
         "com.umeng.umsdk:analytics:${Version.umengAnalytics}"
-
-    const val sharp =
-        "com.pixplicity.sharp:library:${Version.sharp}"
 
     const val jsoup =
         "org.jsoup:jsoup:${Version.jsoup}"

@@ -97,6 +97,5 @@ dependencies {
     api(Dep.roomKtx)
     api(Dep.umengCommon)
     api(Dep.umengAnalytics)
-    api(Dep.sharp)
     api(Dep.jsoup)
 }

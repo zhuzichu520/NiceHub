@@ -5,7 +5,7 @@ import androidx.annotation.DrawableRes
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
-import com.pixplicity.sharp.Sharp
+import com.zhuzichu.android.widget.sharp.Sharp
 
 @BindingAdapter(value = ["url", "fadeDuration", "error"], requireAll = false)
 fun bindImageViewByUrl(
