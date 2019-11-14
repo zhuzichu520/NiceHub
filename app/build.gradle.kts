@@ -1,4 +1,4 @@
-import extension.student
+import org.jetbrains.kotlin.gradle.plugin.KotlinSourceSet
 
 plugins {
     id("com.android.application")
@@ -70,6 +70,11 @@ project.android {
     androidExtensions {
         isExperimental = true
     }
+
+    sourceSets{
+        sourceSets["main"].java.srcDir("src/main/kotlin")
+    }
+
 }
 
 dependencies {

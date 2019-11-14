@@ -56,11 +56,13 @@ open class ViewModelAnalyticsBase : BaseViewModel(),
 
     fun handleThrowable(
         throwable: Throwable,
+        isToast: Boolean = true,
         closure: (ResponseThrowable.() -> Unit)? = null
     ) {
         when (throwable) {
             is ResponseThrowable -> {
-                toast(throwable.message)
+                if (isToast)
+                    toast(throwable.message)
                 closure?.invoke(throwable)
             }
         }

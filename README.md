@@ -14,7 +14,7 @@
 |:---:|:---:|
 |![](https://github.com/zhuzichu520/doc/blob/master/nicehub/assets/img/profile.png)|![](https://github.com/zhuzichu520/doc/blob/master/nicehub/assets/img/dark.png)|
 
-### Demo下载体验:
+### Demo下载体验 密码 000000:
 [下载 APK-Demo](https://www.pgyer.com/59It)
 
 ![](https://github.com/zhuzichu520/doc/blob/master/nicehub/assets/img/QRcode.png)

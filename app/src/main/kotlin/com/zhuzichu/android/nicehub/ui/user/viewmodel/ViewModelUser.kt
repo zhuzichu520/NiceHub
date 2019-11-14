@@ -1,10 +1,6 @@
 package com.zhuzichu.android.nicehub.ui.user.viewmodel
 
-import android.widget.Toast
-import androidx.databinding.ObservableArrayList
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.Transformations
 import com.uber.autodispose.autoDispose
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.nicehub.BR
@@ -17,11 +13,10 @@ import com.zhuzichu.android.nicehub.ui.user.domain.UseCaseGetUserByLogin
 import com.zhuzichu.android.nicehub.ui.user.domain.UseCaseUnFollowerUser
 import com.zhuzichu.android.nicehub.ui.user.fragment.FragmentUserDirections
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
-import com.zhuzichu.android.shared.extension.ParseDateFormat
-import com.zhuzichu.android.shared.extension.autoLoading
-import com.zhuzichu.android.shared.extension.map
+import com.zhuzichu.android.shared.extension.*
+import me.tatarka.bindingcollectionadapter2.collections.AsyncDiffObservableList
+import me.tatarka.bindingcollectionadapter2.collections.MergeObservableList
 import me.tatarka.bindingcollectionadapter2.itembindings.OnItemBindClass
-import java.util.ArrayList
 import javax.inject.Inject
 
 class ViewModelUser @Inject constructor(
@@ -40,17 +35,14 @@ class ViewModelUser @Inject constructor(
         map<ItemViewModelUserFollow>(BR.item, R.layout.item_user_follow)
     }
 
-    private val lists = MutableLiveData<List<Any>>()
-
     private val itemViewModelUserFollow = ItemViewModelUserFollow(this)
 
-    val items: LiveData<List<Any>> =
-        Transformations.map<List<Any>, List<Any>>(lists) { input ->
-            val list = ArrayList<Any>(input.size + 1)
-            list.add(itemViewModelUserFollow)
-            list.addAll(input)
-            list
-        }
+    val list =
+        AsyncDiffObservableList(itemDiffOf<ItemViewModelUserText> { _, _ -> false })
+
+    val items: List<Any> = MergeObservableList<Any>()
+        .insertItem(itemViewModelUserFollow)
+        .insertList(list)
 
     val onClickFollowing = BindingCommand<Any>({
         user.value?.let {
@@ -80,7 +72,7 @@ class ViewModelUser @Inject constructor(
             .autoDispose(this)
             .subscribe({
                 user.value = it
-                lists.value = initUserTextList(it)
+                list.update(initItemList(it))
             }, {
                 handleThrowable(it)
             })
@@ -91,13 +83,20 @@ class ViewModelUser @Inject constructor(
             .autoLoading(this)
             .autoDispose(this)
             .subscribe({
-
+                itemViewModelUserFollow.showUnFollow()
             }, {
-                handleThrowable(it)
+                handleThrowable(it, false) {
+                    if (code == NOT_FOUND) {
+                        itemViewModelUserFollow.showFollow()
+                    } else {
+                        toast(this.message)
+                    }
+                }
             })
     }
 
-    private fun initUserTextList(it: BeanUser): List<Any> {
+
+    private fun initItemList(it: BeanUser): List<Any> {
         val list = mutableListOf<Any>()
         it.createdAt?.let {
             list.add(
