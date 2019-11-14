@@ -33,8 +33,11 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun providesRemoteRepository(@Named("GithubApp") githubAppRetrofit: Retrofit,@Named("GithubHtml") githubHtmlRetrofit: Retrofit): RemoteRepository {
-        return RemoteRepositoryImpl(githubAppRetrofit,githubHtmlRetrofit)
+    fun providesRemoteRepository(
+        @Named("gsonRetrofit") gsonRetrofit: Retrofit,
+        @Named("scalarsRetrofit") scalarsRetrofit: Retrofit,
+        @Named("htmlRetrofit") htmlRetrofit: Retrofit): RemoteRepository {
+        return RemoteRepositoryImpl(gsonRetrofit,scalarsRetrofit,htmlRetrofit)
     }
 
     @Provides

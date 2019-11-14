@@ -22,8 +22,8 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideOkHttpClient(
-        @Named("GlobalParamter") paramterInterceptor: Interceptor,
-        @Named("HttpLog") httpLogInterceptor: Interceptor
+        @Named("paramterInterceptor") paramterInterceptor: Interceptor,
+        @Named("httpLogInterceptor") httpLogInterceptor: Interceptor
     ): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(httpLogInterceptor)
@@ -36,7 +36,7 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    @Named("GithubApp")
+    @Named("gsonRetrofit")
     fun provideGithubAppRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
@@ -48,7 +48,19 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    @Named("GithubHtml")
+    @Named("scalarsRetrofit")
+    fun provideGithubAppScalarsRetrofit(okHttpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+            .client(okHttpClient)
+            .baseUrl(BuildConfig.HOST_APP2)
+            .addConverterFactory(ScalarsConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .build()
+    }
+
+    @Singleton
+    @Provides
+    @Named("htmlRetrofit")
     fun provideGithubHtmlRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient)
@@ -60,7 +72,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    @Named("GlobalParamter")
+    @Named("paramterInterceptor")
     fun providesGlobalParamterInterceptor(globalStorage: GlobalStorage): Interceptor {
         return Interceptor {
             var request = it.request()
@@ -74,7 +86,7 @@ class NetworkModule {
 
     @Provides
     @Singleton
-    @Named("HttpLog")
+    @Named("httpLogInterceptor")
     fun providesHttpLogInterceptor(): Interceptor = HttpLoggingInterceptor().apply {
         level = HttpLoggingInterceptor.Level.BODY
     }

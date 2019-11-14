@@ -77,10 +77,12 @@ interface RemoteRepository {
 }
 
 class RemoteRepositoryImpl(
-    @Named("GithubApp")
-    private val githubAppRetrofit: Retrofit,
-    @Named("GithubHtml")
-    private val githubHtmlRetrofit: Retrofit
+    @Named("gsonRetrofit")
+    private val gsonRetrofit: Retrofit,
+    @Named("scalarsRetrofit")
+    private val scalarsRetrofit: Retrofit,
+    @Named("htmlRetrofit")
+    private val htmlRetrofit: Retrofit
 ) : RemoteRepository {
 
     override fun getUser(login: String): Flowable<BeanUser> {
@@ -88,7 +90,7 @@ class RemoteRepositoryImpl(
     }
 
     override fun getFollowStatus(login: String): Flowable<Boolean> {
-        return app.getFollowStatus(login)
+        return scalars.getFollowStatus(login)
     }
 
     override fun followUser(login: String): Flowable<Boolean> {
@@ -154,8 +156,10 @@ class RemoteRepositoryImpl(
         return app.authorizations(paramterAuthorizations, basicToken)
     }
 
-    private val app by lazy { githubAppRetrofit.create(GithubApi::class.java) }
+    private val app by lazy { gsonRetrofit.create(GithubApi::class.java) }
 
-    private val html by lazy { githubHtmlRetrofit.create(HtmlApi::class.java) }
+    private val scalars by lazy { scalarsRetrofit.create(GithubApi::class.java) }
+
+    private val html by lazy { htmlRetrofit.create(HtmlApi::class.java) }
 
 }

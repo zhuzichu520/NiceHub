@@ -59,6 +59,7 @@ fun Throwable.handleException(): ResponseThrowable {
             SERVICE_UNAVAILABLE -> ex.message = "服务器不可用"
             else -> ex.message = "网络错误"
         }
+        ex.code = this.code()
         return ex
     } else if (this is JsonParseException
         || this is JSONException

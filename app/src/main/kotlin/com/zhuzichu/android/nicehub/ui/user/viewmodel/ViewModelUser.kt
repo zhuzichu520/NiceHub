@@ -83,6 +83,7 @@ class ViewModelUser @Inject constructor(
             .autoLoading(this)
             .autoDispose(this)
             .subscribe({
+                toast("触发了")
                 itemViewModelUserFollow.showUnFollow()
             }, {
                 handleThrowable(it, false) {
