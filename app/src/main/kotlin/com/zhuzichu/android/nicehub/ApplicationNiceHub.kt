@@ -3,6 +3,7 @@ package com.zhuzichu.android.nicehub
 import androidx.appcompat.app.AppCompatDelegate
 import com.umeng.analytics.MobclickAgent
 import com.umeng.commonsdk.UMConfigure
+import com.zhuzichu.android.mvvm.MvvmManager
 import com.zhuzichu.android.nicehub.di.DaggerAppComponent
 import com.zhuzichu.android.shared.global.AppGlobal
 import com.zhuzichu.android.shared.storage.GlobalStorage
@@ -34,6 +35,12 @@ class ApplicationNiceHub : DaggerApplication() {
         )
         RxJavaPlugins.setErrorHandler {
 
+        }
+        MvvmManager.animBuilder = {
+            enter=R.anim.slide_in_right
+            exit=R.anim.slide_out_left
+            popEnter=R.anim.slide_in_left
+            popExit=R.anim.slide_out_right
         }
     }
 

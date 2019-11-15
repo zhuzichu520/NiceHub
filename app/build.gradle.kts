@@ -10,6 +10,7 @@ plugins {
 Config.initJenkinsProperties(project)
 
 project.android {
+    
     compileSdkVersion(Config.compileSdkVersion())
 
     signingConfigs {
@@ -69,7 +70,7 @@ project.android {
         isExperimental = true
     }
 
-    sourceSets{
+    sourceSets {
         sourceSets["main"].java.srcDir("src/main/kotlin")
     }
 
