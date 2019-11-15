@@ -35,7 +35,22 @@ class ViewModelUser @Inject constructor(
         map<ItemViewModelUserFollow>(BR.item, R.layout.item_user_follow)
     }
 
-    private val itemViewModelUserFollow = ItemViewModelUserFollow(this)
+
+    private val onClickUnfollow: (() -> Unit)? = {
+
+    }
+
+
+    private val onClickFollow: (() -> Unit)? = {
+
+    }
+
+    private val itemViewModelUserFollow =
+        ItemViewModelUserFollow(
+            this,
+            BindingCommand(onClickUnfollow),
+            BindingCommand(onClickFollow)
+        )
 
     val list =
         AsyncDiffObservableList(itemDiffOf<ItemViewModelUserText> { _, _ -> false })
@@ -83,19 +98,16 @@ class ViewModelUser @Inject constructor(
             .autoLoading(this)
             .autoDispose(this)
             .subscribe({
-                toast("触发了")
-                itemViewModelUserFollow.showUnFollow()
-            }, {
-                handleThrowable(it, false) {
-                    if (code == NOT_FOUND) {
-                        itemViewModelUserFollow.showFollow()
-                    } else {
-                        toast(this.message)
-                    }
+                if (it.code() == 404) {
+                    itemViewModelUserFollow.showFollow()
                 }
+                if (it.code() == 204) {
+                    itemViewModelUserFollow.showUnFollow()
+                }
+            }, {
+                handleThrowable(it)
             })
     }
-
 
     private fun initItemList(it: BeanUser): List<Any> {
         val list = mutableListOf<Any>()

@@ -98,4 +98,5 @@ dependencies {
     api(Dep.umengCommon)
     api(Dep.umengAnalytics)
     api(Dep.jsoup)
+    api(Dep.autoSzie)
 }

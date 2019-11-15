@@ -1,14 +1,10 @@
 package com.zhuzichu.android.nicehub.repository
 
-import androidx.annotation.NonNull
 import com.zhuzichu.android.nicehub.repository.entity.*
 import com.zhuzichu.android.nicehub.ui.account.login.entity.ParamterAuthorizations
 import io.reactivex.Flowable
+import retrofit2.Response
 import retrofit2.Retrofit
-import retrofit2.http.DELETE
-import retrofit2.http.GET
-import retrofit2.http.PUT
-import retrofit2.http.Path
 import javax.inject.Named
 
 interface RemoteRepository {
@@ -61,7 +57,7 @@ interface RemoteRepository {
 
     fun getFollowStatus(
         login: String
-    ): Flowable<Boolean>
+    ): Flowable<Response<Any>>
 
     fun followUser(
         login: String
@@ -79,8 +75,6 @@ interface RemoteRepository {
 class RemoteRepositoryImpl(
     @Named("gsonRetrofit")
     private val gsonRetrofit: Retrofit,
-    @Named("scalarsRetrofit")
-    private val scalarsRetrofit: Retrofit,
     @Named("htmlRetrofit")
     private val htmlRetrofit: Retrofit
 ) : RemoteRepository {
@@ -89,8 +83,8 @@ class RemoteRepositoryImpl(
         return app.getUser(login)
     }
 
-    override fun getFollowStatus(login: String): Flowable<Boolean> {
-        return scalars.getFollowStatus(login)
+    override fun getFollowStatus(login: String): Flowable<Response<Any>> {
+        return app.getFollowStatus(login)
     }
 
     override fun followUser(login: String): Flowable<Boolean> {
@@ -157,8 +151,6 @@ class RemoteRepositoryImpl(
     }
 
     private val app by lazy { gsonRetrofit.create(GithubApi::class.java) }
-
-    private val scalars by lazy { scalarsRetrofit.create(GithubApi::class.java) }
 
     private val html by lazy { htmlRetrofit.create(HtmlApi::class.java) }
 

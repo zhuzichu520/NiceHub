@@ -50,7 +50,7 @@ interface GithubApi {
     @GET("user/following/{login}")
     fun getFollowStatus(
         @Path("login") login: String
-    ): Flowable<Boolean>
+    ): Flowable<Response<Any>>
 
     @PUT("user/following/{login}")
     fun followUser(

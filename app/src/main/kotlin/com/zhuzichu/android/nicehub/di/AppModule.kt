@@ -35,9 +35,9 @@ class AppModule {
     @Singleton
     fun providesRemoteRepository(
         @Named("gsonRetrofit") gsonRetrofit: Retrofit,
-        @Named("scalarsRetrofit") scalarsRetrofit: Retrofit,
-        @Named("htmlRetrofit") htmlRetrofit: Retrofit): RemoteRepository {
-        return RemoteRepositoryImpl(gsonRetrofit,scalarsRetrofit,htmlRetrofit)
+        @Named("htmlRetrofit") htmlRetrofit: Retrofit
+    ): RemoteRepository {
+        return RemoteRepositoryImpl(gsonRetrofit, htmlRetrofit)
     }
 
     @Provides

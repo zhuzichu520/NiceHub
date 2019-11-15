@@ -48,18 +48,6 @@ class NetworkModule {
 
     @Singleton
     @Provides
-    @Named("scalarsRetrofit")
-    fun provideGithubAppScalarsRetrofit(okHttpClient: OkHttpClient): Retrofit {
-        return Retrofit.Builder()
-            .client(okHttpClient)
-            .baseUrl(BuildConfig.HOST_APP2)
-            .addConverterFactory(ScalarsConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-            .build()
-    }
-
-    @Singleton
-    @Provides
     @Named("htmlRetrofit")
     fun provideGithubHtmlRetrofit(okHttpClient: OkHttpClient): Retrofit {
         return Retrofit.Builder()

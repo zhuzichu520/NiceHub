@@ -26,7 +26,10 @@ object Dep {
         const val umengCommon = "2.0.0"
         const val umengAnalytics = "8.0.0"
         const val jsoup = "1.12.1"
+        const val autoSize = "1.1.2"
     }
+
+    const val autoSzie = "me.jessyan:autosize:${Version.autoSize}"
 
     const val umengCommon =
         "com.umeng.umsdk:common:${Version.umengCommon}"

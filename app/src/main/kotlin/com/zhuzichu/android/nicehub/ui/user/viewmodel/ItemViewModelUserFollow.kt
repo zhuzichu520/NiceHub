@@ -1,36 +1,31 @@
 package com.zhuzichu.android.nicehub.ui.user.viewmodel
 
+import android.view.View
 import androidx.lifecycle.MutableLiveData
 import com.zhuzichu.android.mvvm.base.BaseViewModel
 import com.zhuzichu.android.mvvm.databinding.BindingCommand
 import com.zhuzichu.android.shared.base.ItemViewModelAnalyticsBase
 
 class ItemViewModelUserFollow(
-    viewModel: BaseViewModel
+    val viewModel: BaseViewModel,
+    val onClickUnfollow:BindingCommand<Any>,
+    val onClickFollow:BindingCommand<Any>
 ) : ItemViewModelAnalyticsBase(viewModel) {
 
-    val state = MutableLiveData(1)
+    val display = MutableLiveData(1)
 
-    val followState = MutableLiveData(1)
+    val visibility = MutableLiveData(View.INVISIBLE)
 
     val text = MutableLiveData<String>()
 
-    val onClickUnfollow = BindingCommand<Any>({
-
-    })
-
-    val onClickFollow = BindingCommand<Any>({
-
-    })
-
     fun showUnFollow() {
-        state.value = 0
-        followState.value = 0
+        visibility.value = View.VISIBLE
+        display.value = 0
     }
 
     fun showFollow() {
-        state.value = 0
-        followState.value = 1
+        visibility.value = View.VISIBLE
+        display.value = 1
     }
 
 }
