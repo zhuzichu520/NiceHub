@@ -27,11 +27,3 @@ tasks {
         delete(buildDir)
     }
 }
-
-gradle.beforeProject {
-
-}
-
-gradle.projectsEvaluated {
-
-}
