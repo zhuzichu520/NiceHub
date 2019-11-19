@@ -68,7 +68,7 @@ data class BeanRepository(
     @SerializedName("commits_url")
     var commitsUrl: String? = null,
     @SerializedName("git_commits_url")
-    var git_commitsUrl: String? = null,
+    var gitCommitsUrl: String? = null,
     @SerializedName("comments_url")
     var commentsUrl: String? = null,
     @SerializedName("issue_comment_url")

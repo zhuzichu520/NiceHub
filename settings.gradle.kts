@@ -6,3 +6,20 @@ rootProject.name = "NiceHub"
 //gradle.projectsLoaded {
 //    Config.init(this.rootProject)
 //}
+
+pluginManagement {
+    repositories {
+
+    }
+}
+
+for(project in rootProject.children){
+    val projectDirName = project.projectDir.toString()
+    println(projectDirName)
+}
+
+gradle.projectsLoaded {
+    println("执行了")
+}
+
+println("JavaHome".plus(System.getProperty("java.home")))
