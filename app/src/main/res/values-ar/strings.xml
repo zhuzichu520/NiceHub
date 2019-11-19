@@ -15,6 +15,9 @@
 
     <string name="languages">اللغات</string>
     <string name="theme">موضوع</string>
+    <string name="animation">حيوية</string>
+    <string name="fade">تلاشى</string>
+    <string name="slide">الانزلاق</string>
 
     <string name="settings_theme_title">اختيار تصميم</string>
     <string name="settings_theme_system">إعداد تلقائي للنظام</string>

@@ -15,6 +15,9 @@
 
     <string name="languages">语言</string>
     <string name="theme">主题</string>
+    <string name="animation">动画</string>
+    <string name="fade">褪色</string>
+    <string name="slide">滑动</string>
 
     <string name="settings_theme_title">选择主题</string>
     <string name="settings_theme_system">系统默认</string>

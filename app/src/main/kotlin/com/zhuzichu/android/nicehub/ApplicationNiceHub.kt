@@ -1,7 +1,6 @@
 package com.zhuzichu.android.nicehub
 
 import androidx.appcompat.app.AppCompatDelegate
-import com.umeng.analytics.MobclickAgent
 import com.umeng.commonsdk.UMConfigure
 import com.zhuzichu.android.mvvm.MvvmManager
 import com.zhuzichu.android.nicehub.di.DaggerAppComponent
@@ -37,10 +36,10 @@ class ApplicationNiceHub : DaggerApplication() {
 
         }
         MvvmManager.animBuilder = {
-            enter=R.anim.slide_in_right
-            exit=R.anim.slide_out_left
-            popEnter=R.anim.slide_in_left
-            popExit=R.anim.slide_out_right
+            enter=R.anim.slide_enter
+            exit=R.anim.slide_exit
+            popEnter=R.anim.slide_pop_enter
+            popExit=R.anim.slide_pop_exit
         }
     }
 

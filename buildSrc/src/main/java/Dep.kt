@@ -5,7 +5,7 @@ object Dep {
         const val androidxCore = "1.1.0"
         const val androidxKtx = "1.1.0"
         const val androidxAnnotation = "1.1.0"
-        const val androidxConstraintlayout = "2.0.0-beta2"
+        const val androidxConstraintlayout = "2.0.0-beta3"
         const val androidxNavigation = "2.2.0-beta01"
         const val dagger = "2.24"
         const val material = "1.1.0-beta01"

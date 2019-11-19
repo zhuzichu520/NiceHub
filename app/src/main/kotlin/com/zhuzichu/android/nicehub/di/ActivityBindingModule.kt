@@ -12,6 +12,7 @@ import com.zhuzichu.android.nicehub.ui.main.module.ModuleMain
 import com.zhuzichu.android.nicehub.ui.profile.module.ModuleProfile
 import com.zhuzichu.android.nicehub.ui.repo.file.module.ModuleRepoFile
 import com.zhuzichu.android.nicehub.ui.repo.search.module.ModuleRepoSearch
+import com.zhuzichu.android.nicehub.ui.setting.animation.module.ModuleAnimation
 import com.zhuzichu.android.nicehub.ui.setting.languages.module.ModuleLanguages
 import com.zhuzichu.android.nicehub.ui.setting.main.module.ModuleSetting
 import com.zhuzichu.android.nicehub.ui.setting.theme.module.ModuleTheme
@@ -37,7 +38,8 @@ abstract class ActivityBindingModule {
             ModuleRepoSearch::class,
             ModuleFollower::class,
             ModuleRepoFile::class,
-            ModuleUser::class
+            ModuleUser::class,
+            ModuleAnimation::class
         ]
     )
     internal abstract fun mainActivity(): ActivityMain

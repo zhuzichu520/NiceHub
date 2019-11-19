@@ -15,12 +15,14 @@ class ItemViewModelSetting(
     companion object {
         const val LANGUAGES = 0x00
         const val THEME = 0x01
+        const val ANIMATION = 0x02
     }
 
     val onClickItem = BindingCommand<Any>({
         when (id) {
             LANGUAGES -> startFragment(R.id.action_fragmentSetting_to_fragmentLanguages)
             THEME -> startFragment(R.id.action_fragmentSetting_to_fragmentTheme)
+            ANIMATION -> startFragment(R.id.action_fragmentSetting_to_fragmentAnimation)
             else -> {
             }
         }

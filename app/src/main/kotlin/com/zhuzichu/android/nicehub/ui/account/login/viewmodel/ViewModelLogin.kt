@@ -10,7 +10,6 @@ import com.zhuzichu.android.nicehub.repository.LocalRepository
 import com.zhuzichu.android.nicehub.ui.account.login.domain.UseCaseAuthorizations
 import com.zhuzichu.android.nicehub.ui.account.login.domain.UseCaseGetUserByToken
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
-import com.zhuzichu.android.shared.extension.autoLoading
 import com.zhuzichu.android.shared.storage.GlobalStorage
 import okhttp3.Credentials
 import javax.inject.Inject
@@ -33,7 +32,9 @@ class ViewModelLogin @Inject constructor(
     private fun authorizations() {
         val basicToken = Credentials.basic(username.value ?: "", password.value ?: "")
         useCaseAuthorizations.execute(basicToken)
-            .autoLoading(this)
+            .doOnSubscribe {
+                showLoading()
+            }
             .autoDispose(this)
             .subscribe({
                 getUser("token ${it.token}")
@@ -43,17 +44,19 @@ class ViewModelLogin @Inject constructor(
     }
 
     private fun getUser(token: String) {
-            useCaseGetUser.execute(token)
-                .autoLoading(this)
-                .autoDispose(this)
-                .subscribe({
-                    globalStorage.token = token
-                    userManager.user.value=it
-                    localRepository.saveUser(DOUser(it.id!!, it.login!!, it.avatarUrl, it.name))
-                    startActivity(ActivityMain::class.java, isPop = true)
-                }, {
-                    handleThrowable(it)
-                })
+        useCaseGetUser.execute(token)
+            .doFinally {
+                hideLoading()
+            }
+            .autoDispose(this)
+            .subscribe({
+                globalStorage.token = token
+                userManager.user.value = it
+                localRepository.saveUser(DOUser(it.id!!, it.login!!, it.avatarUrl, it.name))
+                startActivity(ActivityMain::class.java, isPop = true)
+            }, {
+                handleThrowable(it)
+            })
     }
 
 }

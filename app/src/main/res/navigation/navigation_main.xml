@@ -50,6 +50,9 @@
         <action
             android:id="@+id/action_fragmentSetting_to_fragmentTheme"
             app:destination="@id/fragmentTheme" />
+        <action
+            android:id="@+id/action_fragmentSetting_to_fragmentAnimation"
+            app:destination="@id/fragmentAnimation" />
     </fragment>
     <fragment
         android:id="@+id/fragmentLanguages"
@@ -97,4 +100,8 @@
             android:id="@+id/action_fragmentUser_to_fragmentFollower"
             app:destination="@id/fragmentFollower" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentAnimation"
+        android:name="com.zhuzichu.android.nicehub.ui.setting.animation.fragment.FragmentAnimation"
+        android:label="FragmentAnimation" />
 </navigation>

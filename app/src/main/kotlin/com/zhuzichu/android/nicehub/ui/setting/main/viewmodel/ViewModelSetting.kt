@@ -4,6 +4,7 @@ package com.zhuzichu.android.nicehub.ui.setting.main.viewmodel
 import androidx.lifecycle.MutableLiveData
 import com.zhuzichu.android.nicehub.BR
 import com.zhuzichu.android.nicehub.R
+import com.zhuzichu.android.nicehub.ui.setting.main.viewmodel.ItemViewModelSetting.Companion.ANIMATION
 import com.zhuzichu.android.nicehub.ui.setting.main.viewmodel.ItemViewModelSetting.Companion.LANGUAGES
 import com.zhuzichu.android.nicehub.ui.setting.main.viewmodel.ItemViewModelSetting.Companion.THEME
 import com.zhuzichu.android.shared.base.ViewModelAnalyticsBase
@@ -27,6 +28,12 @@ class ViewModelSetting @Inject constructor(
                 this,
                 THEME,
                 R.string.theme
+            ),
+            ItemViewModelSetting(
+                this,
+                ANIMATION,
+                R.string.animation
+
             ),
             ItemViewModelLogout(this)
         )
