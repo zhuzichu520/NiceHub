@@ -10,7 +10,7 @@ plugins {
 Config.initJenkinsProperties(project)
 
 project.android {
-    
+
     compileSdkVersion(Config.compileSdkVersion())
 
     signingConfigs {
