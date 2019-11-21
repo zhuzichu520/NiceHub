@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import com.umeng.commonsdk.UMConfigure
 import com.zhuzichu.android.mvvm.MvvmManager
 import com.zhuzichu.android.nicehub.di.DaggerAppComponent
+import com.zhuzichu.android.nicehub.extension.toAnimationBuild
 import com.zhuzichu.android.shared.global.AppGlobal
 import com.zhuzichu.android.shared.storage.GlobalStorage
 import dagger.android.AndroidInjector
@@ -35,12 +36,7 @@ class ApplicationNiceHub : DaggerApplication() {
         RxJavaPlugins.setErrorHandler {
 
         }
-        MvvmManager.animBuilder = {
-            enter=R.anim.slide_enter
-            exit=R.anim.slide_exit
-            popEnter=R.anim.slide_pop_enter
-            popExit=R.anim.slide_pop_exit
-        }
+        MvvmManager.animBuilder = globalStorage.animation.toAnimationBuild()
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {

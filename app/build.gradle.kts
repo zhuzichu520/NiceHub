@@ -86,6 +86,7 @@ dependencies {
     kapt(Dep.kaptGlide)
     kapt(Dep.androidxDatabinding)
     debugImplementation("com.squareup.leakcanary:leakcanary-android:2.0-beta-3")
+    debugImplementation("com.didichuxing.doraemonkit:doraemonkit:2.0.1")
 }
 
 student {

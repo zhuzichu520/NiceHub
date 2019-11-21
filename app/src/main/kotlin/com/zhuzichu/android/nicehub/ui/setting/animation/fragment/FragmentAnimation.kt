@@ -12,4 +12,8 @@ class FragmentAnimation : FragmentAnalyticsBase<FragmentAnimationBinding, ViewMo
 
     override fun setLayoutId(): Int = R.layout.fragment_animation
 
+    override fun initFirstData() {
+        super.initFirstData()
+        viewModel.updateData()
+    }
 }
