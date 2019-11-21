@@ -1,4 +1,4 @@
-package plugin.extension
+package plugin.test.ext
 
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.*

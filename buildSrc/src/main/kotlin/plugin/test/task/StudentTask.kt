@@ -1,14 +1,14 @@
-package plugin
+package plugin.test.task
 
 import org.gradle.api.DefaultTask
 import org.gradle.api.tasks.TaskAction
-import plugin.extension.StudentExtension
+import plugin.test.ext.StudentExtension
 
 open class StudentTask : DefaultTask() {
 
     init {
         group = "nicehub"
-        description = "this test plugin"
+        description = "this StudentTask"
     }
 
     @TaskAction
