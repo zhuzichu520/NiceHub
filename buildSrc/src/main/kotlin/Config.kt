@@ -1,14 +1,8 @@
 import extension.getPropertyByKey
 import extension.plusQuotes
 import extension.toInt2
-import org.gradle.BuildResult
 import org.gradle.api.Project
-import org.gradle.api.initialization.Settings
 import org.gradle.api.plugins.ExtraPropertiesExtension
-import org.gradle.initialization.GradleLauncher
-import org.gradle.kotlin.dsl.resolver.buildSrcSourceRootsFilePath
-import org.gradle.tooling.BuildController
-import org.gradle.tooling.ProjectConnection
 import java.io.File
 import java.io.FileInputStream
 import java.util.*
@@ -23,6 +17,7 @@ object Config {
         MIN_SDK_VERSION("MIN_SDK_VERSION"),
         APP_SERVER_URL("APP_SERVER_URL"),
         BUILD_TYPE("BUILD_TYPE"),
+        PRODUCT_CHANNEL("PRODUCT_CHANNEL"),
         RELEASE_SIGN_CONFIGS_PATH("RELEASE_SIGN_CONFIGS_PATH");
     }
 

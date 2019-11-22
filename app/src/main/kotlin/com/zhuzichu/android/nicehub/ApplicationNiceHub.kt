@@ -1,7 +1,6 @@
 package com.zhuzichu.android.nicehub
 
 import androidx.appcompat.app.AppCompatDelegate
-import com.didichuxing.doraemonkit.DoraemonKit
 import com.umeng.commonsdk.UMConfigure
 import com.zhuzichu.android.mvvm.MvvmManager
 import com.zhuzichu.android.nicehub.di.DaggerAppComponent
@@ -29,8 +28,6 @@ class ApplicationNiceHub : DaggerApplication() {
 
         UMConfigure.init(
             this,
-            BuildConfig.UMENG_APPKEY,
-            BuildConfig.UMENG_CHANNEL,
             UMConfigure.DEVICE_TYPE_PHONE,
             null
         )
@@ -38,7 +35,6 @@ class ApplicationNiceHub : DaggerApplication() {
 
         }
         MvvmManager.animBuilder = globalStorage.animation.toAnimationBuild()
-        DoraemonKit.install(this)
     }
 
     override fun applicationInjector(): AndroidInjector<out DaggerApplication> {

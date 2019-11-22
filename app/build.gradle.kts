@@ -39,6 +39,7 @@ project.android {
     }
 
     buildTypes {
+
         getByName("release") {
             isShrinkResources = true
             isMinifyEnabled = true
@@ -50,6 +51,28 @@ project.android {
         }
         getByName("debug") {
 
+        }
+    }
+
+    flavorDimensions("channel")
+    productFlavors {
+        create("GooglePlay") {
+            setDimension("channel")
+            applicationIdSuffix = ".google"
+            manifestPlaceholders.apply {
+                put("CHANNEL_NAME", name)
+                put("ic_launcher_new", "@mipmap/ic_launcher_google")
+                put("ic_launcher_round_new", "@mipmap/ic_launcher_google_round")
+            }
+        }
+        create("HuaWei") {
+            setDimension("channel")
+            applicationIdSuffix = ".huawei"
+            manifestPlaceholders.apply {
+                put("CHANNEL_NAME", name)
+                put("ic_launcher_new", "@mipmap/ic_launcher_huawei")
+                put("ic_launcher_round_new", "@mipmap/ic_launcher_huawei_round")
+            }
         }
     }
 
