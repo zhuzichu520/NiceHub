@@ -34,7 +34,7 @@ project.android {
         resValue("string", "app_name_new", Config.appName())
         val fields = Config.getBuildConfigFields()
         fields.forEach {
-            defaultConfig.buildConfigField(it[0], it[1], it[2])
+            buildConfigField(it[0], it[1], it[2])
         }
     }
 
