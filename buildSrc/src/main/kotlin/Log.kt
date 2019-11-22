@@ -8,7 +8,7 @@ object Log {
     private val logger by lazy { project.logger }
 
     fun init(project: Project) {
-        this.project = project
+        Log.project = project
     }
 
     fun d(flag: String, message: Any?) {

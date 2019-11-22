@@ -3,6 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'androidx.navigation.safeargs.kotlin'
+apply plugin: 'TestPlugin'
 
 Config.initJenkinsProperties(project)
 
@@ -11,7 +12,7 @@ android {
     compileSdkVersion Config.compileSdkVersion()
 
     signingConfigs {
-        MyAppSign {
+        appSign {
             keyAlias Config.keyAlias()
             keyPassword Config.keyPassword()
             storeFile file(Config.storeFile())
@@ -25,7 +26,7 @@ android {
         targetSdkVersion Config.targetSdkVersion()
         versionCode Config.versionCode()
         versionName Config.versionName()
-        signingConfig signingConfigs.MyAppSign
+        signingConfig signingConfigs.appSign
         renderscriptTargetApi 18
         renderscriptSupportModeEnabled true
         resValue 'string', 'app_name_new', Config.appName()
@@ -63,6 +64,14 @@ android {
         experimental = true
     }
 
+    sourceSets {
+        main {
+            java {
+                srcDir 'src/main/kotlin'
+            }
+        }
+    }
+
     bundle {
         language {
             enableSplit = false
@@ -78,4 +87,10 @@ dependencies {
     kapt(Dep.kaptGlide)
     kapt(Dep.androidxDatabinding)
     debugImplementation "com.squareup.leakcanary:leakcanary-android:2.0-beta-3"
+    debugImplementation "com.didichuxing.doraemonkit:doraemonkit:2.0.1"
+}
+
+student {
+    nickname = "小猪"
+    age = 160
 }
