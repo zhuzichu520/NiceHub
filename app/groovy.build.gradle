@@ -47,6 +47,28 @@ android {
         }
     }
 
+    flavorDimensions "channel"
+    productFlavors {
+        GooglePlay {
+            dimension "channel"
+            applicationIdSuffix = ".google"
+            addManifestPlaceholders([
+                    'CHANNEL_NAME'         : name,
+                    'ic_launcher_new'      : '@mipmap/ic_launcher_google',
+                    'ic_launcher_round_new': '@mipmap/ic_launcher_google_round'
+            ])
+        }
+        HuaWei {
+            dimension "channel"
+            applicationIdSuffix = ".huawei"
+            addManifestPlaceholders([
+                    'CHANNEL_NAME'         : name,
+                    'ic_launcher_new'      : '@mipmap/ic_launcher_huawei',
+                    'ic_launcher_round_new': '@mipmap/ic_launcher_huawei_round'
+            ])
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -72,16 +94,12 @@ android {
         }
     }
 
-    bundle {
-        language {
-            enableSplit = false
-        }
-    }
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     api project(path: ':shared')
+    kapt(Dep.kaptRoomCompiler)
     kapt(Dep.kaptDaggerCompiler)
     kapt(Dep.kaptDaggerProcessor)
     kapt(Dep.kaptGlide)

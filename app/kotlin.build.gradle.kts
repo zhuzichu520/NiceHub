@@ -57,7 +57,7 @@ project.android {
     flavorDimensions("channel")
     productFlavors {
         create("GooglePlay") {
-            setDimension("channel")
+            dimension = "channel"
             applicationIdSuffix = ".google"
             manifestPlaceholders.apply {
                 put("CHANNEL_NAME", name)
@@ -66,7 +66,7 @@ project.android {
             }
         }
         create("HuaWei") {
-            setDimension("channel")
+            dimension = "channel"
             applicationIdSuffix = ".huawei"
             manifestPlaceholders.apply {
                 put("CHANNEL_NAME", name)
@@ -101,7 +101,6 @@ project.android {
 
 dependencies {
     implementation(fileTree("dir" to "libs", "include" to "*.jar"))
-
     api(project(path = ":shared"))
     kapt(Dep.kaptRoomCompiler)
     kapt(Dep.kaptDaggerCompiler)
