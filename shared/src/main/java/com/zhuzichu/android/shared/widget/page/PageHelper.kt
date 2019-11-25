@@ -53,7 +53,7 @@ class PageHelper(
     })
 
     val onRefresh = BindingCommand<SwipeRefreshLayout>(consumer = {
-        weakRefresh = WeakReference(it)
+        weakRefresh = WeakReference(this)
         if (!isLoading) {
             page = 1
             onLoadMore?.invoke(page)

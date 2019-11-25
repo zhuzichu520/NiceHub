@@ -111,7 +111,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:text="@{item.forksCount}"
-            android:textAppearance="?attr/textAppearanceCaption"
+            android:textAppearance="?attr/subtitleTextAppearance"
             app:layout_constraintBottom_toBottomOf="@id/fork_icon"
             app:layout_constraintStart_toEndOf="@id/fork_icon"
             app:layout_constraintTop_toBottomOf="@id/description"

@@ -28,7 +28,7 @@ class ViewModelRepoSearch @Inject constructor(
         })
     })
 
-    private val pageSize = 20
+    private val pageSize = 2
 
     private val pageHelper = PageHelper(
         AsyncDiffObservableList(itemDiffOf<ItemViewModelRepoSearch> { oldItem, newItem -> oldItem.id == newItem.id }),
@@ -58,7 +58,7 @@ class ViewModelRepoSearch @Inject constructor(
                 sort = "stars",
                 order = "desc",
                 page = page,
-                pageSize = 20
+                pageSize = pageSize
             )
         ).doFinally {
             hideLoading()

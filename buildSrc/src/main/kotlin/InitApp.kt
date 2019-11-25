@@ -47,6 +47,7 @@ class InitApp(project: Project) {
                 fields.forEach {
                     defaultConfig.buildConfigField(it[0], it[1], it[2])
                 }
+                dimension
             }
 
             buildTypes {
@@ -78,12 +79,12 @@ class InitApp(project: Project) {
 
                 create("HuaWei").apply {
                     dimension = "channel"
-                    applicationIdSuffix = ".google"
+                    applicationIdSuffix = ".huawei"
                     addManifestPlaceholders(
                         mapOf(
                             "CHANNEL_NAME" to name,
-                            "ic_launcher_new" to "@mipmap/ic_launcher_google",
-                            "ic_launcher_round_new" to "@mipmap/ic_launcher_google_round"
+                            "ic_launcher_new" to "@mipmap/ic_launcher_huawei",
+                            "ic_launcher_round_new" to "@mipmap/ic_launcher_huawei_round"
                         )
                     )
                 }
